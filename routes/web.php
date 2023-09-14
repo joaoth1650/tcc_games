@@ -29,6 +29,7 @@ use Inertia\Inertia;
 //     // ]);
 // });
 Route::get('/', [GameController::class, 'index'])->name('games.index');
+Route::get('/SingleGame/{id}', [GameController::class, 'show'])->name('games.show');
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');

@@ -14,4 +14,8 @@ class GameController extends Controller
         return Inertia::render('Games/IndexGames', ['games' => $games]);
 
     }
+    public function show($id){
+        $games = Game::find($id);
+        return Inertia::render('Games/SingleGame', ['games' => $games]);
+    }
 }
