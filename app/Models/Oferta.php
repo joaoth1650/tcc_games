@@ -15,6 +15,9 @@ class Oferta extends Model
         'id',
         'game_id',
         'imagem',
+        'nome',
+        'descricao',
+        'preco'
     ];
 
     public function game(){

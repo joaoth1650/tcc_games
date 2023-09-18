@@ -12,12 +12,28 @@ class Game extends Model
     protected $table = 'games';
 
     protected $fillable = [
-        'id'
+        'id',
+        'restricao_id',
+        'nome',
+        'preco',
+        'descricao',
+        'video',
+        'imagem_esquerda',
+        'imagem_direita',
+        'background',
+        'standart1',
+        'standart2',
+        'standart3',
+        'standart4',
+        'imagem_principal' 
     ];
 
     public function ofertas(): HasMany
     {
         return $this->hasMany(Oferta::class, 'game_id', 'id');
+    }
+    public function restricao(){
+        return $this->belongsTo(Restricao::class, 'id', 'restricao_id');
     }
 
 

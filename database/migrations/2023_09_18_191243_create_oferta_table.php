@@ -18,9 +18,9 @@ return new class extends Migration
             $table->bigInteger('game_id');
             $table->foreign('game_id')->references('id')->on('games');
             $table->float('preco');
-            $table->string('imagem');
+            $table->string('imagem', 70);
             $table->text('descricao');
-            $table->string('nome', 60);
+            $table->string('nome', 50);
             $table->timestamps();
         });
 

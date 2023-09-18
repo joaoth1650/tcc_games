@@ -11,8 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
+        Schema::disableForeignKeyConstraints();
+
         Schema::create('games', function (Blueprint $table) {
             $table->id();
+            $table->bigInteger('restricao_id');
+            $table->foreign('restricao_id')->references('id')->on('restricao');
             $table->string('nome', 60)->index();
             $table->float('preco');
             $table->text('descricao');
@@ -27,6 +31,8 @@ return new class extends Migration
             $table->string('imagem_principal');
             $table->timestamps();
         });
+
+        Schema::enableForeignKeyConstraints();
     }
 
     /**
