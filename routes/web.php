@@ -34,6 +34,9 @@ Route::get('/SingleGame', [GameController::class, 'show'])->name('games.show');
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/wishlist', function () {
+    return Inertia::render('Wishlist');
+})->middleware(['auth', 'verified'])->name('Wishlist');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

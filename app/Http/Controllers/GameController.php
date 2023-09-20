@@ -25,11 +25,11 @@ class GameController extends Controller
         ->with('ofertas', 'restricao')
         ->find($id);
         
+        // dd($games->toArray());
         if(empty($games)){
             return redirect()->route('games.index');
         }
 
-        // dd($games->toArray());
         return Inertia::render('Games/SingleGame', ['games' => $games]);
     }
 }

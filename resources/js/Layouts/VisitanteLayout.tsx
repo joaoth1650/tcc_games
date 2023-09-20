@@ -12,7 +12,7 @@ export default function VisitanteLayout({ auth, children, title }: PageProps<{ c
     return (
         <>
             <div className="min-h-screen bg-gray-100">
-                <nav className="bg-white border-b border-gray-100">
+                <nav className="bg-gray-100 border-b border-gray-400">
                     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                         <div className="flex justify-between h-16">
                             <div className="flex">
@@ -25,6 +25,9 @@ export default function VisitanteLayout({ auth, children, title }: PageProps<{ c
                                 <div className="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                                     <NavLink href={route('dashboard')} active={route().current('dashboard')}>
                                         Dashboard
+                                    </NavLink>
+                                    <NavLink href={route('Wishlist')} active={route().current('Wishlist')}>
+                                    Wishlist
                                     </NavLink>
                                 </div>
                             </div>
@@ -113,7 +116,7 @@ export default function VisitanteLayout({ auth, children, title }: PageProps<{ c
                         <div className="pt-2 pb-3 space-y-1">
                             <ResponsiveNavLink href={route('dashboard')} active={route().current('dashboard')}>
                                 Dashboard
-                            </ResponsiveNavLink>
+                            </ResponsiveNavLink>                         
                         </div>
 
                         <div className="pt-4 pb-1 border-t border-gray-200">
@@ -134,7 +137,7 @@ export default function VisitanteLayout({ auth, children, title }: PageProps<{ c
                     </div>
                 </nav>
 
-                <main className='bg-indigo-800'>{children}</main>
+                <main className='bg-gray-900'>{children}</main>
 
             </div>
         </>

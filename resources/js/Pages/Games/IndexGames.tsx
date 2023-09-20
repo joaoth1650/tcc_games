@@ -1,6 +1,7 @@
 import VisitanteLayout from "@/Layouts/VisitanteLayout";
 import { PageProps } from "@/types";
 import { Head, Link } from '@inertiajs/react';
+import StarOutlineIcon from '@mui/icons-material/StarOutline';
 
 export default function IndexGames({ auth, games }: PageProps<{ games: any }>) {
   console.log(games)
@@ -10,16 +11,18 @@ export default function IndexGames({ auth, games }: PageProps<{ games: any }>) {
         <div className="max-w-7xl mx-auto sm:px-6 lg:px-8 ">
           <div className=" overflow-hidden shadow-sm rounded-lg grid grid-cols-3 gap-5">
             {games.map((game: any) => (
-               <Link href={route('games.show', { 'id' : game.id })}
-               className="ml-4 font-semibold text-gray-500 hover:text-gray-900 focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500"
-           >
-              <div key={game.id} className="border-2 bg-white rounded-lg hover:bg-slate-200 hover:border-indigo-500 border-gray-500 p-2">
-                <img src={game.imagem_principal} alt="" className={" w- border        object-cover rounded-lg shadow-md"} />
-                <h1 className="text-2xl text-center font-bold uppercase">{game.nome}</      h1>
-                <p className="leading-4 px-2">{game.descricao.substring(0, 50) + '...'}     </p>
-                <h2>{game.preco}</h2>
+              <Link href={route('games.show', { 'id': game.id })}
+                className="ml-4 font-semibold text-gray-500 hover:text-gray-900 focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500"
+              >
+                <div key={game.id} className=" bg-white rounded-lg hover:bg-slate-200  border-gray-500 w-">
+                  <img src={game.imagem_principal} alt="" className={"border object-cover rounded-lg shadow-md"} />
 
-              </div>
+                  <h1 className="text-2xl text-center font-bold uppercase">{game.nome}</h1>
+                  
+                  <p className="leading-4 px-2">{game.descricao.substring(0, 50) + '...'}     </p>
+                  <h2>{game.preco}</h2>
+
+                </div>
               </Link>
             ))}
           </div>

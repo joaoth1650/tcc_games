@@ -33,7 +33,7 @@ class Game extends Model
         return $this->hasMany(Oferta::class, 'game_id', 'id');
     }
     public function restricao(){
-        return $this->belongsTo(Restricao::class, 'id', 'restricao_id');
+        return $this->belongsTo(Restricao::class, 'restricao_id', 'id' );
     }
 
 

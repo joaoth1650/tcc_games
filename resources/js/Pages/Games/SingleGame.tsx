@@ -14,8 +14,8 @@ const GameIndividual = ({ auth, games }: PageProps<{ games: any }>) => {
               <span></span>
               <span></span>
               <div className="flex col-span-2">
-                <h1 className='text-3xl bg-blue-600 pl-2 p-1 text-white w-11 rounded-lg'>{}</h1>
-                <p className="mt-auto p-2 text-white">Não Recomendado Para Crianças Menores de 10 anos.</p>
+                <h1 className='text-3xl bg-blue-600 pl-2 p-1 text-white w-11 rounded-lg' style={{ backgroundColor: games.restricao.background }}>{games.restricao.idade}</h1>
+                <p className="mt-auto p-2 text-white">{games.restricao.descricao}</p>
               </div>
             </div>
             <div className="grid grid-cols-4 gap-4 mt-10">
@@ -44,13 +44,13 @@ const GameIndividual = ({ auth, games }: PageProps<{ games: any }>) => {
                 />
               </div>
             </div>
-            <div className="flex gap-2 justify-center items-center mt-5">
+            <div className="flex gap-64 justify-center items-center mt-5">
             {games.ofertas.map((oferta: any) => {
               return (
-              <div className="w-full flex flex-col items-center gap-5 " key={oferta.id}>
+              <div className="w-full flex flex-col  gap-5 " key={oferta.id}>
                   <img src={oferta.imagem} alt="" className='rounded-xl'  />
-                  <p className='text-2xl text-white bg-orange-500 px-6 rounded-xl'>{oferta.nome}</p>
-                  <p className='text-lg text-white bg-gray-500 rounded-xl px-3'>R$ {oferta.preco}</p>
+                  <p className='text-3xl text-white  px-3 rounded-xl'>{oferta.nome}</p>
+                  <p className='text-lg text-white rounded-xl px-3'>R$ {oferta.preco}</p>
               </div>
               )
             })}
