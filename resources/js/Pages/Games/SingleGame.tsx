@@ -3,18 +3,18 @@ import { PageProps } from '@/types'
 import React from 'react'
 
 const GameIndividual = ({ auth, games }: PageProps<{ games: any }>) => {
+  console.log(games);
   return (
     <VisitanteLayout auth={auth} title="Teste">
-      <div className="bg-fixed bg-no-repeat p-5" style={{ backgroundImage: "url('" + games.imagem_principal + "')" }}>
+      <div className="bg-fixed bg-no-repeat p-5" style={{ backgroundImage: "url('" + games.background + "')" }}>
         <div className="container w-8/12 mx-auto ">
-          <div className="bg-gray-900 rounded-lg shadow-lg p-5">
+          <div className="bg-gray-900 rounded-xl shadow-lg p-5">
             <div className="grid grid-cols-4 gap-4">
-              <h1 className="text-4xl text-white font-bold uppercase">{games.nome}</h1>
-              <span></span>
+              <h1 className="text-4xl text-white font-bold uppercase col-span-2">{games.nome}</h1>            
               <span></span>
               <span></span>
               <div className="flex col-span-2">
-                <h1 className='text-3xl bg-blue-600 pl-2 p-1 text-white w-11 rounded-lg'>10</h1>
+                <h1 className='text-3xl bg-blue-600 pl-2 p-1 text-white w-11 rounded-lg'>{}</h1>
                 <p className="mt-auto p-2 text-white">Não Recomendado Para Crianças Menores de 10 anos.</p>
               </div>
             </div>
@@ -44,19 +44,17 @@ const GameIndividual = ({ auth, games }: PageProps<{ games: any }>) => {
                 />
               </div>
             </div>
-            
+            <div className="flex gap-2 justify-center items-center mt-5">
             {games.ofertas.map((oferta: any) => {
               return (
-                <div className="grid grid-cols-2 gap-6" key={oferta.id}>
-                <div>
-                  <img src={oferta.imagem} alt="" />
-                </div>
-                <div>
-                  <img src={oferta.imagem} alt="" />
-                </div>
-            </div>
+              <div className="w-full flex flex-col items-center gap-5 " key={oferta.id}>
+                  <img src={oferta.imagem} alt="" className='rounded-xl'  />
+                  <p className='text-2xl text-white bg-orange-500 px-6 rounded-xl'>{oferta.nome}</p>
+                  <p className='text-lg text-white bg-gray-500 rounded-xl px-3'>R$ {oferta.preco}</p>
+              </div>
               )
             })}
+            </div>
           </div>
         </div>
       </div>

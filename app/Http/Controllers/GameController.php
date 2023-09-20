@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Game;
+use App\Models\Restricao;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
@@ -20,7 +21,10 @@ class GameController extends Controller
             return redirect()->route('games.index');
         }
 
-        $games = Game::with('ofertas')->find($id);
+        $games = Game::query()
+        ->with('ofertas', 'restricao')
+        ->find($id);
+        
         if(empty($games)){
             return redirect()->route('games.index');
         }

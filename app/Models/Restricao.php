@@ -19,7 +19,7 @@ class Restricao extends Model
         'background',
     ];
 
-    public function games(): HasMany
+    public function game(): HasMany
     {
         return $this->hasMany(Game::class, 'reistricao_id', 'id' );
     }
