@@ -32,4 +32,22 @@ class GameController extends Controller
 
         return Inertia::render('Games/SingleGame', ['games' => $games]);
     }
+
+    public function addFav(Request $request)
+    {
+        
+        $validatedData = $request->validate([
+            'game_id' => 'required|exists:games,id',
+            'user_id' => 'required|exists:users,id',
+            'prioridade' => 'required|boolean',
+        ]);
+
+        $favorito = new Favorito;
+        $favorito->game_id = $validatedData['game_id'];
+        $favorito->user_id = $validatedData['user_id'];
+        $favorito->prioridade = $validatedData['prioridade'];
+        $favorito->save();
+
+        return redirect('/addFav')->with('success', 'Registrado :)');
+    }
 }

@@ -4,20 +4,18 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class Oferta extends Model
+class Favorito extends Model
 {
     use HasFactory;
-
-    protected $table = 'oferta';
+    protected $table = 'favoritos';
 
     protected $fillable = [
         'id',
         'game_id',
-        'imagem',
-        'nome',
-        'descricao',
-        'preco'
+        'user_id',
+        'prioridade'
     ];
 
     public function games(){
