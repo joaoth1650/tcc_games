@@ -18,6 +18,7 @@ return new class extends Migration
             $table->bigInteger('game_id');
             $table->foreign('game_id')->references('id')->on('games');
             $table->bigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
             $table->boolean('prioridade');
             $table->timestamps();
         });

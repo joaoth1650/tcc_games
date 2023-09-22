@@ -21,11 +21,15 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
 
-        foreach (range(1, 10) as $index) {
-           User::query()->create([
-               'name' => "dsadsadasdsa",
-               
-           ]);
-        }
+        // foreach (range(1, 10) as $index) {
+        //    User::query()->create([
+        //        'name' => "dsadsadasdsa",
+        //    ]);
+        // }
+
+        $this->call([
+            RestricaoSeeder::class,
+            PopularGamesSeed::class
+        ]);
     }
 }

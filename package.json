@@ -15,7 +15,7 @@
         "@types/ziggy-js": "^1.3.2",
         "@vitejs/plugin-react": "^4.0.3",
         "autoprefixer": "^10.4.12",
-        "axios": "^1.1.2",
+        "axios": "^1.5.0",
         "laravel-vite-plugin": "^0.8.0",
         "postcss": "^8.4.18",
         "react": "^18.2.0",
@@ -28,6 +28,7 @@
         "@emotion/react": "^11.11.1",
         "@emotion/styled": "^11.11.0",
         "@mui/icons-material": "^5.14.9",
-        "@mui/material": "^5.14.9"
+        "@mui/material": "^5.14.9",
+        "sweetalert2": "^11.7.28"
     }
 }

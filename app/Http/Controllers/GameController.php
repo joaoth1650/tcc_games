@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Favorito;
 use App\Models\Game;
 use App\Models\Restricao;
 use Illuminate\Http\Request;
@@ -33,21 +34,24 @@ class GameController extends Controller
         return Inertia::render('Games/SingleGame', ['games' => $games]);
     }
 
-    public function addFav(Request $request)
-    {
-        
+    public function store(Request $request)
+    {  
         $validatedData = $request->validate([
             'game_id' => 'required|exists:games,id',
             'user_id' => 'required|exists:users,id',
-            'prioridade' => 'required|boolean',
+            'prioridade' => 'boolean',
         ]);
 
-        $favorito = new Favorito;
+        $favorito = new Favorito();
         $favorito->game_id = $validatedData['game_id'];
         $favorito->user_id = $validatedData['user_id'];
-        $favorito->prioridade = $validatedData['prioridade'];
-        $favorito->save();
+        $favorito->prioridade = $validatedData['prioridade']??false;
+        if($favorito->save()){
+            return response()->json([], 201);
+        }
 
-        return redirect('/addFav')->with('success', 'Registrado :)');
+        return response()->json([
+            'errors' => "Não foi possivel cadastrar o favorito"
+        ], 404);
     }
 }
