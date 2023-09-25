@@ -26,7 +26,7 @@ export default function VisitanteLayout({ auth, children, title }: PageProps<{ c
                                     <NavLink href={route('dashboard')} active={route().current('dashboard')}>
                                         Dashboard
                                     </NavLink>
-                                    <NavLink href={route('Wishlist')} active={route().current('Wishlist')}>
+                                    <NavLink href={route('favorite.show')} active={route().current('favorite.show')}>
                                     Wishlist
                                     </NavLink>
                                 </div>

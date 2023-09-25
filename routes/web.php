@@ -30,19 +30,20 @@ use Inertia\Inertia;
 // });
 Route::get('/', [GameController::class, 'index'])->name('games.index');
 Route::get('/SingleGame', [GameController::class, 'show'])->name('games.show');
-Route::post('/addFavorite', [GameController::class, 'store'])->name('favorite.create');
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
-Route::get('/wishlist', function () {
-    return Inertia::render('Wishlist');
-})->middleware(['auth', 'verified'])->name('Wishlist');
+// Route::get('/wishlist', function () {
+//     return Inertia::render('Wishlist');
+// })->middleware(['auth', 'verified'])->name('Wishlist');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::post('/addFavorite', [GameController::class, 'store'])->name('favorite.create');
+    Route::get('/allWishlist', [GameController::class, 'showFavorite'])->name('favorite.show');
 });
 
 require __DIR__.'/auth.php';

@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Favorito;
 use App\Models\Game;
-use App\Models\Restricao;
+// use App\Models\Restricao;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
@@ -38,13 +38,13 @@ class GameController extends Controller
     {  
         $validatedData = $request->validate([
             'game_id' => 'required|exists:games,id',
-            'user_id' => 'required|exists:users,id',
+            // 'user_id' => 'required|exists:users,id',
             'prioridade' => 'boolean',
         ]);
 
         $favorito = new Favorito();
         $favorito->game_id = $validatedData['game_id'];
-        $favorito->user_id = $validatedData['user_id'];
+        $favorito->user_id = auth()->user()->id;
         $favorito->prioridade = $validatedData['prioridade']??false;
         if($favorito->save()){
             return response()->json([], 201);
@@ -53,5 +53,14 @@ class GameController extends Controller
         return response()->json([
             'errors' => "Não foi possivel cadastrar o favorito"
         ], 404);
+    }
+    public function showFavorite(Request $request)
+    {
+        $favoritos = Favorito::where('user_id', auth()->user()->id)->with('games')->get();
+        // dd($favoritos->toArray());
+        return inertia('Wishlist', [
+            'favoritos' => $favoritos,
+        ]);
+        
     }
 }

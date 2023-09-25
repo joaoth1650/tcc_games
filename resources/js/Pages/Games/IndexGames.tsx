@@ -8,9 +8,11 @@ import { IconButton } from "@mui/material";
 import Swal from "sweetalert2";
 
 export default function IndexGames({ auth, games }: PageProps<{ games: Array<any>, auth: object }>) {
-  const handleClick = (userId: number | undefined, gameId: number) => {
 
-    if (userId === undefined) {
+  // console.log(auth)
+  const handleClick = ( auth: any, gameId: number) => {
+
+    if (auth.user === null) {
       Swal.fire({
         title: 'Você precisa estar logado para adicionar um jogo à sua lista!',
         toast: true,
@@ -23,14 +25,14 @@ export default function IndexGames({ auth, games }: PageProps<{ games: Array<any
       return;
     }
 
-    axios.post( route('favorite.create'), { user_id: userId, game_id: gameId }).then((response) => {
+    axios.post( route('favorite.create'), { game_id: gameId }).then((response) => {
       console.log(response.data);
     })
 
     // console.log('Clicado!', `User ID: ${userId}, Game ID: ${gameId}`);
   };
 
-  console.log(typeof auth)
+  // console.log(typeof auth)
 
   return (
     <VisitanteLayout auth={auth} title="Teste">
@@ -40,9 +42,9 @@ export default function IndexGames({ auth, games }: PageProps<{ games: Array<any
             {games.map((game: any) => (
               <div className="" key={game.id}>
                 <div
-                  onClick={() => handleClick(auth?.user?.id ?? undefined, game.id)}
+                  onClick={() => handleClick(auth , game.id)}
                   className=" hover:scale-110 transform transition-transform cursor-pointer float-right">
-                  <AddCircleOutlineTwoToneIcon className="text-green-500 text-4xl" />
+                  <AddCircleOutlineTwoToneIcon className="text-green-500 text-4xl"/>
                 </div>
                 <Link
                   href={route('games.show', { 'id': game.id })}
