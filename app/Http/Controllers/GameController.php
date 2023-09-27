@@ -11,23 +11,32 @@ use Inertia\Inertia;
 class GameController extends Controller
 {
     public function index()
-    {   
+    {
         $games = Game::all();
-        return Inertia::render('Games/IndexGames', ['games' => $games]);
 
+        if (empty(auth()->user())) {  
+            return Inertia::render('Games/IndexGames', ['games' => $games]);
+        }
+        
+        $favoritoslist = Favorito::query()->where('user_id', auth()->user()->id)->get();
+        $favoritoslist = $favoritoslist->pluck('game_id')->toArray();
+        // dd($favoritoslist);
+        
+        return Inertia::render('Games/IndexGames', ['games' => $games, 'favoritoslist' => $favoritoslist]);
     }
-    public function show(Request $request){
+    public function show(Request $request)
+    {
         $id = $request->input('id');
-        if(empty($id)){
+        if (empty($id)) {
             return redirect()->route('games.index');
         }
 
         $games = Game::query()
-        ->with('ofertas', 'restricao')
-        ->find($id);
-        
+            ->with('ofertas', 'restricao')
+            ->find($id);
+
         // dd($games->toArray());
-        if(empty($games)){
+        if (empty($games)) {
             return redirect()->route('games.index');
         }
 
@@ -35,18 +44,18 @@ class GameController extends Controller
     }
 
     public function store(Request $request)
-    {  
+    {
         $validatedData = $request->validate([
             'game_id' => 'required|exists:games,id',
-            // 'user_id' => 'required|exists:users,id',
+            // 'user_id' => 'required|exists:users,id', // passar dados sigiloso de forma que não fique amostrar para o usuario auth()->user()->id;
             'prioridade' => 'boolean',
         ]);
 
         $favorito = new Favorito();
         $favorito->game_id = $validatedData['game_id'];
         $favorito->user_id = auth()->user()->id;
-        $favorito->prioridade = $validatedData['prioridade']??false;
-        if($favorito->save()){
+        $favorito->prioridade = $validatedData['prioridade'] ?? false;
+        if ($favorito->save()) {
             return response()->json([], 201);
         }
 
@@ -54,13 +63,35 @@ class GameController extends Controller
             'errors' => "Não foi possivel cadastrar o favorito"
         ], 404);
     }
+
     public function showFavorite(Request $request)
     {
-        $favoritos = Favorito::where('user_id', auth()->user()->id)->with('games')->get();
-        // dd($favoritos->toArray());
-        return inertia('Wishlist', [
+        if (empty(auth()->user())) {
+            return redirect()->route('games.index');
+        }
+
+        $favoritos = Favorito::query()
+            ->where('user_id', auth()->user()->id)
+            ->with('games')
+            ->get();
+
+        $data = [
             'favoritos' => $favoritos,
-        ]);
-        
+        ];
+
+        return inertia('Games/Wishlist', $data);
+    }
+    public function destroyFavorite(Request $request)
+    {
+        $id = $request->input('game_id');
+        if (empty($id)) {
+            return response()->json(["Esse jogo não foi encontrado na sua wishlist"], 404);
+        }
+        $favorito = Favorito::query()
+            ->where('user_id', auth()->user()->id)
+            ->where('game_id', $id)
+            ->delete();
+            return response ()->json(['Esse jogo foi removido da sua wishlist com sucesso!'], 204);
+           
     }
 }

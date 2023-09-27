@@ -26,7 +26,7 @@ export default function VisitanteLayout({ auth, children, title }: PageProps<{ c
                                     <NavLink href={route('dashboard')} active={route().current('dashboard')}>
                                         Dashboard
                                     </NavLink>
-                                    <NavLink href={route('favorite.show')} active={route().current('favorite.show')}>
+                                    <NavLink href={route('favorites')} active={route().current('favorites')}>
                                     Wishlist
                                     </NavLink>
                                 </div>
@@ -61,9 +61,9 @@ export default function VisitanteLayout({ auth, children, title }: PageProps<{ c
 
                                         <Dropdown.Content>
                                             <Dropdown.Link href={route('profile.edit')}>Profile</Dropdown.Link>
-                                            <Dropdown.Link href={route('logout')} method="post" as="button">
+                                            <a href={route('get.logout')} className="block w-full px-4 py-2 text-left text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out">
                                                 Log Out
-                                            </Dropdown.Link>
+                                            </a>
                                         </Dropdown.Content>
                                     </Dropdown>
                                         : (

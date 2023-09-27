@@ -6,11 +6,11 @@ import AddCircleOutlineTwoToneIcon from '@mui/icons-material/AddCircleOutlineTwo
 import RemoveCircleTwoToneIcon from '@mui/icons-material/RemoveCircleTwoTone';
 import { IconButton } from "@mui/material";
 import Swal from "sweetalert2";
+import { useState } from "react";
 
-export default function IndexGames({ auth, games }: PageProps<{ games: Array<any>, auth: object }>) {
-
-  // console.log(auth)
-  const handleClick = ( auth: any, gameId: number) => {
+export default function IndexGames({ auth, games, favoritoslist }: PageProps<{ games: Array<any>, favoritoslist: Array<any>, auth: object }>) {
+  const [favoritos, setFavoritos] = useState(favoritoslist);
+  const handleClick = (auth: any, gameId: number) => {
 
     if (auth.user === null) {
       Swal.fire({
@@ -25,8 +25,34 @@ export default function IndexGames({ auth, games }: PageProps<{ games: Array<any
       return;
     }
 
-    axios.post( route('favorite.create'), { game_id: gameId }).then((response) => {
+    axios.post(route('favorite.create'), { game_id: gameId }).then((response) => {
       console.log(response.data);
+
+      setFavoritos([...favoritos, gameId]);
+    })
+
+    // console.log('Clicado!', `User ID: ${userId}, Game ID: ${gameId}`);
+  };
+
+  const handleClickForDelete = (auth: any, gameId: number) => {
+
+    if (auth.user === null) {
+      Swal.fire({
+        title: 'Você precisa estar logado para remover um jogo à sua lista!',
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+        html: `<a href="/register" >Criar conta agora!</a>`,
+      });
+      return;
+    }
+
+    axios.delete(route('favorite.destroy'), { data: { game_id: gameId } }).then((response) => {
+      console.log(response.data);
+
+      setFavoritos(favoritos.filter((id) => id !== gameId));
     })
 
     // console.log('Clicado!', `User ID: ${userId}, Game ID: ${gameId}`);
@@ -41,14 +67,19 @@ export default function IndexGames({ auth, games }: PageProps<{ games: Array<any
           <div className="overflow-hidden shadow-sm rounded-lg grid grid-cols-3 gap-5">
             {games.map((game: any) => (
               <div className="" key={game.id}>
-                <div
-                  onClick={() => handleClick(auth , game.id)}
-                  className=" hover:scale-110 transform transition-transform cursor-pointer float-right">
-                  <AddCircleOutlineTwoToneIcon className="text-green-500 text-4xl"/>
-                </div>
+                {favoritos !== undefined && favoritos.includes(game.id) ? (
+                  <div onClick={() => handleClickForDelete(auth, game.id)} className="hover:scale-110 transform transition-transform cursor-pointer float-right">
+                    <RemoveCircleTwoToneIcon className="text-red-500 text-4xl" />
+                  </div>
+                ) : (
+                  <div onClick={() => handleClick(auth, game.id)} className="hover:scale-110 transform transition-transform cursor-pointer float-right">
+                    <AddCircleOutlineTwoToneIcon className="text-green-500 text-4xl" />
+                  </div>
+                )}
                 <Link
                   href={route('games.show', { 'id': game.id })}
                   className="font-semibold text-gray-600 hover:text-gray-900  focus:rounded-sm ">
+
                   <img src={game.imagem_principal} alt="" className={"object-cover rounded-lg shadow-md"} />
                   <div className="bg-gray-200 hover:bg-slate-100 border-gray-700">
                     <h1 className="text-2xl text-center font-bold uppercase ">{game.nome}</h1>
