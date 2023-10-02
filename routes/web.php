@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\GameController;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -48,10 +49,10 @@ Route::middleware('auth')->group(function () {
     Route::post('/addFavorite', [GameController::class, 'store'])->name('favorite.create');
     Route::delete('/WishlistDestroy', [GameController::class, 'destroyFavorite'])->name('favorite.destroy');
     ////ShoppingCart
-    Route::get('/shoppingCart', [GameController::class, 'showCart'])->name('cart.show');
-    Route::get('/addToCart', [GameController::class, 'addToCart'])->name('cart.create');
-    Route::get('/removeFromCart', [GameController::class, 'removeFromCart'])->name('cart.destroy');
-    Route::post('/statusCart', [GameController::class, 'statusCart'])->name('cart.status');
+    Route::get('/shoppingCart', [CartController::class, 'showCart'])->name('cart.show');
+    Route::get('/addToCart', [CartController::class, 'addToCart'])->name('cart.create');
+    Route::get('/removeFromCart', [CartController::class, 'removeFromCart'])->name('cart.destroy');
+    Route::post('/statusCart', [CartController::class, 'statusCart'])->name('cart.status');
 
 });
 

@@ -18,6 +18,8 @@ class Favorito extends Model
         'prioridade'
     ];
 
+    
+
     public function games(){
         return $this->belongsTo(Game::class, 'game_id', 'id');
     }
