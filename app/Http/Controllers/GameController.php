@@ -87,7 +87,7 @@ class GameController extends Controller
         if (empty($id)) {
             return response()->json(["Esse jogo não foi encontrado na sua wishlist"], 404);
         }
-        $favorito = Favorito::query()
+        Favorito::query()
             ->where('user_id', auth()->user()->id)
             ->where('game_id', $id)
             ->delete();
