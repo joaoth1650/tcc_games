@@ -10,8 +10,21 @@ class CartController extends Controller
 {
     public function showCart()
     {
-        $carts = Carrinho::all();
-        return view('ShoppingCart', ['carts' => $carts]);
+        $carts = Carrinho::query()
+        ->where('user_id', auth()->user()->id)
+        ->with('itemCarrinhos.ofertas.games')
+        ->get();
+
+        // $carts = Carrinho::query()
+        // ->join('item_carrinho', 'carrinhos.id', '=', 'item_carrinho.carrinho_id')
+        // ->join('oferta', 'item_carrinho.oferta_id', '=', 'oferta.id')
+        // ->join('games', 'oferta.game_id', '=', 'games.id')
+        // ->where('user_id', auth()->user()->id)
+        // ->select('games.id as game_id', 'carrinhos.*', 'item_carrinho.*', 'oferta.*')
+        // ->get();
+
+        // dd($carts->toArray());
+        return inertia('Games/ShoppingCart', ['carts' => $carts]);
     }
     public function addToCart(Request $request)
     {

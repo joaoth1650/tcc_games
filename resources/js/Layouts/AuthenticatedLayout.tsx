@@ -28,6 +28,9 @@ export default function Authenticated({ user, header, children }: PropsWithChild
                                 <NavLink href={route('favorites')} active={route().current('favorites')}>
                                     Wishlist
                                 </NavLink>
+                                <NavLink href={route('cart.show')} active={route().current('cart.show')}>
+                                    ~Cart~
+                                </NavLink>
                             </div>
                         </div>
 

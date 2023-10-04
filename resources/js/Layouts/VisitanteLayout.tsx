@@ -27,7 +27,10 @@ export default function VisitanteLayout({ auth, children, title }: PageProps<{ c
                                         Dashboard
                                     </NavLink>
                                     <NavLink href={route('favorites')} active={route().current('favorites')}>
-                                    Wishlist
+                                        Wishlist
+                                    </NavLink>
+                                    <NavLink href={route('cart.show')} active={route().current('cart.show')}>
+                                        ~Cart~
                                     </NavLink>
                                 </div>
                             </div>
@@ -74,7 +77,7 @@ export default function VisitanteLayout({ auth, children, title }: PageProps<{ c
                                                 >
                                                     Log in
                                                 </Link>
-                    
+
                                                 <Link
                                                     href={route('register')}
                                                     className="ml-4 font-semibold text-gray-500 hover:text-gray-900 focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500"
@@ -116,7 +119,7 @@ export default function VisitanteLayout({ auth, children, title }: PageProps<{ c
                         <div className="pt-2 pb-3 space-y-1">
                             <ResponsiveNavLink href={route('dashboard')} active={route().current('dashboard')}>
                                 Dashboard
-                            </ResponsiveNavLink>                         
+                            </ResponsiveNavLink>
                         </div>
 
                         <div className="pt-4 pb-1 border-t border-gray-200">

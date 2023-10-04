@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('carrinhos', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
             $table->date('pago')->nullable();
             $table->bigInteger('desconto');
             $table->bigInteger('total');

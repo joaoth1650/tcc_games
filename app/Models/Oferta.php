@@ -22,7 +22,7 @@ class Oferta extends Model
     ];
 
     public function games(){
-        return $this->belongsTo(Game::class, 'id', 'game_id');
+        return $this->belongsTo(Game::class, 'game_id', 'id');
     }
 
     public function itemCarrinhos(): HasMany
