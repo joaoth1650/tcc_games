@@ -2,18 +2,24 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\SituacaoEnum;
 use App\Models\Carrinho;
 use App\Models\ItemCarrinho;
+use App\Services\ItemCarrinhoService;
+use App\Services\OfertaService;
+use App\Services\ValidaCarrinhoService;
 use Illuminate\Http\Request;
+
 
 class CartController extends Controller
 {
     public function showCart()
     {
-        $carts = Carrinho::query()
-        ->where('user_id', auth()->user()->id)
-        ->with('itemCarrinhos.ofertas.games')
-        ->get();
+        $cart = Carrinho::query()
+            ->where('user_id', auth()->user()->id)
+            ->where('situacao', SituacaoEnum::Aberta)
+            ->with('itemCarrinhos.ofertas.games')
+            ->first();
 
         // $carts = Carrinho::query()
         // ->join('item_carrinho', 'carrinhos.id', '=', 'item_carrinho.carrinho_id')
@@ -23,30 +29,46 @@ class CartController extends Controller
         // ->select('games.id as game_id', 'carrinhos.*', 'item_carrinho.*', 'oferta.*')
         // ->get();
 
-        // dd($carts->toArray());
-        return inertia('Games/ShoppingCart', ['carts' => $carts]);
+        // dd($cart->toArray());
+        return inertia('Games/ShoppingCart', ['cart' => $cart]);
     }
     public function addToCart(Request $request)
     {
+
         $validatedData = $request->validate([
-            'oferta_id' => 'required|exists:oferta,id',
-            'carrinho_id' => 'required|exists:carrinho,id',
+            'oferta_id' => 'required|exists:oferta,id'
         ]);
 
-        $ItemCart = new ItemCarrinho();
-        $ItemCart->oferta_id = $validatedData['oferta_id'];
-        $ItemCart->carrinho_id = $validatedData['carrinho_id'];
+        $Carrinho = ValidaCarrinhoService::hasCartOpen(auth()->user()->id);
 
-        if ($ItemCart->save()) {
+        if (empty($Carrinho)) {
+            $Carrinho = ValidaCarrinhoService::createCart(auth()->user()->id);
+        }
+
+        $oferta = OfertaService::getOferta($validatedData['oferta_id']); 
+
+        if(empty($oferta)) {
+            return response()->json([
+                'errors' => "Não foi encontrado esta oferta do jogo"
+            ], 404);
+        }
+
+
+        try {
+            ItemCarrinhoService::addItemCarrinho($Carrinho, $oferta);
+
             return response()->json([
                 'message' => "Item adicionado ao carrinho com sucesso!"
             ], 201);
+        } catch (\Throwable $th) {
+            
+            return response()->json([
+                'errors' => "Não foi possivel adicionar o item ao carrinho"
+            ], 404);
         }
 
-        return response()->json([
-            'errors' => "Não foi possivel adicionar o item ao carrinho"
-        ], 404);
     }
+
     public function removeFromCart(Request $request)
     {
         $id = $request->input('id');
@@ -59,6 +81,7 @@ class CartController extends Controller
             ->delete();
         return response()->json(['Esse item foi removido do carrinho com sucesso!'], 204);
     }
+
     public function statusCart(Request $request)
     {
         $id = $request->input('id');
@@ -69,9 +92,8 @@ class CartController extends Controller
             ->where('user_id', auth()->user()->id)
             ->where('id', $id)
             ->update([
-                'pago' => true
+                'pago' => now()
             ]);
         return response()->json(['Esse item foi pago com sucesso!'], 204);
-            
     }
 }

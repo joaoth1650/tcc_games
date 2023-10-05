@@ -1,4 +1,7 @@
 <?php
+
+namespace App\Enums;
+
 enum SituacaoEnum: string
 {
     case Aberta = 'Aberto';

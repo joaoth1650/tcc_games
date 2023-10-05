@@ -2,8 +2,8 @@ import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import { Head, Link } from '@inertiajs/react';
 import { PageProps } from '@/types';
 
-export default function ShoppingCart({ auth, carts }: PageProps<{ carts: any }>) {
-  console.log(carts[0])
+export default function ShoppingCart({ auth, cart }: PageProps<{ cart: any }>) {
+  console.log(cart)
   return (
     <AuthenticatedLayout
       user={auth.user}
@@ -15,13 +15,14 @@ export default function ShoppingCart({ auth, carts }: PageProps<{ carts: any }>)
         <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
           <div className="overflow-hidden shadow-sm rounded-lg grid grid-cols-3 gap-5">
             <div className="flex gap-64 justify-center items-center mt-5">
-              {carts.length === 0 ? (
+              {cart.item_carrinhos.length === 0 ? (
                 <div className="col-span-3">Seu carrinho está vazio!</div>
               ) : (
-                carts.map((cart: any) => (
+                cart.item_carrinhos.map((item_carrinho: any) => {
+                  return(
                   <div className="" key={cart.id}>
                     <Link
-                      href={route('games.show', { 'id': cart.game_id })}
+                      href={route('games.show', { 'id': item_carrinho.ofertas.id })}
                       className="font-semibold text-gray-600 hover:text-gray-900 focus:rounded-sm"
                     >
                       <div className="bg-gray-200 hover:bg-slate-100 border-gray-700">
@@ -40,7 +41,8 @@ export default function ShoppingCart({ auth, carts }: PageProps<{ carts: any }>)
                       </div>
                     </Link>
                   </div>
-                ))
+                )}
+                )
               )}
             </div>
           </div>
