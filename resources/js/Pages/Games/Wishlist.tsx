@@ -1,8 +1,18 @@
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import { Head, Link } from '@inertiajs/react';
 import { PageProps } from '@/types';
+import axios from 'axios';
+import { useEffect, useState } from 'react';
 
-export default function Wishlist({ auth, favoritos }: PageProps<{ favoritos: any }>) {
+export default function Wishlist({ auth }: PageProps<{ favoritos: any }>) {
+  const [favoritos, setFavoritos] = useState([]);
+
+  useEffect(() => {
+    axios.get(route('favorite.index')).then((response) => {
+      setFavoritos(response.data.favoritos);
+    })
+  },[])
+  
   console.log(favoritos)
   return (
     <AuthenticatedLayout

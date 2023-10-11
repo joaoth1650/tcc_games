@@ -2,14 +2,23 @@ import VisitanteLayout from "@/Layouts/VisitanteLayout";
 import { PageProps } from "@/types";
 import { Head, Link } from '@inertiajs/react';
 import axios from 'axios';
-import AddCircleOutlineTwoToneIcon from '@mui/icons-material/AddCircleOutlineTwoTone';
-import RemoveCircleTwoToneIcon from '@mui/icons-material/RemoveCircleTwoTone';
+import FavoriteRoundedIcon from '@mui/icons-material/FavoriteRounded';
+import FavoriteBorderRoundedIcon from '@mui/icons-material/FavoriteBorderRounded';
+import AddShoppingCartRoundedIcon from '@mui/icons-material/AddShoppingCartRounded';
+import ShoppingCartRoundedIcon from '@mui/icons-material/ShoppingCartRounded';
 import { IconButton } from "@mui/material";
 import Swal from "sweetalert2";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-export default function IndexGames({ auth, games, favoritoslist }: PageProps<{ games: Array<any>, favoritoslist: Array<any>, auth: object }>) {
-  const [favoritos, setFavoritos] = useState(favoritoslist);
+export default function IndexGames({ auth, games }: PageProps<{ games: Array<any>, auth: object }>) {
+  const [favoritos, setFavoritos] = useState<any>([]);
+  console.log(games);
+  useEffect(() => {
+    axios.get(route('favorite.index')).then((response) => {
+      setFavoritos(response.data.favoritelist);
+    })
+  },[])
+  console.log(favoritos)
   const handleClick = (auth: any, gameId: number) => {
 
     if (auth.user === null) {
@@ -25,7 +34,7 @@ export default function IndexGames({ auth, games, favoritoslist }: PageProps<{ g
       return;
     }
 
-    axios.post(route('favorite.create'), { game_id: gameId }).then((response) => {
+    axios.post(route('favorite.store'), { game_id: gameId }).then((response) => {
       console.log(response.data);
 
       setFavoritos([...favoritos, gameId]);
@@ -49,10 +58,10 @@ export default function IndexGames({ auth, games, favoritoslist }: PageProps<{ g
       return;
     }
 
-    axios.delete(route('favorite.destroy'), { data: { game_id: gameId } }).then((response) => {
+    axios.delete(route('favorite.destroy', gameId)).then((response) => {
       console.log(response.data);
 
-      setFavoritos(favoritos.filter((id) => id !== gameId));
+      setFavoritos(favoritos.filter((id: number) => id !== gameId));
     })
 
     // console.log('Clicado!', `User ID: ${userId}, Game ID: ${gameId}`);
@@ -66,16 +75,18 @@ export default function IndexGames({ auth, games, favoritoslist }: PageProps<{ g
         <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
           <div className="overflow-hidden shadow-sm rounded-lg grid grid-cols-3 gap-5">
             {games.map((game: any) => (
-              <div className="" key={game.id}>
+              <div className="relative" key={game.id}>
                 {favoritos !== undefined && favoritos.includes(game.id) ? (
-                  <div onClick={() => handleClickForDelete(auth, game.id)} className="hover:scale-110 transform transition-transform cursor-pointer float-right">
-                    <RemoveCircleTwoToneIcon className="text-red-500 text-4xl" />
+                  <div onClick={() => handleClickForDelete(auth, game.id)} className="absolute top-1 right-1 hover:scale-110 transform transition-transform cursor-pointer float-right">
+                    <FavoriteRoundedIcon className="text-red-500 text-4xl" />
                   </div>
                 ) : (
-                  <div onClick={() => handleClick(auth, game.id)} className="hover:scale-110 transform transition-transform cursor-pointer float-right">
-                    <AddCircleOutlineTwoToneIcon className="text-green-500 text-4xl" />
+                  <div onClick={() => handleClick(auth, game.id)} className="absolute top-1 right-1 hover:scale-110 transform transition-transform cursor-pointer float-right">
+                    <FavoriteBorderRoundedIcon className="text-red-500 text-4xl" />
                   </div>
                 )}
+                
+                
                 <Link
                   href={route('games.show', { 'id': game.id })}
                   className="font-semibold text-gray-600 hover:text-gray-900  focus:rounded-sm ">
@@ -87,6 +98,7 @@ export default function IndexGames({ auth, games, favoritoslist }: PageProps<{ g
                     <h2 className="px-2">R${game.preco}</h2>
                   </div>
                 </Link>
+
               </div>
             ))}
           </div>

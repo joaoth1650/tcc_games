@@ -15,11 +15,11 @@ class CartController extends Controller
 {
     public function showCart()
     {
-        $cart = Carrinho::query()
-            ->where('user_id', auth()->user()->id)
-            ->where('situacao', SituacaoEnum::Aberta)
-            ->with('itemCarrinhos.ofertas.games')
-            ->first();
+        $cart = ValidaCarrinhoService::hasCartOpen(auth()->user()->id);
+
+        if (empty($cart)) {
+            $cart = ValidaCarrinhoService::createCart(auth()->user()->id);
+        }
 
         // $carts = Carrinho::query()
         // ->join('item_carrinho', 'carrinhos.id', '=', 'item_carrinho.carrinho_id')
@@ -36,7 +36,7 @@ class CartController extends Controller
     {
 
         $validatedData = $request->validate([
-            'oferta_id' => 'required|exists:oferta,id'
+            'oferta_id' => 'required|exists:oferta,id'  
         ]);
 
         $Carrinho = ValidaCarrinhoService::hasCartOpen(auth()->user()->id);
@@ -52,6 +52,7 @@ class CartController extends Controller
                 'errors' => "Não foi encontrado esta oferta do jogo"
             ], 404);
         }
+
 
 
         try {

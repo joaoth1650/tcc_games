@@ -18,9 +18,9 @@ return new class extends Migration
             $table->bigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
             $table->date('pago')->nullable();
-            $table->bigInteger('desconto');
-            $table->bigInteger('total');
-            $table->string('situacao', 20)->nullable();
+            $table->bigInteger('desconto')->default(0);
+            $table->bigInteger('total')->default(0);
+            $table->string('situacao', 20)->default('Aberto');
             $table->timestamps();
         });
 

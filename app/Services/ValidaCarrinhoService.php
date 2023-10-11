@@ -13,6 +13,7 @@ class ValidaCarrinhoService
     return Carrinho::query()
       ->where('user_id', $userId)
       ->where('situacao', SituacaoEnum::Aberta)
+      ->with('itemCarrinhos.ofertas.games')
       ->first();
   }
 
@@ -21,7 +22,7 @@ class ValidaCarrinhoService
 
     $Carrinho = new Carrinho();
     $Carrinho->user_id = $userId;
-    $Carrinho->total = 0;
+    // $Carrinho->situacao = SituacaoEnum::Aberta;
     $Carrinho->situacao = SituacaoEnum::Aberta;
     $Carrinho->save();
     

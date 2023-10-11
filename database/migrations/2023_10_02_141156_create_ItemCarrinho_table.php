@@ -19,6 +19,7 @@ return new class extends Migration
             $table->foreign('oferta_id')->references('id')->on('oferta');
             $table->bigInteger('carrinho_id');
             $table->foreign('carrinho_id')->references('id')->on('carrinhos');
+            $table->integer('quantidade')->default(1);
             $table->timestamps();
         });
 

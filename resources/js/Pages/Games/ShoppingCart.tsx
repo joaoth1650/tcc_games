@@ -4,6 +4,8 @@ import { PageProps } from '@/types';
 
 export default function ShoppingCart({ auth, cart }: PageProps<{ cart: any }>) {
   console.log(cart)
+  let total = 0;
+  cart.item_carrinhos.map((item_carrinho: any) => total += parseInt(item_carrinho.ofertas.preco));
   return (
     <AuthenticatedLayout
       user={auth.user}
@@ -13,41 +15,40 @@ export default function ShoppingCart({ auth, cart }: PageProps<{ cart: any }>) {
 
       <div className="py-12">
         <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
-          <div className="overflow-hidden shadow-sm rounded-lg grid grid-cols-3 gap-5">
-            <div className="flex gap-64 justify-center items-center mt-5">
-              {cart.item_carrinhos.length === 0 ? (
-                <div className="col-span-3">Seu carrinho está vazio!</div>
-              ) : (
-                cart.item_carrinhos.map((item_carrinho: any) => {
-                  return(
+          <div className="overflow-hidden shadow-sm rounded-lg flex flex-col gap-1">
+
+            {cart.item_carrinhos.length === 0 ? (
+              <div className="col-span-3">Seu carrinho está vazio!</div>
+            ) : (
+              cart.item_carrinhos.map((item_carrinho: any) => (
+                
                   <div className="" key={cart.id}>
                     <Link
                       href={route('games.show', { 'id': item_carrinho.ofertas.id })}
                       className="font-semibold text-gray-600 hover:text-gray-900 focus:rounded-sm"
                     >
-                      <div className="bg-gray-200 hover:bg-slate-100 border-gray-700">
-                        {cart.item_carrinhos.map((item: any) => (
-                          <div className="">
-                            <h1 className="text-2xl text-center font-bold uppercase">
-                              {item.ofertas.nome || 'Nome do Jogo Não Disponível'}
-                            </h1>
-                            <img src={item.ofertas.imagem} alt="" className={"object-cover rounded-lg shadow-md"} />
-                            <p className="leading-4 px-2">desconto:R${cart.desconto}</p>
-                            <p className="leading-4 px-2">R${cart.total}</p>
-                            <h2 className="px-2">{cart.situacao}</h2>
-                          </div>
-                        ))}
-
+                      <div className="flex justify-between items-center bg-gray-200 hover:bg-slate-100 border-gray-700 p-4">
+                        <img src={item_carrinho.ofertas.imagem} alt="" className="object-cover rounded-lg shadow-md w-32" />
+                        <h1 className="text-xl text-center font-bold uppercase">
+                          {item_carrinho.ofertas.nome || 'Nome do Jogo Não Disponível'}
+                        </h1>
+                        <p className="leading-4 px-2">desconto: R${cart.desconto}</p>
+                        <p className="leading-4 px-2">R$ {item_carrinho.ofertas.preco}</p>
+                        <h2 className="px-2">{cart.situacao}</h2>
                       </div>
                     </Link>
                   </div>
-                )}
                 )
-              )}
-            </div>
+              )
+            )}
+                          <div className="flex justify-between items-center">
+                          <h4>total</h4>
+                          <h4>R$ {total}</h4>
+                        </div>
           </div>
         </div>
       </div>
+
     </AuthenticatedLayout>
   );
 
