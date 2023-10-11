@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Enums\SituacaoEnum;
 use App\Models\Carrinho;
+use App\Models\Oferta;
 use GuzzleHttp\Psr7\Request;
 
 class ValidaCarrinhoService
@@ -28,5 +29,13 @@ class ValidaCarrinhoService
     
     return $Carrinho;
 
+  }
+
+  public static function refreshTotal(Carrinho $carrinho, Oferta $oferta)
+  {
+     
+    $carrinho->total = $carrinho->total + $oferta->preco;
+    // dd($carrinho->total);
+    $carrinho->save();
   }
 }

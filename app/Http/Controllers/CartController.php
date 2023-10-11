@@ -76,10 +76,23 @@ class CartController extends Controller
         if (empty($id)) {
             return response()->json(["Não foi encontrado este item no carrinho"], 404);
         }
+
+        $carrinho = ValidaCarrinhoService::hasCartOpen(auth()->user()->id);
+
+        if (empty($carrinho)) {
+            return response()->json(["Você não tem nenhum carrinho aberto!"], 404);
+        }
+
+        $item = ItemCarrinho::query()->where('quantidade', '<=', 0);
+        
         ItemCarrinho::query()
-            ->where('user_id', auth()->user()->id)
-            ->where('oferta_id', $id)
-            ->delete();
+            ->where('carrinho_id', $carrinho->id)
+            ->where('id', $id)
+            ->first()
+            ->decrement('quantidade');
+            if($item->quantidade === 0) {
+                $item->delete();
+            }
         return response()->json(['Esse item foi removido do carrinho com sucesso!'], 204);
     }
 

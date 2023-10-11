@@ -20,6 +20,7 @@ return new class extends Migration
             $table->bigInteger('carrinho_id');
             $table->foreign('carrinho_id')->references('id')->on('carrinhos');
             $table->integer('quantidade')->default(1);
+            $table->float('preco')->default(0);
             $table->timestamps();
         });
 

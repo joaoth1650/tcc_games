@@ -1,11 +1,35 @@
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import { Head, Link } from '@inertiajs/react';
 import { PageProps } from '@/types';
+import axios from 'axios';
+import Swal from 'sweetalert2';
+import { useState } from 'react';
 
 export default function ShoppingCart({ auth, cart }: PageProps<{ cart: any }>) {
-  console.log(cart)
+  const [removidos, setRemovidos] = useState<any>([]);
+
   let total = 0;
-  cart.item_carrinhos.map((item_carrinho: any) => total += parseInt(item_carrinho.ofertas.preco));
+  cart.item_carrinhos.map((item_carrinho: any) => total += parseInt(item_carrinho.ofertas.preco) * item_carrinho.quantidade);
+
+  const handleClickForRemove = (auth: any, id: number) => {
+    if (auth.user === null) {
+      Swal.fire({
+        title: 'Você precisa estar logado para adicionar um jogo à sua lista!',
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+        html: `<a href="/register" >Criar conta agora!</a>`,
+      });
+      return;
+    }
+
+    axios.delete(route('cart.destroy', { id })).then((response) => {
+    })
+
+    // console.log('Clicado!', `User ID: ${userId}, Game ID: ${gameId}`);
+  };
   return (
     <AuthenticatedLayout
       user={auth.user}
@@ -21,11 +45,12 @@ export default function ShoppingCart({ auth, cart }: PageProps<{ cart: any }>) {
               <div className="col-span-3">Seu carrinho está vazio!</div>
             ) : (
               cart.item_carrinhos.map((item_carrinho: any) => (
-                
-                  <div className="" key={cart.id}>
+
+                <div key={cart.id}>
+                  <div className="flex">
                     <Link
-                      href={route('games.show', { 'id': item_carrinho.ofertas.id })}
-                      className="font-semibold text-gray-600 hover:text-gray-900 focus:rounded-sm"
+                      href={route('games.show', { 'id': item_carrinho.ofertas.game_id })}
+                      className="font-semibold text-gray-600 hover:text-gray-900 focus:rounded-sm justify-start w-full"
                     >
                       <div className="flex justify-between items-center bg-gray-200 hover:bg-slate-100 border-gray-700 p-4">
                         <img src={item_carrinho.ofertas.imagem} alt="" className="object-cover rounded-lg shadow-md w-32" />
@@ -37,14 +62,18 @@ export default function ShoppingCart({ auth, cart }: PageProps<{ cart: any }>) {
                         <h2 className="px-2">{cart.situacao}</h2>
                       </div>
                     </Link>
+                    <div className="opacity-0 hover:opacity-90 bg-red-700 justify-end rounded-xl" onClick={() => handleClickForRemove(auth, item_carrinho.id)}>
+                      <h1 className="text-xl text-center font-bold uppercase text-white">Remover</h1>
+                    </div>
                   </div>
-                )
+                </div>
+              )
               )
             )}
-                          <div className="flex justify-between items-center">
-                          <h4>total</h4>
-                          <h4>R$ {total}</h4>
-                        </div>
+            <div className="flex justify-between items-center">
+              <h4>total</h4>
+              <h4>R$ {total}</h4>
+            </div>
           </div>
         </div>
       </div>

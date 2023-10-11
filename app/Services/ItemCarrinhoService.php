@@ -10,18 +10,23 @@ class ItemCarrinhoService
 {
   public static function addItemCarrinho(Carrinho $carrinho, Oferta $oferta)
   {
-    $ItemCart = new ItemCarrinho();
-    $ItemCart->oferta_id = $oferta->id;
-    $ItemCart->carrinho_id = $carrinho->id;
-    $ItemCart->save();
+    $itemNoCarrinho = ItemCarrinho::where('carrinho_id', $carrinho->id)
+    ->where('oferta_id', $oferta->id)
+    ->first();
     
-    self::refreshTotal($carrinho, $oferta);
+    if ($itemNoCarrinho) {
+
+      $itemNoCarrinho->increment('quantidade');
+    } else {
+      itemCarrinho::create([
+          'carrinho_id' => $carrinho->id,
+          'oferta_id' => $oferta->id,
+          'quantidade' => 1, 
+      ]);
+    }
+    
+    // self::refreshTotal($carrinho, $oferta);
     
   }
 
-  public static function refreshTotal(Carrinho $carrinho, Oferta $oferta)
-  { 
-    $carrinho->total = $carrinho->total + $oferta->preco;
-    $carrinho->save();
-  }
 }

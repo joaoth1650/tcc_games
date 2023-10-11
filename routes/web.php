@@ -53,7 +53,7 @@ Route::middleware('auth')->group(function () {
     ////ShoppingCart
     Route::get('/shoppingCart', [CartController::class, 'showCart'])->name('cart.show');
     Route::post('/addToCart', [CartController::class, 'addToCart'])->name('cart.create');
-    Route::get('/removeFromCart', [CartController::class, 'removeFromCart'])->name('cart.destroy');
+    Route::delete('/removeFromCart', [CartController::class, 'removeFromCart'])->name('cart.destroy');
     Route::post('/statusCart', [CartController::class, 'statusCart'])->name('cart.status');
 
 });

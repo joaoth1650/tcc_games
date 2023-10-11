@@ -1,16 +1,45 @@
 import VisitanteLayout from '@/Layouts/VisitanteLayout'
 import { PageProps } from '@/types'
-import React from 'react'
+import AddShoppingCartRoundedIcon from '@mui/icons-material/AddShoppingCartRounded';
+import ShoppingCartRoundedIcon from '@mui/icons-material/ShoppingCartRounded';
+import { CardActionArea } from '@mui/material';
+import axios from 'axios';
+import React, { useState } from 'react'
+import Swal from 'sweetalert2';
 
 const GameIndividual = ({ auth, games }: PageProps<{ games: any }>) => {
   console.log(games);
+
+  const [addAoCarrinho, setAddAoCarrinho] = useState<any>([]);
+
+  const handleClick = (auth: any, ofertaId: number) => {
+
+    if (auth.user === null) {
+      Swal.fire({
+        title: 'Você precisa estar logado para adicionar um jogo ao seu carrinho!',
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+        html: `<a href="/register" >Criar conta agora!</a>`,
+      });
+      return;
+    }
+
+    axios.post(route('cart.create'), { oferta_id: ofertaId }).then((response) => {
+
+      setAddAoCarrinho([...addAoCarrinho, ofertaId]);
+    })
+
+  };
   return (
     <VisitanteLayout auth={auth} title="Teste">
       <div className="bg-fixed bg-no-repeat p-5" style={{ backgroundImage: "url('" + games.background + "')" }}>
         <div className="container w-8/12 mx-auto ">
           <div className="bg-gray-900 rounded-xl shadow-lg p-5">
             <div className="grid grid-cols-4 gap-4">
-              <h1 className="text-4xl text-white font-bold uppercase col-span-2">{games.nome}</h1>            
+              <h1 className="text-4xl text-white font-bold uppercase col-span-2">{games.nome}</h1>
               <span></span>
               <span></span>
               <div className="flex col-span-2">
@@ -45,15 +74,23 @@ const GameIndividual = ({ auth, games }: PageProps<{ games: any }>) => {
               </div>
             </div>
             <div className="flex gap-64 justify-center items-center mt-5">
-            {games.ofertas.map((oferta: any) => {
-              return (
-              <div className="w-full flex flex-col  gap-5 " key={oferta.id}>
-                  <img src={oferta.imagem} alt="" className='rounded-xl'  />
-                  <p className='text-3xl text-white  px-3 rounded-xl'>{oferta.nome}</p>
-                  <p className='text-lg text-white rounded-xl px-3'>R$ {oferta.preco}</p>
-              </div>
-              )
-            })}
+              {games.ofertas.map((oferta: any) => {
+                return (
+                  <div className="w-full flex flex-col gap-5" key={oferta.id}>
+                    <img src={oferta.imagem} alt="" className='rounded-xl' />
+                    <p className='text-3xl text-white  px-3 rounded-xl'>{oferta.nome}</p>
+
+                    <div className="grid grid-flow-col gap-3">
+                      <p className='text-lg text-white rounded-xl px-3'>R$ {oferta.preco}</p>
+                      <CardActionArea >
+                        <div className="bg-gray-500 rounded-xl px-1 text-center hover:bg-zinc-400" onClick={() => handleClick(auth, oferta.id)}>
+                          <AddShoppingCartRoundedIcon className="text-3xl text-white" />
+                        </div>
+                      </CardActionArea>
+                    </div>
+                  </div>
+                )
+              })}
             </div>
           </div>
         </div>

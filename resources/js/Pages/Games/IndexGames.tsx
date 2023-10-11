@@ -4,8 +4,6 @@ import { Head, Link } from '@inertiajs/react';
 import axios from 'axios';
 import FavoriteRoundedIcon from '@mui/icons-material/FavoriteRounded';
 import FavoriteBorderRoundedIcon from '@mui/icons-material/FavoriteBorderRounded';
-import AddShoppingCartRoundedIcon from '@mui/icons-material/AddShoppingCartRounded';
-import ShoppingCartRoundedIcon from '@mui/icons-material/ShoppingCartRounded';
 import { IconButton } from "@mui/material";
 import Swal from "sweetalert2";
 import { useEffect, useState } from "react";
