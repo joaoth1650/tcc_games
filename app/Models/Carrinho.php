@@ -22,6 +22,6 @@ class Carrinho extends Model
 
     public function itemCarrinhos(): HasMany
     {
-        return $this->hasMany(ItemCarrinho::class, 'carrinho_id', 'id');
+        return $this->hasMany(ItemCarrinho::class, 'carrinho_id', 'id')->orderBy('item_carrinho.id', 'desc');
     }
 }

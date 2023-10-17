@@ -30,12 +30,16 @@ class ValidaCarrinhoService
     return $Carrinho;
 
   }
-
   public static function refreshTotal(Carrinho $carrinho, Oferta $oferta)
   {
      
     $carrinho->total = $carrinho->total + $oferta->preco;
     // dd($carrinho->total);
+    $carrinho->save();
+  }
+  public static function updateStatus(Carrinho $carrinho, SituacaoEnum $situacao)
+  {
+    $carrinho->situacao = $situacao;
     $carrinho->save();
   }
 }

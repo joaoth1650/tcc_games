@@ -36,7 +36,7 @@ class CartController extends Controller
     {
 
         $validatedData = $request->validate([
-            'oferta_id' => 'required|exists:oferta,id'  
+            'oferta_id' => 'required|exists:oferta,id'
         ]);
 
         $Carrinho = ValidaCarrinhoService::hasCartOpen(auth()->user()->id);
@@ -45,9 +45,9 @@ class CartController extends Controller
             $Carrinho = ValidaCarrinhoService::createCart(auth()->user()->id);
         }
 
-        $oferta = OfertaService::getOferta($validatedData['oferta_id']); 
+        $oferta = OfertaService::getOferta($validatedData['oferta_id']);
 
-        if(empty($oferta)) {
+        if (empty($oferta)) {
             return response()->json([
                 'errors' => "Não foi encontrado esta oferta do jogo"
             ], 404);
@@ -62,18 +62,17 @@ class CartController extends Controller
                 'message' => "Item adicionado ao carrinho com sucesso!"
             ], 201);
         } catch (\Throwable $th) {
-            
+
             return response()->json([
                 'errors' => "Não foi possivel adicionar o item ao carrinho"
             ], 404);
         }
-
     }
 
     public function removeFromCart(Request $request)
     {
-        $id = $request->input('id');
-        if (empty($id)) {
+        $itemCarrinhoId = $request->input('id');
+        if (empty($itemCarrinhoId)) {
             return response()->json(["Não foi encontrado este item no carrinho"], 404);
         }
 
@@ -83,31 +82,31 @@ class CartController extends Controller
             return response()->json(["Você não tem nenhum carrinho aberto!"], 404);
         }
 
-        $item = ItemCarrinho::query()->where('quantidade', '<=', 0);
-        
-        ItemCarrinho::query()
+        $item = ItemCarrinho::query()
             ->where('carrinho_id', $carrinho->id)
-            ->where('id', $id)
-            ->first()
-            ->decrement('quantidade');
-            if($item->quantidade === 0) {
-                $item->delete();
-            }
+            ->where('id', $itemCarrinhoId)
+            ->first();
+        if ($item) {
+            $item->decrement('quantidade');
+        }
+
+        ItemCarrinho::query()->where('quantidade', '<=', 0)->delete();
+
         return response()->json(['Esse item foi removido do carrinho com sucesso!'], 204);
     }
 
     public function statusCart(Request $request)
     {
-        $id = $request->input('id');
-        if (empty($id)) {
-            return response()->json(["Não foi encontrado este item no carrinho"], 404);
+        $carrinho = ValidaCarrinhoService::hasCartOpen(auth()->user()->id);
+
+        if (empty($carrinho)) {
+            return response()->json(["Você não tem nenhum carrinho aberto!"], 404);
         }
-        Carrinho::query()
-            ->where('user_id', auth()->user()->id)
-            ->where('id', $id)
-            ->update([
-                'pago' => now()
-            ]);
-        return response()->json(['Esse item foi pago com sucesso!'], 204);
+
+        ValidaCarrinhoService::updateStatus($carrinho, SituacaoEnum::Aguardando_pagamento);
+
+        ValidaCarrinhoService::createCart(auth()->user()->id);
+
+
     }
 }
