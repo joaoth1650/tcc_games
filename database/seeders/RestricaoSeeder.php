@@ -41,7 +41,7 @@ class RestricaoSeeder extends Seeder
             ],
             [
                 'id' => 5,
-                'idade' => "0",
+                'idade' => "L",
                 'descricao' => "Adequado para todas as idades",
                 'background' => "rgb(0, 255, 0)"
             ],

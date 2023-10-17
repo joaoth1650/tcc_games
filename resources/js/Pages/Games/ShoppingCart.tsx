@@ -10,9 +10,12 @@ export default function ShoppingCart({ auth, cart }: PageProps<{ cart: any }>) {
   const [quantidadeStatus, setQuantidadeStatus] = useState<any>([]);
 
   let total = 0;
-  cart.item_carrinhos.map((item_carrinho: any) => total += parseInt(item_carrinho.ofertas.preco) * item_carrinho.quantidade);
+  if(cart.item_carrinhos.length != 0) {
+    cart.item_carrinhos.map((item_carrinho: any) => total += parseInt(item_carrinho.ofertas.preco) * item_carrinho.quantidade);
+  }
 
-  const handleClickForRemove = (auth: any, id: number) => {
+  const handleClickForRemove = (auth: any, id: number, e: any) => {
+    e.preventDefault(); 
     if (auth.user === null) {
       Swal.fire({
         title: 'Você precisa estar logado para adicionar um jogo à sua lista!',
@@ -31,11 +34,14 @@ export default function ShoppingCart({ auth, cart }: PageProps<{ cart: any }>) {
     })
   };
 
-  const handleClickForAdd = (auth: any, id: number) => {
+  const handleClickForAdd = (auth: any, id: number, e: any) => {
+    e.preventDefault(); 
     axios.post(route('cart.create', { 'oferta_id': id })).then((response) => {
       window.location.reload();
     })
   }
+
+  
 
   return (
     <AuthenticatedLayout
@@ -52,7 +58,6 @@ export default function ShoppingCart({ auth, cart }: PageProps<{ cart: any }>) {
               <div className="col-span-3">Seu carrinho está vazio!</div>
             ) : (
               cart.item_carrinhos.map((item_carrinho: any) => (
-
                 <div key={item_carrinho.id}>
                   <div className="flex">
                     <Link href={route('games.show', { 'id': item_carrinho.ofertas.game_id })}
@@ -63,15 +68,15 @@ export default function ShoppingCart({ auth, cart }: PageProps<{ cart: any }>) {
                           {item_carrinho.ofertas.nome || 'Nome do Jogo Não Disponível'}
                         </h1>
                         <div className="grid grid-cols-3">
-                          <div onClick={() => handleClickForAdd(auth, item_carrinho.ofertas.id)}>
-                            <p className="leading-4 px-3 border border-gray-700 rounded">+</p>
-                          </div>
-                          <p className='text-center'>{item_carrinho.quantidade}</p>
-                          <div onClick={() => handleClickForRemove(auth, item_carrinho.id)}>
+                          <div onClick={(e) => handleClickForRemove(auth, item_carrinho.id, e)}>
                             <p className="leading-4 px-3 border border-gray-700 rounded "> -</p>
                           </div>
+                          <p className='text-center'>{item_carrinho.quantidade}</p>
+                          <div onClick={(e) => handleClickForAdd(auth, item_carrinho.ofertas.id, e)}>
+                            <p className="leading-4 px-3 border border-gray-700 rounded">+</p>
+                          </div>
                         </div>
-                        <p className="leading-4 px-2">R$ {item_carrinho.ofertas.preco}</p>
+                        <p className="leading-4 px-2">R$ {item_carrinho.ofertas.preco}/Unid</p>
                         <h2 className="px-2">{cart.situacao}</h2>
                       </div>
                     </Link>
@@ -80,6 +85,7 @@ export default function ShoppingCart({ auth, cart }: PageProps<{ cart: any }>) {
               )
               )
             )}
+            
             <div className="flex justify-between items-center">
               <h4>total</h4>
               <h4>R$ {total}</h4>

@@ -73,11 +73,11 @@ const GameIndividual = ({ auth, games }: PageProps<{ games: any }>) => {
                 />
               </div>
             </div>
-            <div className="flex gap-64 justify-center items-center mt-5">
+            <div className="flex gap-20 justify-center items-center mt-5">
               {games.ofertas.map((oferta: any) => {
                 return (
-                  <div className="w-full flex flex-col gap-5" key={oferta.id}>
-                    <img src={oferta.imagem} alt="" className='rounded-xl' />
+                  <div className="w-96 flex flex-col gap-5" key={oferta.id}>
+                    <img src={oferta.imagem} alt="" className='rounded-xl w-96 h-52' />
                     <p className='text-3xl text-white  px-3 rounded-xl'>{oferta.nome}</p>
 
                     <div className="grid grid-flow-col gap-3">
