@@ -29,6 +29,7 @@ return new class extends Migration
             $table->string('standart3')->nullable();
             $table->string('standart4')->nullable();
             $table->string('imagem_principal');
+            $table->bigInteger('vizualicoes')->default(0);
             $table->timestamps();
         });
 

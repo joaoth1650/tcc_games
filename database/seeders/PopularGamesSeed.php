@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\CategoriaGame;
 use App\Models\Game;
 use App\Models\Oferta;
 use App\Models\Restricao;
@@ -25,8 +26,8 @@ class PopularGamesSeed extends Seeder
             'preco' => 85.99,
             'descricao' => "Um novo começo ousado: sua vingança contra os deuses do Olimpo agora é passado e Kratos vive como um homem comum no reino dos monstros e deuses nórdicos. E é nesse mundo inóspito e implacável que ele precisa lutar para sobreviver... e ensinar seu filho a fazer o mesmo. Essa nova versão surpreendente de God of War desconstrói os principais elementos que definiram a série (combates gratificantes, proporção espetacular e uma narrativa poderosa), combinando-os de uma forma diferente.• Uma segunda oportunidade: Kratos é pai novamente. Assumindo o papel de mentor e protetor de seu filho, Atreus, que está determinado a conquistar seu respeito, Kratos é forçado a lidar e controlar a fúria que, por muito tempo, foi sua essência, e a explorar um mundo extremamente perigoso com seu filho.• Um mundo mais sombrio e elementar: desde as colunas de mármore de ornamentação do Olimpo até as florestas, montanhas e cavernas realistas do universo nórdico pré-viking, esse é um reino claramente novo com seu próprio panteão de criaturas, monstros e deuses. Com uma nova ênfase na descoberta e na exploração, esse mundo atrairá os jogadores para explorar cada centímetro do cenário surpreendentemente ameaçador de God of War, que é, sem dúvida, o maior da série.• Combates físicos violentos: com uma câmera livre e por cima do corpo que aproxima ainda mais o jogador da ação, as lutas de God of War refletem o panteão de criaturas nórdicas que Kratos enfrentará: grandiosas, realistas e exaustivas. Uma nova arma principal e novas habilidades mantêm o espírito que define God of War, além de apresentarem uma visão de conflitos violentos que criam uma nova base para o gênero.",
             'video' => "OvvKn488jfc",
-            'imagem_esquerda' => "",
-            'imagem_direita' => "",
+            'imagem_esquerda' => "___",
+            'imagem_direita' => "___",
             'background' => "https://i.imgur.com/NPLRamD.jpg",
             'standart1' => "https://i.imgur.com/0pB7vn6.jpg",
             'standart2' => "https://i.imgur.com/8BE8Akl.png",
@@ -58,6 +59,27 @@ class PopularGamesSeed extends Seeder
             ]
         ]);
 
+        CategoriaGame::query()->insert([
+            [
+                'game_id' => $game->id,
+                'categoria_id' => 1,
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'game_id' => $game->id,
+                'categoria_id' => 2,
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'game_id' => $game->id,
+                'categoria_id' => 8,
+                'created_at' => now(),
+                'updated_at' => now()
+            ]
+            ]);
+
         /** CELESTE */
         $game = Game::create([
             'nome' => "Celeste",
@@ -65,8 +87,8 @@ class PopularGamesSeed extends Seeder
             'preco' => 36.99,
             'descricao' => "Ajude Madeline a enfrentar seus demônios internos em sua jornada até o topo da Montanha Celeste, nesse jogo de plataforma super afiado dos criadores de TowerFall. Desbrave centenas de desafios meticulosos, descubra segredos complicados e desvende o mistério da montanha.",
             'video' => "70d9irlxiB4",
-            'imagem_esquerda' => "https://i.imgur.com/7UN2h94.png",
-            'imagem_direita' => "https://i.imgur.com/dCCdJjj.png",
+            'imagem_esquerda' => "___",
+            'imagem_direita' => "___",
             'background' => "https://i.imgur.com/4anEvVN.jpg",
             'standart1' => "https://i.imgur.com/MmR9EHN.png",
             'standart2' => "https://i.imgur.com/rSTiWJ1.png",
@@ -93,6 +115,21 @@ class PopularGamesSeed extends Seeder
                 'nome' => "$game->nome default",
                 'descricao' => "Default " . fake()->words(20, true),
                 'preco' => fake()->randomNumber(3, true),
+                'created_at' => now(),
+                'updated_at' => now()
+            ]
+        ]);
+
+        CategoriaGame::query()->insert([
+            [
+                'game_id' => $game->id,
+                'categoria_id' => 1,
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'game_id' => $game->id,
+                'categoria_id' => 9,
                 'created_at' => now(),
                 'updated_at' => now()
             ]
@@ -138,6 +175,21 @@ class PopularGamesSeed extends Seeder
             ]
         ]);
 
+        CategoriaGame::query()->insert([
+            [
+                'game_id' => $game->id,
+                'categoria_id' => 6,
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'game_id' => $game->id,
+                'categoria_id' => 9,
+                'created_at' => now(),
+                'updated_at' => now()
+            ]
+        ]);
+
         /** hollow knight  */
         $game = Game::create([
             'nome' => "Hollow knight ",
@@ -164,7 +216,7 @@ class PopularGamesSeed extends Seeder
         Oferta::query()->insert([
             [
                 'game_id' => $game->id,
-                'imagem' => "https://i.imgur.com/QBskoJ6.jpg",
+                'imagem' => "https://i.imgur.com/tzO90ud.jpg",
                 'nome' => "$game->nome deluxe",
                 'descricao' => "Delux " . fake()->words(20, true),
                 'preco' => fake()->randomNumber(3, true),
@@ -177,6 +229,21 @@ class PopularGamesSeed extends Seeder
                 'nome' => "$game->nome default",
                 'descricao' => "Default " . fake()->words(20, true),
                 'preco' => fake()->randomNumber(3, true),
+                'created_at' => now(),
+                'updated_at' => now()
+            ]
+        ]);
+        
+        CategoriaGame::query()->insert([
+            [
+                'game_id' => $game->id,
+                'categoria_id' => 2,
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'game_id' => $game->id,
+                'categoria_id' => 9,
                 'created_at' => now(),
                 'updated_at' => now()
             ]
@@ -226,21 +293,37 @@ class PopularGamesSeed extends Seeder
             ]
         ]);
 
+        CategoriaGame::query()->insert([
+            [
+                'game_id' => $game->id,
+                'categoria_id' => 2,
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'game_id' => $game->id,
+                'categoria_id' => 9,
+                'created_at' => now(),
+                'updated_at' => now()
+            ]
+        ]);
+
         /** Cuphead */
         $game = Game::create([
             'nome' => "Cuphead",
-            "restricao_id" => 1,
-            'preco' => 55.99,
-            'descricao' => "",
-            'video' => "____",
+            "restricao_id" => 4,
+            'preco' => 54.99,
+            'descricao' => "Cuphead é um jogo de ação e tiros clássico, com enorme ênfase nas batalhas de chefes. Inspirado nas animações infantis da década de 1930, 
+            os visuais e efeitos sonoros foram minuciosamente recriados com as mesmíssimas técnicas dessa era, com destaque para desenhos feitos à mão, fundos",
+            'video' => "NN-9SQXoi50",
             'imagem_esquerda' => "___",
             'imagem_direita' => "___",
-            'background' => "____",
-            'standart1' => "___",
-            'standart2' => "___",
-            'standart3' => "___",
-            'standart4' => "___",
-            'imagem_principal' => "___",
+            'background' => "https://i.imgur.com/4xaGdqM.png",
+            'standart1' => "https://i.imgur.com/OPyvdJw.png",
+            'standart2' => "https://i.imgur.com/k2nDD7l.png",
+            'standart3' => "https://i.imgur.com/qIoFQSL.png",
+            'standart4' => "https://i.imgur.com/LaYYXnF.png",
+            'imagem_principal' => "https://i.imgur.com/at30apR.png",
             'created_at' => now(),
             'updated_at' => now()
         ]);
@@ -248,19 +331,41 @@ class PopularGamesSeed extends Seeder
         Oferta::query()->insert([
             [
                 'game_id' => $game->id,
-                'imagem' => "_____",
+                'imagem' => "https://i.imgur.com/at30apR.png",
                 'nome' => "$game->nome deluxe",
                 'descricao' => "Delux " . fake()->words(20, true),
-                'preco' => fake()->randomNumber(3, true),
+                'preco' => 78.82,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
             [
                 'game_id' => $game->id,
-                'imagem' => "_____",
+                'imagem' => "https://i.imgur.com/at30apR.png",
                 'nome' => "$game->nome default",
                 'descricao' => "Default " . fake()->words(20, true),
-                'preco' => fake()->randomNumber(3, true),
+                'preco' => $game->preco,
+                'created_at' => now(),
+                'updated_at' => now()
+            ]
+        ]);
+
+        CategoriaGame::query()->insert([
+            [
+                'game_id' => $game->id,
+                'categoria_id' => 2,
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'game_id' => $game->id,
+                'categoria_id' => 9,
+                'created_at' => now(),
+                'updated_at' => now()
+            ]
+            ,
+            [
+                'game_id' => $game->id,
+                'categoria_id' => 5,
                 'created_at' => now(),
                 'updated_at' => now()
             ]
@@ -306,6 +411,28 @@ class PopularGamesSeed extends Seeder
             ]
         ]);
 
+        CategoriaGame::query()->insert([
+            [
+                'game_id' => $game->id,
+                'categoria_id' => 2,
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'game_id' => $game->id,
+                'categoria_id' => 9,
+                'created_at' => now(),
+                'updated_at' => now()
+            ]
+            ,
+            [
+                'game_id' => $game->id,
+                'categoria_id' => 5,
+                'created_at' => now(),
+                'updated_at' => now()
+            ]
+        ]);
+
         /** No Man's Sky */
         $game = Game::create([
             'nome' => "No Man's Sky",
@@ -341,6 +468,28 @@ class PopularGamesSeed extends Seeder
                 'nome' => "$game->nome default",
                 'descricao' => "Default " . fake()->words(20, true),
                 'preco' => fake()->randomNumber(3, true),
+                'created_at' => now(),
+                'updated_at' => now()
+            ]
+        ]);
+        
+        CategoriaGame::query()->insert([
+            [
+                'game_id' => $game->id,
+                'categoria_id' => 2,
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'game_id' => $game->id,
+                'categoria_id' => 1,
+                'created_at' => now(),
+                'updated_at' => now()
+            ]
+            ,
+            [
+                'game_id' => $game->id,
+                'categoria_id' => 6,
                 'created_at' => now(),
                 'updated_at' => now()
             ]
@@ -385,6 +534,35 @@ class PopularGamesSeed extends Seeder
                 'updated_at' => now()
             ]
         ]);
+
+        CategoriaGame::query()->insert([
+            [
+                'game_id' => $game->id,
+                'categoria_id' => 3,
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'game_id' => $game->id,
+                'categoria_id' => 1,
+                'created_at' => now(),
+                'updated_at' => now()
+            ]
+            ,
+            [
+                'game_id' => $game->id,
+                'categoria_id' => 7,
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'game_id' => $game->id,
+                'categoria_id' => 5,
+                'created_at' => now(),
+                'updated_at' => now()
+            ]
+        ]);
+
         /** SuperHot */
         $game = Game::create([
             'nome' => "SuperHot",
@@ -424,5 +602,22 @@ class PopularGamesSeed extends Seeder
                 'updated_at' => now()
             ]
         ]);
+
+        CategoriaGame::query()->insert([
+            [
+                'game_id' => $game->id,
+                'categoria_id' => 1,
+                'created_at' => now(),
+                'updated_at' => now()
+            ]
+            ,
+            [
+                'game_id' => $game->id,
+                'categoria_id' => 9,
+                'created_at' => now(),
+                'updated_at' => now()
+            ]
+        ]);
+
     }
 }

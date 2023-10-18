@@ -25,7 +25,8 @@ class Game extends Model
         'standart2',
         'standart3',
         'standart4',
-        'imagem_principal' 
+        'imagem_principal',
+        'vizualicoes'
     ];
 
     public function ofertas(): HasMany
@@ -42,6 +43,10 @@ class Game extends Model
     {
         return $this->hasMany(Favorito::class, 'game_id', 'id');
     }
-
+    ////
+    public function categoriasGames(): HasMany
+    {
+        return $this->hasMany(CategoriaGame::class, 'game_id', 'id');
+    }
 
 }
