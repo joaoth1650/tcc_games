@@ -10,7 +10,7 @@ export default function ShoppingCart({ auth, cart }: PageProps<{ cart: any }>) {
   const [quantidadeStatus, setQuantidadeStatus] = useState<any>([]);
 
   let total = 0;
-  if(cart.item_carrinhos.length != 0) {
+  if(cart.item_carrinhos.length > 0) {
     cart.item_carrinhos.map((item_carrinho: any) => total += parseInt(item_carrinho.ofertas.preco) * item_carrinho.quantidade);
   }
 
