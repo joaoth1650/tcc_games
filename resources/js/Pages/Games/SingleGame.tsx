@@ -34,7 +34,7 @@ const GameIndividual = ({ auth, games }: PageProps<{ games: any }>) => {
 
   };
   return (
-    <VisitanteLayout auth={auth} title="Teste">
+    <VisitanteLayout auth={auth} title="Teste" header={<h2 className="font-semibold text-xl text-gray-800 leading-tight"></h2>}>
       <div className="bg-fixed bg-no-repeat p-5" style={{ backgroundImage: "url('" + games.background + "')" }}>
         <div className="container w-8/12 mx-auto ">
           <div className="bg-gray-900 rounded-xl shadow-lg p-5">

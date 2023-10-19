@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\GameController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
@@ -33,9 +34,7 @@ use Inertia\Inertia;
 Route::get('/', [GameController::class, 'index'])->name('games.index');
 Route::get('/SingleGame', [GameController::class, 'show'])->name('games.show');
 
-Route::get('/dashboard', function () {
-    return Inertia::render('Dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
 // Route::get('/wishlist', function () {
 //     return Inertia::render('Wishlist');
 // })->middleware(['auth', 'verified'])->name('Wishlist');

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Favorito;
 use App\Models\Game;
+use App\Services\RecomendadoService;
 // use App\Models\Restricao;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
@@ -94,4 +95,6 @@ class GameController extends Controller
             return response ()->json(['Esse jogo foi removido da sua wishlist com sucesso!'], 204);
            
     }
+
+
 }

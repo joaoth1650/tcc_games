@@ -68,7 +68,7 @@ export default function IndexGames({ auth, games }: PageProps<{ games: Array<any
   // console.log(typeof auth)
 
   return (
-    <VisitanteLayout auth={auth} title="Teste">
+    <VisitanteLayout auth={auth} title="Teste" header={<h2 className="font-semibold text-xl text-gray-800 leading-tight">Carrinho de compras</h2>}>
       <div className="py-12">
         <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
           <div className="overflow-hidden shadow-sm rounded-lg grid grid-cols-3 gap-5">

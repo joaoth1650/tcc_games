@@ -6,7 +6,7 @@ import { PageProps } from '@/types';
 import { Head, Link } from '@inertiajs/react';
 import { ReactNode, useState } from 'react';
 
-export default function VisitanteLayout({ auth, children, title }: PageProps<{ children?: ReactNode | undefined, title?: string | undefined }>) {
+export default function VisitanteLayout({ auth, children, title, header }: PageProps<{ header: any, children?: ReactNode | undefined, title?: string | undefined }>) {
     const [showingNavigationDropdown, setShowingNavigationDropdown] = useState(false);
 
     return (
@@ -22,17 +22,7 @@ export default function VisitanteLayout({ auth, children, title }: PageProps<{ c
                                     </Link>
                                 </div>
 
-                                <div className="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                                    <NavLink href={route('dashboard')} active={route().current('dashboard')}>
-                                        Dashboard
-                                    </NavLink>
-                                    <NavLink href={route('favorites')} active={route().current('favorites')}>
-                                        Wishlist
-                                    </NavLink>
-                                    <NavLink href={route('cart.show')} active={route().current('cart.show')}>
-                                        ~Cart~
-                                    </NavLink>
-                                </div>
+                               
                             </div>
 
                             <div className="hidden sm:flex sm:items-center sm:ml-6">
@@ -139,6 +129,24 @@ export default function VisitanteLayout({ auth, children, title }: PageProps<{ c
                         </div>
                     </div>
                 </nav>
+
+                {header && (
+                <header className="bg-white shadow">
+                    <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+                        <div className="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                            <NavLink href={route('dashboard')} active={route().current('dashboard')}>
+                                Navegar
+                            </NavLink>
+                            <NavLink href={route('favorites')} active={route().current('favorites')}>
+                                Lista de Desejos
+                            </NavLink>
+                            <NavLink href={route('cart.show')} active={route().current('cart.show')}>
+                                Carrinho
+                            </NavLink>
+                        </div>
+                    </div>
+                </header>
+            )}
 
                 <main className='bg-gray-900'>{children}</main>
 
