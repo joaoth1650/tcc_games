@@ -20,18 +20,6 @@ export default function Authenticated({ user, header, children }: PropsWithChild
                                     <ApplicationLogo className="block h-9 w-auto fill-current text-gray-800" />
                                 </Link>
                             </div>
-
-                            <div className="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                                <NavLink href={route('dashboard')} active={route().current('dashboard')}>
-                                    Dashboard
-                                </NavLink>
-                                <NavLink href={route('favorites')} active={route().current('favorites')}>
-                                    Wishlist
-                                </NavLink>
-                                <NavLink href={route('cart.show')} active={route().current('cart.show')}>
-                                    ~Cart~
-                                </NavLink>
-                            </div>
                         </div>
 
                         <div className="hidden sm:flex sm:items-center sm:ml-6">
@@ -124,7 +112,19 @@ export default function Authenticated({ user, header, children }: PropsWithChild
 
             {header && (
                 <header className="bg-white shadow">
-                    <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">{header}</div>
+                    <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+                        <div className="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                            <NavLink href={route('dashboard')} active={route().current('dashboard')}>
+                                Dashboard
+                            </NavLink>
+                            <NavLink href={route('favorites')} active={route().current('favorites')}>
+                                Wishlist
+                            </NavLink>
+                            <NavLink href={route('cart.show')} active={route().current('cart.show')}>
+                                Cart
+                            </NavLink>
+                        </div>
+                    </div>
                 </header>
             )}
 
