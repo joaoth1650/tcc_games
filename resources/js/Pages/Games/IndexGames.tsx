@@ -10,6 +10,7 @@ import { useEffect, useState } from "react";
 
 export default function IndexGames({ auth, games }: PageProps<{ games: Array<any>, auth: object }>) {
   const [favoritos, setFavoritos] = useState<any>([]);
+  
   console.log(games);
   useEffect(() => {
     axios.get(route('favorite.index')).then((response) => {

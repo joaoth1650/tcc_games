@@ -12,7 +12,7 @@ export default function VisitanteLayout({ auth, children, title, header }: PageP
     return (
         <>
             <div className="min-h-screen bg-gray-100">
-                <nav className="bg-gray-800 border-b border-gray-600">
+                <nav className="bg-gray-800 border-b border-stone-800">
                     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                         <div className="flex justify-between h-16">
                             <div className="flex">
@@ -131,7 +131,7 @@ export default function VisitanteLayout({ auth, children, title, header }: PageP
                 </nav>
 
                 {header && (
-                <header className="bg-white shadow">
+                <header className="bg-stone-900 shadow">
                     <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
                         <div className="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                             <NavLink href={route('dashboard')} active={route().current('dashboard')}>
@@ -148,7 +148,7 @@ export default function VisitanteLayout({ auth, children, title, header }: PageP
                 </header>
             )}
 
-                <main className='bg-gray-900'>{children}</main>
+                <main className='bg-stone-900'>{children}</main>
 
             </div>
         </>

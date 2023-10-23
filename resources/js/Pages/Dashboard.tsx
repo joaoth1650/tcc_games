@@ -75,13 +75,13 @@ export default function Dashboard({ auth, recomendados, promocoes }: PageProps<{
                             <h1 className='text-2xl text-right uppercase underline underline-offset-8 '>Promoção Especial</h1>
                         </div>
                         <div className="grid grid-cols-3 gap-7">
-                            <div className="grid grid-rows-3 gap-5 col-span-2">
+                            <div className="grid grid-rows-3 gap-6 col-span-2 ">
                                 {recomendados.map((recomendado: any) => (
-                                    <div key={recomendado.id} >
+                                    <div key={recomendado.id} className='hover:scale-110 shadow-lg hover:shadow-slate-400'>
                                         <Link
                                             href={route('games.show', { 'id': recomendado.id })}
                                             className="font-semibold text-gray-600 hover:text-gray-900  focus:rounded-sm ">
-                                            <img src={recomendado.imagem_principal} alt="" className={"object-cover rounded-lg shadow-md max-h-36 w-[100%]"} />
+                                            <img src={recomendado.imagem_principal} alt="" className={"object-cover rounded-lg shadow-md max-h-52 w-[100%]"} />
                                         </Link>
                                     </div>
                                 ))}
@@ -90,7 +90,7 @@ export default function Dashboard({ auth, recomendados, promocoes }: PageProps<{
                                 <img src={promocoes.imagem} className="rounded-lg shadow-md h-[100%]" alt="" />
                             </div>
                         </div>
-                        <div className="rounded-xl mt-16 shadow-xl" style={{ backgroundImage: `url(${imagemMouseHover || recomendados[imagemIndex]?.imagem_principal || ''})`  }}>
+                        <div className="rounded-xl mt-16 " style={{ backgroundImage: `url(${imagemMouseHover || recomendados[imagemIndex]?.imagem_principal || ''})`  }}>
                             <div className="flex justify-end">
                                 <div className="grid grid-rows-4 gap-4 p-6">
                                     {recomendados.map((recomendado: any, index: number) => (

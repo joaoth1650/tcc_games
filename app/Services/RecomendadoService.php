@@ -9,7 +9,7 @@ class RecomendadoService
 {
   public static function getRecomendados ()
   {
-    return Game::query()->whereIn('id', [1, 2, 3, 4])->get();
+    return Game::query()->whereIn('id', [1, 2, 3])->get();
   }
 }
 

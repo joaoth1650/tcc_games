@@ -128,7 +128,7 @@ export default function Authenticated({ user, header, children }: PropsWithChild
                 </header>
             )}
 
-            <main>{children}</main>
+            <main className='bg-stone-900'>{children}</main>
         </div>
     );
 }
