@@ -44,7 +44,7 @@ export default function Dashboard({ auth, recomendados, promocoes }: PageProps<{
                         <div className="grid grid-cols-3 gap-7">
                             <div className="grid grid-rows-3 gap-6 col-span-2 ">
                                 {recomendados.map((recomendado: any) => (
-                                    <div key={recomendado.id} className='hover:scale-110 shadow-lg hover:shadow-slate-400'>
+                                    <div key={recomendado.id} className='hover:scale-110 shadow-lg hover:shadow-stone-900'>
                                         <Link
                                             href={route('games.show', { 'id': recomendado.id })}
                                             className="font-semibold text-gray-600 hover:text-gray-900  focus:rounded-sm ">
@@ -57,7 +57,7 @@ export default function Dashboard({ auth, recomendados, promocoes }: PageProps<{
                                 <img src={promocoes.imagem} className="rounded-lg shadow-md h-[100%]" alt="" />
                             </div>
                         </div>
-                        <div className="rounded-xl mt-16 " style={{ backgroundImage: `url(${imagemMouseHover || recomendados[imagemIndex]?.imagem_principal || ''})` }}>
+                        <div className="rounded-xl mt-16 bg-no-repeat bg-center bg-cover" style={{ backgroundImage: `url(${imagemMouseHover || recomendados[imagemIndex]?.imagem_principal || ''})` }}>
                             <div className="flex justify-end">
                                 <div className="grid grid-rows-4 gap-4 p-6">
                                     {recomendados.map((recomendado: any, index: number) => (
@@ -82,7 +82,6 @@ export default function Dashboard({ auth, recomendados, promocoes }: PageProps<{
                                 </div>
                             </div>
                         </div>
-
                         <div className="grid grid-rows-2">
                             <h1 className='text-2xl  float-left uppercase mt-24 underline underline-offset-8 '>Jogos</h1>
                             <div className="grid grid-cols-4 gap-5">
@@ -98,10 +97,9 @@ export default function Dashboard({ auth, recomendados, promocoes }: PageProps<{
                             </div>
                         </div>
 
-
                         <h1 className='text-2xl  float-left uppercase mt-24 underline underline-offset-8 mb-5'>Mais acessados</h1>
                         <div className="className='text-center">
-                            <Carousel show={3} slide={2} transition={0.5} useArrowKeys={true} leftArrow={<ArrowBackIosRoundedIcon />} rightArrow={<ArrowForwardIosRoundedIcon />} >
+                            <Carousel show={3} slide={2} transition={0.5} useArrowKeys={true} leftArrow={<ArrowBackIosRoundedIcon className='mt-14'/>} rightArrow={<ArrowForwardIosRoundedIcon className='mt-14'/>} >
                                 {recomendados.map((recomendado: any) => (
                                     <div key={recomendado.id} >
                                         <Link
