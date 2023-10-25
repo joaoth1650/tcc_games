@@ -1,4 +1,4 @@
-import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
+import VisitanteLayout from '@/Layouts/VisitanteLayout';
 import { Head, Link } from '@inertiajs/react';
 import { PageProps } from '@/types';
 import { useEffect, useState } from 'react';
@@ -7,13 +7,13 @@ import ScrollCarousel from 'scroll-carousel';
 import ArrowBackIosRoundedIcon from '@mui/icons-material/ArrowBackIosRounded';
 import ArrowForwardIosRoundedIcon from '@mui/icons-material/ArrowForwardIosRounded';
 
-export default function Dashboard({ auth, recomendados, promocoes }: PageProps<{ recomendados: Array<any>, promocoes: any }>) {
+export default function Dashboard({ auth, recomendados, promocoes, slides, moreViews, allGames }: PageProps<{ allGames: Array<any>, recomendados: Array<any>, promocoes: any, slides: Array<any>, moreViews: Array<any> }>) {
     const [imagemIndex, setImagemIndex] = useState(0);
     const [imagemMouseHover, setImagemMouseHover] = useState<string | null>(null);
 
     useEffect(() => {
         const interval = setInterval(() => {
-            setImagemIndex((prevIndex) => (prevIndex + 1) % recomendados.length);
+            setImagemIndex((prevIndex) => (prevIndex + 1) % slides.length);
         }, 5000);
 
         return () => clearInterval(interval);
@@ -26,8 +26,8 @@ export default function Dashboard({ auth, recomendados, promocoes }: PageProps<{
     // new ScrollCarousel(".my-carousel") //carousel com scroll muito show de bola
 
     return (
-        <AuthenticatedLayout
-            user={auth.user}
+        <VisitanteLayout
+            auth={auth}
             header={<h2 className="font-semibold text-xl text-gray-800 leading-tight">Dashboard</h2>}
         >
             <Head title="Dashboard" />
@@ -36,7 +36,7 @@ export default function Dashboard({ auth, recomendados, promocoes }: PageProps<{
                 <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
                     {/* <div className="bg-white overflow-hidden shadow-sm sm:rounded-lg p-6"> */}
                     <div>
-                        <div className="grid grid-cols-3 mb-3">
+                        <div className="grid grid-cols-3 mb-3 ">
                             <h1 className='text-2xl  float-left uppercase underline underline-offset-8  '>Recomendados</h1>
                             <span></span>
                             <h1 className='text-2xl text-right uppercase underline underline-offset-8 '>Promoção Especial</h1>
@@ -44,36 +44,39 @@ export default function Dashboard({ auth, recomendados, promocoes }: PageProps<{
                         <div className="grid grid-cols-3 gap-7">
                             <div className="grid grid-rows-3 gap-6 col-span-2 ">
                                 {recomendados.map((recomendado: any) => (
-                                    <div key={recomendado.id} className='hover:scale-110 shadow-lg hover:shadow-stone-900'>
+                                    <div key={recomendado.id} className='hover:scale-105 shadow-lg hover:shadow-stone-900'>
                                         <Link
                                             href={route('games.show', { 'id': recomendado.id })}
                                             className="font-semibold text-gray-600 hover:text-gray-900  focus:rounded-sm ">
-                                            <img src={recomendado.imagem_principal} alt="" className={"object-cover rounded-lg shadow-md max-h-52 w-[100%]"} />
+                                            <img src={recomendado.imagem_principal} alt={recomendado.nome}
+                                                title={recomendado.nome} className={"object-cover bg-center rounded-lg shadow-md max-h-52 w-[100%]"} />
                                         </Link>
                                     </div>
                                 ))}
                             </div>
-                            <div className="">
-                                <img src={promocoes.imagem} className="rounded-lg shadow-md h-[100%]" alt="" />
+                            <div>
+                                <img src={promocoes.imagem} className="object-cover rounded-lg shadow-md h-[100%]" alt="" />
                             </div>
                         </div>
-                        <div className="rounded-xl mt-16 bg-no-repeat bg-center bg-cover" style={{ backgroundImage: `url(${imagemMouseHover || recomendados[imagemIndex]?.imagem_principal || ''})` }}>
+                        <div className="rounded-xl th-espace-default bg-no-repeat bg-center bg-cover shadow-2xl shadow-stone-600" style={{ backgroundImage: `url(${imagemMouseHover || slides[imagemIndex]?.imagem_principal || ''})` }}>
                             <div className="flex justify-end">
                                 <div className="grid grid-rows-4 gap-4 p-6">
-                                    {recomendados.map((recomendado: any, index: number) => (
+                                    {slides.map((slide: any, index: number) => (
                                         <div
-                                            key={recomendado.id}
-                                            onMouseEnter={() => setImagemMouseHover(recomendado.imagem_principal)}
+                                            key={slide.id}
+                                            onMouseEnter={() => setImagemMouseHover(slide.imagem_principal)}
                                             onMouseLeave={() => setImagemMouseHover(null)}
                                             onClick={() => handleClickItem(index)}
+                                            className={index === imagemIndex ? 'th-card_full_opacity' : 'th-card_dashboard'}
                                         >
                                             <Link
-                                                href={route('games.show', { 'id': recomendado.id })}
+                                                href={route('games.show', { 'id': slide.id })}
                                                 className="font-semibold text-gray-600 hover:text-gray-900 focus:rounded-sm"
                                             >
                                                 <img
-                                                    src={recomendado.imagem_principal}
-                                                    alt=""
+                                                    src={slide.imagem_principal}
+                                                    alt={slide.nome}
+                                                    title={slide.nome}
                                                     className="object-cover rounded-lg shadow-md max-h-36 w-[100%]"
                                                 />
                                             </Link>
@@ -82,39 +85,43 @@ export default function Dashboard({ auth, recomendados, promocoes }: PageProps<{
                                 </div>
                             </div>
                         </div>
+
                         <div className="grid grid-rows-2">
-                            <h1 className='text-2xl  float-left uppercase mt-24 underline underline-offset-8 '>Jogos</h1>
+                            <div className="flex justify-between">
+                                <h1 className='text-2xl  float-left uppercase th-espace-default underline underline-offset-8 '>Jogos</h1>
+                                <a href="/" className='text-xl float-left mt-28 hover:text-sky-400'>veja mais</a>
+                            </div>
                             <div className="grid grid-cols-4 gap-5">
-                                {recomendados.map((recomendado: any) => (
-                                    <div key={recomendado.id} >
+                                {allGames.map((allGame: any) => (
+                                    <div key={allGame.id} className='th-card_dashboard ' >
                                         <Link
-                                            href={route('games.show', { 'id': recomendado.id })}
+                                            href={route('games.show', { 'id': allGame.id })}
                                             className="font-semibold text-gray-600 hover:text-gray-900  focus:rounded-sm ">
-                                            <img src={recomendado.imagem_principal} alt="" className={"object-cover rounded-lg shadow-md max-h-36 w-[100%]"} />
+                                            <img src={allGame.imagem_principal} alt="" className={"object-cover rounded-lg shadow-md max-h-36 w-[100%]"} />
                                         </Link>
                                     </div>
                                 ))}
                             </div>
                         </div>
 
-                        <h1 className='text-2xl  float-left uppercase mt-24 underline underline-offset-8 mb-5'>Mais acessados</h1>
-                        <div className="className='text-center">
-                            <Carousel show={3} slide={2} transition={0.5} useArrowKeys={true} leftArrow={<ArrowBackIosRoundedIcon className='mt-14'/>} rightArrow={<ArrowForwardIosRoundedIcon className='mt-14'/>} >
-                                {recomendados.map((recomendado: any) => (
-                                    <div key={recomendado.id} >
-                                        <Link
-                                            href={route('games.show', { 'id': recomendado.id })}
-                                            className="font-semibold text-gray-600 hover:text-gray-900  focus:rounded-sm ">
-                                            <img src={recomendado.imagem_principal} alt="" className={"object-cover rounded-lg shadow-md max-h-36 w-[100%]"} />
-                                        </Link>
-                                    </div>
-                                ))}
-                            </Carousel>
-                        </div>
+                        <h1 className='text-2xl  float-left uppercase th-espace-default underline underline-offset-8 mb-5'>Mais acessados</h1>
+                        <Carousel show={3} slide={2} transition={0.5} useArrowKeys={true} leftArrow={<ArrowBackIosRoundedIcon className='mt-16 cursor-pointer' />} rightArrow={<ArrowForwardIosRoundedIcon className='mt-16  cursor-pointer' />} >
+                            {moreViews.map((moreView: any) => (
+                                <div key={moreView.id} className='px-2 th-card_dashboard'>
+                                    <Link
+                                        href={route('games.show', { 'id': moreView.id })}
+                                        className="font-semibold text-gray-600 hover:text-gray-900  focus:rounded-sm ">
+                                        <img src={moreView.imagem_principal} alt="" className={" object-cover bg-cover rounded-lg shadow-md max-h-40 w-[100%]"} />
+                                    </Link>
+                                </div>
+                            ))}
+                        </Carousel>
+
+
                     </div>
                 </div>
             </div>
-        </AuthenticatedLayout>
+        </VisitanteLayout>
     );
 }
 

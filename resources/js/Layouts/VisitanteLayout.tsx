@@ -22,7 +22,7 @@ export default function VisitanteLayout({ auth, children, title, header }: PageP
                                     </Link>
                                 </div>
 
-                               
+
                             </div>
 
                             <div className="hidden sm:flex sm:items-center sm:ml-6">
@@ -131,22 +131,29 @@ export default function VisitanteLayout({ auth, children, title, header }: PageP
                 </nav>
 
                 {header && (
-                <header className="bg-stone-900 shadow">
-                    <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                        <div className="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                            <NavLink href={route('dashboard')} active={route().current('dashboard')}>
-                                Navegar
-                            </NavLink>
-                            <NavLink href={route('favorites')} active={route().current('favorites')}>
-                                Lista de Desejos
-                            </NavLink>
-                            <NavLink href={route('cart.show')} active={route().current('cart.show')}>
-                                Carrinho
-                            </NavLink>
+                    <header className="bg-stone-900 shadow">
+                        <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+                            <div className=" hidden space-x-8 sm:-my-px sm:ml-10 sm:flex text-xl">
+                                <NavLink href={route('dashboard')} active={route().current('dashboard')}>
+                                    Descobrir
+                                </NavLink>
+                                <NavLink href={route('games.index')} active={route().current('games.index')}>
+                                    Navegar
+                                </NavLink>
+                                {auth?.user?.name && (
+                                    <>
+                                        <NavLink href={route('favorites')} active={route().current('favorites')}>
+                                            Lista de Desejos
+                                        </NavLink>
+                                        <NavLink href={route('cart.show')} active={route().current('cart.show')}>
+                                            Carrinho
+                                        </NavLink>
+                                    </>
+                                )}
+                            </div>
                         </div>
-                    </div>
-                </header>
-            )}
+                    </header>
+                )}
 
                 <main className='bg-stone-900'>{children}</main>
 

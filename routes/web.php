@@ -34,7 +34,7 @@ use Inertia\Inertia;
 Route::get('/', [GameController::class, 'index'])->name('games.index');
 Route::get('/SingleGame', [GameController::class, 'show'])->name('games.show');
 
-Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 // Route::get('/wishlist', function () {
 //     return Inertia::render('Wishlist');
 // })->middleware(['auth', 'verified'])->name('Wishlist');

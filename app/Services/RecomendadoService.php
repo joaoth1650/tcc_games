@@ -4,12 +4,14 @@
 namespace App\Services;
 use App\Models\Game;
 use App\Models\Oferta;
+use Illuminate\Support\Collection;
+
 
 class RecomendadoService
 {
-  public static function getRecomendados ()
+  public static function getRecomendados (): Collection
   {
-    return Game::query()->whereIn('id', [1, 2, 3])->get();
+    return Game::query()->whereIn('id', [10, 2, 3])->get();
   }
 }
 

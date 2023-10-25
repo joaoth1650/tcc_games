@@ -13,8 +13,11 @@ class DashboardController extends Controller
     {
         $recomendados = RecomendadoService::getRecomendados();
         $promocoes = DashboardService::getOferta();
-        
-        return Inertia::render('Dashboard', ['recomendados' => $recomendados, 'promocoes' => $promocoes]);
+        $slides = DashboardService::getSlide();
+        $moreViews = DashboardService::getMaisAcessados();
+        $allGames = DashboardService::getJogos();
+
+        return Inertia::render('Dashboard', ['recomendados' => $recomendados, 'promocoes' => $promocoes, 'slides' => $slides, 'moreViews' => $moreViews, 'allGames' => $allGames]);
     }
 
 

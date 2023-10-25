@@ -3,5 +3,137 @@
 @tailwind utilities;
 
 
+.th-card_dashboard {
+    @apply opacity-50 hover:opacity-100 duration-500 transition-all
+}
 
+.th-card_slide_dashboard {
+    @apply opacity-50 hover:opacity-100 duration-500 transition-all
+}
+.th-card_full_opacity {
+    @apply opacity-100
+}
 
+.th-espace-default {
+    @apply mt-24;
+}
+
+.lh-btn-default {
+    @apply bg-gray-500 text-white border-gray-700 px-2 py-1 text-center shadow-md hover:shadow-sm hover:bg-gray-300 hover:text-black hover:border-gray-400 border rounded-md cursor-pointer transition;
+}
+
+.lh-btn-primary {
+    @apply bg-blue-600 text-white border-blue-800 border px-2 py-1 text-center shadow-md hover:shadow-sm hover:bg-blue-500 hover:text-blue-50 hover:border-blue-400 rounded-md cursor-pointer transition;
+}
+
+.lh-btn-secondary {
+    @apply bg-slate-800 text-white border-slate-900 border px-2 py-1 text-center shadow-md hover:shadow-sm hover:bg-slate-500 hover:text-gray-50 hover:border-slate-400 rounded-md cursor-pointer transition;
+}
+
+.lh-btn-tertiary {
+    @apply bg-indigo-800 text-white border-indigo-900 border px-2 py-1 text-center shadow-md hover:shadow-sm hover:bg-indigo-500 hover:text-gray-50 hover:border-indigo-400 rounded-md cursor-pointer transition;
+}
+
+.lh-btn-success {
+    @apply bg-green-600 text-white border-green-800 border px-2 py-1 text-center shadow-md hover:shadow-sm hover:bg-green-400 hover:text-green-950 hover:border-green-600 rounded-md cursor-pointer;
+}
+
+.lh-btn-danger {
+    @apply bg-red-600 text-white border-red-800 border px-2 py-1 text-center shadow-md hover:shadow-sm hover:bg-red-500 hover:border-red-400 hover:text-red-950 rounded-md cursor-pointer transition;
+}
+
+.lh-btn-warning {
+    @apply bg-yellow-300 text-slate-800 border-yellow-800 border px-2 py-1 text-center shadow-md hover:shadow-sm hover:bg-yellow-500 hover:text-slate-950 hover:border-yellow-800 rounded-md cursor-pointer transition;
+}
+
+.lh-btn-info {
+    @apply bg-sky-600 text-white border-sky-800 border px-2 py-1 text-center shadow-md hover:shadow-sm hover:bg-sky-400 hover:text-sky-50 hover:border-sky-200 rounded-md cursor-pointer transition;
+}
+
+.lh-btn-light{
+    @apply bg-white text-gray-400 border-gray-400 border px-2 py-1 text-center shadow-md hover:shadow-sm hover:bg-gray-100 hover:text-slate-500 hover:border-slate-600 rounded-md cursor-pointer transition;
+}
+
+.lh-btn-outlined {
+    @apply border-2 bg-white border-slate-800 px-2 py-1 text-center hover:text-blue-500 hover:border-blue-700 hover:bg-blue-50 shadow-md hover:shadow-sm rounded-md cursor-pointer transition;
+}
+
+.lh-btn-outlined-primary {
+    @apply border-2 bg-white border-blue-800 text-blue-600 px-2 py-1 text-center hover:text-white hover:border-blue-500 hover:bg-blue-600 shadow-md hover:shadow-sm rounded-md cursor-pointer transition;
+}
+
+.lh-btn-outlined-danger{
+    @apply border-2 bg-white border-red-800 text-red-600 px-2 py-1 text-center hover:text-white hover:border-red-500 hover:bg-red-600 shadow-md hover:shadow-sm rounded-md cursor-pointer transition;
+}
+
+.lh-btn-outlined-default {
+    @apply bg-gray-50 text-gray-400 hover:bg-gray-500 hover:text-white border-gray-500 hover:border-gray-100 border px-2 py-1 text-center shadow-md hover:shadow-sm rounded-md cursor-pointer transition;
+}
+
+.lh-tag-default {
+    @apply bg-gray-400 text-white px-2 py-1 text-center shadow-md rounded-md cursor-default;
+}
+
+.lh-tag-default-out {
+    @apply bg-gray-200 text-gray-500 px-2 py-1 text-center shadow-md rounded-md cursor-default;
+}
+
+.lh-tag-primary-out {
+    @apply bg-gray-200 text-blue-600 hover:text-blue-800 hover:shadow-inner px-2 py-1 text-center shadow-md rounded-md transition-all cursor-default;
+}
+
+.lh-tag-primary {
+    @apply bg-blue-600 text-white px-2 py-1 text-center shadow-md rounded-md cursor-default;
+}
+
+.lh-tag-secondary {
+    @apply bg-slate-800 text-white px-2 py-1 text-center shadow-md rounded-md cursor-default;
+}
+
+.lh-tag-secondary-out {
+    @apply bg-slate-600 text-white px-2 py-1 text-center shadow-md rounded-md cursor-default;
+}
+
+.lh-tag-tertiary {
+    @apply bg-indigo-800 text-white px-2 py-1 text-center shadow-md rounded-md cursor-default;
+}
+
+.lh-tag-success {
+    @apply bg-green-600 text-white px-2 py-1 text-center shadow-md rounded-md cursor-default;
+}
+
+.lh-tag-danger {
+    @apply bg-red-600 text-white px-2 py-1 text-center shadow-md rounded-md cursor-default;
+}
+
+.lh-tag-warning {
+    @apply bg-yellow-600 text-white px-2 py-1 text-center shadow-md rounded-md cursor-default;
+}
+
+.lh-tag-info {
+    @apply bg-blue-600 text-white px-2 py-1 text-center shadow-md rounded-md cursor-default;
+}
+
+.lh-input-text {
+    @apply border-2 border-slate-800 shadow-md w-full pl-2 py-1 text-base hover:border-indigo-800 focus:outline-none hover:shadow-sm  focus:text-blue-800  focus:border-blue-600 focus:font-medium rounded transition-all;
+}
+
+.lh-input-select {
+    @apply border-2 border-slate-800 hover:border-indigo-800 pl-2 py-1 focus:outline-none focus:text-blue-800 text-base rounded-md active:rounded-md shadow-md  hover:shadow-sm transition-all;
+}
+
+.lh-text-orange{
+    @apply text-orange-400;
+}
+
+.lh-text-primary{
+    @apply text-blue-600
+}
+
+.lh-text-secondary{
+    @apply text-slate-600
+}
+
+.lh-text-tertiary{
+    @apply text-indigo-600
+}
