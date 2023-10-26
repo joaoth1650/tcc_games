@@ -43,7 +43,7 @@ const GameIndividual = ({ auth, games }: PageProps<{ games: any }>) => {
               <span></span>
               <span></span>
               <div className="flex col-span-2">
-                <h1 className='text-3xl bg-blue-600 pl-2 p-1 text-white w-11 rounded-lg' style={{ backgroundColor: games.restricao.background }}>{games.restricao.idade}</h1>
+                <h1 className='text-3xl bg-blue-600 pl-2 p-1 text-white w-11 rounded-lg ' style={{ backgroundColor: games.restricao.background }}>{games.restricao.idade}</h1>
                 <p className="mt-auto p-2 text-white">{games.restricao.descricao}</p>
               </div>
             </div>

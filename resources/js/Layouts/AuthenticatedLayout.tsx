@@ -115,13 +115,16 @@ export default function Authenticated({ user, header, children }: PropsWithChild
                     <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
                         <div className="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                             <NavLink href={route('dashboard')} active={route().current('dashboard')}>
+                                Descobrir
+                            </NavLink>
+                            <NavLink href={route('games.index')} active={route().current('games.index')}>
                                 Navegar
                             </NavLink>
                             <NavLink href={route('favorites')} active={route().current('favorites')}>
                                 Lista de Desejos
                             </NavLink>
                             <NavLink href={route('cart.show')} active={route().current('cart.show')}>
-                                Carrinho 
+                                Carrinho
                             </NavLink>
                         </div>
                     </div>

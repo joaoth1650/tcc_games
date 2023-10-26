@@ -4,7 +4,7 @@
 
 
 .th-card_dashboard {
-    @apply opacity-50 hover:opacity-100 duration-500 transition-all
+    @apply opacity-70 hover:opacity-100 duration-500 transition-all
 }
 
 .th-card_slide_dashboard {
