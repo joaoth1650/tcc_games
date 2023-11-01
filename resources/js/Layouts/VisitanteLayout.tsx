@@ -148,6 +148,11 @@ export default function VisitanteLayout({ auth, children, title, header }: PageP
                                         <NavLink href={route('cart.show')} active={route().current('cart.show')}>
                                             Carrinho
                                         </NavLink>
+                                        <div className="justify-end">
+                                            <div className="rondered-full w-20">
+                                                {/* //search */}
+                                            </div>
+                                        </div>
                                     </>
                                 )}
                             </div>

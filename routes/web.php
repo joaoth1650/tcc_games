@@ -31,13 +31,11 @@ use Inertia\Inertia;
 //     //     'phpVersion' => PHP_VERSION,
 //     // ]);
 // });
-Route::get('/', [GameController::class, 'index'])->name('games.index');
-Route::get('/SingleGame', [GameController::class, 'show'])->name('games.show');
+Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+Route::get('/navegar', [GameController::class, 'index'])->name('games.index');
+Route::get('/single-game', [GameController::class, 'show'])->name('games.show');
+// Route::get('/', [GameController::class, 'filter'])->name('games.filter');
 
-Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-// Route::get('/wishlist', function () {
-//     return Inertia::render('Wishlist');
-// })->middleware(['auth', 'verified'])->name('Wishlist');
 
 Route::middleware('auth')->group(function () {
     ////Profile
@@ -45,16 +43,20 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     ////Wishlist
-    Route::get('/Wishlist', [GameController::class, 'showFavorite'])->name('favorites');
-    Route::post('/addFavorite', [GameController::class, 'store'])->name('favorite.create');
-    Route::delete('/WishlistDestroy', [GameController::class, 'destroyFavorite'])->name('favorite.destroy');
+    Route::get('/wishlist', [GameController::class, 'showFavorite'])->name('favorites');
+    Route::post('/add-favorite', [GameController::class, 'store'])->name('favorite.create');
+    Route::delete('/wishlist-destroy', [GameController::class, 'destroyFavorite'])->name('favorite.destroy');
     Route::resource('favorite', FavoriteController::class);
     ////ShoppingCart
-    Route::get('/shoppingCart', [CartController::class, 'showCart'])->name('cart.show');
-    Route::post('/addToCart', [CartController::class, 'addToCart'])->name('cart.create');
-    Route::delete('/removeFromCart', [CartController::class, 'removeFromCart'])->name('cart.destroy');
-    Route::post('/statusCart', [CartController::class, 'statusCart'])->name('cart.status');
+    Route::get('/shopping-cart', [CartController::class, 'showCart'])->name('cart.show');
+    Route::post('/add-ao-cart', [CartController::class, 'addToCart'])->name('cart.create');
+    Route::delete('/remove-fromCart', [CartController::class, 'removeFromCart'])->name('cart.destroy');
+    Route::post('/status-cart', [CartController::class, 'statusCart'])->name('cart.status');
 
 });
 
 require __DIR__.'/auth.php';
+
+// Route::get('/wishlist', function () {
+//     return Inertia::render('Wishlist');
+// })->middleware(['auth', 'verified'])->name('Wishlist');

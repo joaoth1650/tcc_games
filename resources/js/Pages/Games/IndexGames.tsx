@@ -8,10 +8,9 @@ import { IconButton } from "@mui/material";
 import Swal from "sweetalert2";
 import { useEffect, useState } from "react";
 
-export default function IndexGames({ auth, games }: PageProps<{ games: Array<any>, auth: object }>) {
+export default function IndexGames({ auth, games, filteredPerPrice }: PageProps<{ filteredPerPrice: any ,games: Array<any>, auth: object }>) {
   const [favoritos, setFavoritos] = useState<any>([]);
-  
-  console.log(games);
+    
   useEffect(() => {
     axios.get(route('favorite.index')).then((response) => {
       setFavoritos(response.data.favoritelist);
@@ -84,8 +83,8 @@ export default function IndexGames({ auth, games }: PageProps<{ games: Array<any
                     <FavoriteBorderRoundedIcon className="text-red-500 text-4xl" />
                   </div>
                 )}
-                
-                
+
+
                 <Link
                   href={route('games.show', { 'id': game.id })}
                   className="font-semibold text-gray-600 hover:text-gray-900  focus:rounded-sm ">

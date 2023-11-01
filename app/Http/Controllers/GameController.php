@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Favorito;
 use App\Models\Game;
+use App\Services\FiltroService;
 use App\Services\RecomendadoService;
 // use App\Models\Restricao;
 use Illuminate\Http\Request;
@@ -11,20 +12,29 @@ use Inertia\Inertia;
 
 class GameController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $games = Game::all();
+        $smallPrice = $request->input('smallPrice');
+        $highPrice = $request->input('highPrice');
 
-        if (empty(auth()->user())) {  
-            return Inertia::render('Games/IndexGames', ['games' => $games]);
+        if (!empty($smallPrice) && !empty($highPrice)) {
+            $games = FiltroService::getFilterForPreco($smallPrice, $highPrice);
+        }else{
+            $games = Game::all();
         }
         
+
+        if (empty(auth()->user())) {
+            return Inertia::render('Games/IndexGames', ['games' => $games]);
+        }
+
         $favoritoslist = Favorito::query()->where('user_id', auth()->user()->id)->get();
         $favoritoslist = $favoritoslist->pluck('game_id')->toArray();
         // dd($favoritoslist);
-        
+
         return Inertia::render('Games/IndexGames', ['games' => $games, 'favoritoslist' => $favoritoslist]);
     }
+
     public function show(Request $request)
     {
         $id = $request->input('id');
@@ -93,8 +103,9 @@ class GameController extends Controller
             ->where('game_id', $id)
             ->delete();
             return response ()->json(['Esse jogo foi removido da sua wishlist com sucesso!'], 204);
-           
+
     }
+
 
 
 }
