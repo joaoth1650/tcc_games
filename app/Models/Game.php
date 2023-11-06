@@ -36,7 +36,7 @@ class Game extends Model
     ////
     public function restricao()
     {
-        return $this->belongsTo(Restricao::class, 'restricao_id', 'id' );
+        return $this->belongsTo(Restricao::class, 'restricao_id', 'id');
     }
     ////
     public function favoritos(): HasMany
@@ -49,4 +49,8 @@ class Game extends Model
         return $this->hasMany(CategoriaGame::class, 'game_id', 'id');
     }
 
+    public function categorias()
+    {
+        return $this->belongsToMany(Categoria::class, 'categorias_games', 'game_id', 'categoria_id');
+    }
 }

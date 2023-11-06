@@ -20,4 +20,9 @@ class Categoria extends Model
     {
         return $this->hasMany(CategoriaGame::class, 'categoria_id', 'id');
     }
+
+    public function games()
+    {
+        return $this->belongsToMany(Game::class, 'categorias_games', 'categoria_id', 'game_id');
+    }
 }

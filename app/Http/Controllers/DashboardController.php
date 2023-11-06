@@ -16,8 +16,9 @@ class DashboardController extends Controller
         $slides = DashboardService::getSlide();
         $moreViews = DashboardService::getMaisAcessados();
         $allGames = DashboardService::getJogos();
+        $gamesOfTerror = DashboardService::getOfTerror();
 
-        return Inertia::render('Dashboard', ['recomendados' => $recomendados, 'promocoes' => $promocoes, 'slides' => $slides, 'moreViews' => $moreViews, 'allGames' => $allGames]);
+        return Inertia::render('Dashboard', ['recomendados' => $recomendados, 'promocoes' => $promocoes, 'slides' => $slides, 'moreViews' => $moreViews, 'allGames' => $allGames, 'gamesOfTerror' => $gamesOfTerror]);
     }
 
 

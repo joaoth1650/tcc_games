@@ -7,7 +7,7 @@ import ScrollCarousel from 'scroll-carousel';
 import ArrowBackIosRoundedIcon from '@mui/icons-material/ArrowBackIosRounded';
 import ArrowForwardIosRoundedIcon from '@mui/icons-material/ArrowForwardIosRounded';
 
-export default function Dashboard({ auth, recomendados, promocoes, slides, moreViews, allGames }: PageProps<{ allGames: Array<any>, recomendados: Array<any>, promocoes: any, slides: Array<any>, moreViews: Array<any> }>) {
+export default function Dashboard({ auth, recomendados, promocoes, slides, moreViews, allGames, gamesOfTerror }: PageProps<{ allGames: Array<any>, recomendados: Array<any>, promocoes: any, slides: Array<any>, moreViews: Array<any>, gamesOfTerror: Array<any> }>) {
     const [imagemIndex, setImagemIndex] = useState(0);
     const [imagemMouseHover, setImagemMouseHover] = useState<string | null>(null);
 
@@ -119,19 +119,19 @@ export default function Dashboard({ auth, recomendados, promocoes, slides, moreV
                         </Carousel>
 
                         <div className="flex justify-between">
-                            <h1 className='text-2xl  float-left uppercase th-espace-default underline underline-offset-8 '>Ação e Aventura</h1>
+                            <h1 className='text-2xl  float-left uppercase th-espace-default underline underline-offset-8 '>Terror</h1>
                             <a href="/" className='text-xl float-left mt-28 hover:text-sky-400'> ——  veja mais</a>
                         </div>
                         <div className="grid grid-cols-2 gap-4 mt-4">
                             <div className="grid grid-cols-2 grid-rows-2 gap-4">
-                                {allGames.map((allGame: any, index: number) => (
-                                    <div key={allGame.id} className="col-span-1 row-span-1 th-card_dashboard hover:scale-110">
+                                {gamesOfTerror.map((gameOfTerror: any, index: number) => (
+                                    <div key={gameOfTerror.id} className="col-span-1 row-span-1 th-card_dashboard hover:scale-110">
                                         <Link
-                                            href={route('games.show', { 'id': allGame.id })}
+                                            href={route('games.show', { 'id': gameOfTerror.id })}
                                             className="font-semibold text-gray-600 hover:text-gray-900 focus:rounded-sm"
                                         >
                                             <img
-                                                src={allGame.imagem_principal}
+                                                src={gameOfTerror.imagem_principal}
                                                 alt=""
                                                 className=" object-cover bg-cover rounded-lg shadow-md max-h-96 w-[100%]"
                                             />

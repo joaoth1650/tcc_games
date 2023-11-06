@@ -5,6 +5,7 @@ namespace App\Services;
 use App\Models\Game;
 use App\Models\Oferta;
 use Illuminate\Support\Collection;
+use Illuminate\Database\Eloquent\Builder;
 
 class DashboardService
 {
@@ -25,8 +26,17 @@ class DashboardService
 
     public static function getJogos(): Collection
     {
-        $ids = [1,2,3,4,5,6,8,10,11,12,13,14,15,16,17,18,19];
+        $ids = [1, 2, 3, 4, 5, 6, 8, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19];
         return Game::whereIn('id', $ids)->inRandomOrder()->take(4)->get();
     }
 
+    public static function getOfTerror(): Collection
+    {
+        // Use a função "whereHas" para buscar os jogos que tenham a categoria "terror"
+        return Game::whereHas('categorias', function (Builder $query) {
+            $query->where('nome', 'Terror');
+        })->inRandomOrder()
+        ->take(4)
+        ->get();
+    }
 }

@@ -267,7 +267,7 @@ class PopularGamesSeed extends Seeder
             'standart2' => "https://i.imgur.com/z7E5nTA.jpg",
             'standart3' => "https://i.imgur.com/aoiH447.jpg",
             'standart4' => "https://i.imgur.com/L45mwGT.jpg",
-            'imagem_principal' => "https://i.imgur.com/PBxMO6O.jpeg",
+            'imagem_principal' => "https://i.imgur.com/oVmqhNm.png",
             'created_at' => now(),
             'updated_at' => now()
         ]);
@@ -371,65 +371,65 @@ class PopularGamesSeed extends Seeder
         ]);
 
         /** Undertale */
-        $game = Game::create([
-            'nome' => "Undertale",
-            "restricao_id" => 1,
-            'preco' => 55.99,
-            'descricao' => "",
-            'video' => "____",
-            'imagem_esquerda' => "___",
-            'imagem_direita' => "___",
-            'background' => "____",
-            'standart1' => "___",
-            'standart2' => "___",
-            'standart3' => "___",
-            'standart4' => "___",
-            'imagem_principal' => "___",
-            'created_at' => now(),
-            'updated_at' => now()
-        ]);
+        // $game = Game::create([
+        //     'nome' => "Undertale",
+        //     "restricao_id" => 1,
+        //     'preco' => 55.99,
+        //     'descricao' => "",
+        //     'video' => "____",
+        //     'imagem_esquerda' => "___",
+        //     'imagem_direita' => "___",
+        //     'background' => "____",
+        //     'standart1' => "___",
+        //     'standart2' => "___",
+        //     'standart3' => "___",
+        //     'standart4' => "___",
+        //     'imagem_principal' => "___",
+        //     'created_at' => now(),
+        //     'updated_at' => now()
+        // ]);
 
-        Oferta::query()->insert([
-            [
-                'game_id' => $game->id,
-                'imagem' => "_____",
-                'nome' => "$game->nome deluxe",
-                'descricao' => "Delux " . fake()->words(20, true),
-                'preco' => fake()->randomNumber(3, true),
-                'created_at' => now(),
-                'updated_at' => now()
-            ],
-            [
-                'game_id' => $game->id,
-                'imagem' => "_____",
-                'nome' => "$game->nome default",
-                'descricao' => "Default " . fake()->words(20, true),
-                'preco' => fake()->randomNumber(3, true),
-                'created_at' => now(),
-                'updated_at' => now()
-            ]
-        ]);
+        // Oferta::query()->insert([
+        //     [
+        //         'game_id' => $game->id,
+        //         'imagem' => "_____",
+        //         'nome' => "$game->nome deluxe",
+        //         'descricao' => "Delux " . fake()->words(20, true),
+        //         'preco' => fake()->randomNumber(3, true),
+        //         'created_at' => now(),
+        //         'updated_at' => now()
+        //     ],
+        //     [
+        //         'game_id' => $game->id,
+        //         'imagem' => "_____",
+        //         'nome' => "$game->nome default",
+        //         'descricao' => "Default " . fake()->words(20, true),
+        //         'preco' => fake()->randomNumber(3, true),
+        //         'created_at' => now(),
+        //         'updated_at' => now()
+        //     ]
+        // ]);
 
-        CategoriaGame::query()->insert([
-            [
-                'game_id' => $game->id,
-                'categoria_id' => 2,
-                'created_at' => now(),
-                'updated_at' => now()
-            ],
-            [
-                'game_id' => $game->id,
-                'categoria_id' => 9,
-                'created_at' => now(),
-                'updated_at' => now()
-            ],
-            [
-                'game_id' => $game->id,
-                'categoria_id' => 5,
-                'created_at' => now(),
-                'updated_at' => now()
-            ]
-        ]);
+        // CategoriaGame::query()->insert([
+        //     [
+        //         'game_id' => $game->id,
+        //         'categoria_id' => 2,
+        //         'created_at' => now(),
+        //         'updated_at' => now()
+        //     ],
+        //     [
+        //         'game_id' => $game->id,
+        //         'categoria_id' => 9,
+        //         'created_at' => now(),
+        //         'updated_at' => now()
+        //     ],
+        //     [
+        //         'game_id' => $game->id,
+        //         'categoria_id' => 5,
+        //         'created_at' => now(),
+        //         'updated_at' => now()
+        //     ]
+        // ]);
 
         /** No Man's Sky */
         $game = Game::create([
@@ -496,71 +496,71 @@ class PopularGamesSeed extends Seeder
         ]);
 
         /** Among Us */
-        $game = Game::create([
-            'nome' => "Among Us",
-            "restricao_id" => 1,
-            'preco' => 55.99,
-            'descricao' => "",
-            'video' => "____",
-            'imagem_esquerda' => "___",
-            'imagem_direita' => "___",
-            'background' => "____",
-            'standart1' => "___",
-            'standart2' => "___",
-            'standart3' => "___",
-            'standart4' => "___",
-            'imagem_principal' => "___",
-            'created_at' => now(),
-            'updated_at' => now()
-        ]);
+        // $game = Game::create([
+        //     'nome' => "Among Us",
+        //     "restricao_id" => 1,
+        //     'preco' => 55.99,
+        //     'descricao' => "",
+        //     'video' => "____",
+        //     'imagem_esquerda' => "___",
+        //     'imagem_direita' => "___",
+        //     'background' => "____",
+        //     'standart1' => "___",
+        //     'standart2' => "___",
+        //     'standart3' => "___",
+        //     'standart4' => "___",
+        //     'imagem_principal' => "___",
+        //     'created_at' => now(),
+        //     'updated_at' => now()
+        // ]);
 
-        Oferta::query()->insert([
-            [
-                'game_id' => $game->id,
-                'imagem' => "_____",
-                'nome' => "$game->nome deluxe",
-                'descricao' => "Delux " . fake()->words(20, true),
-                'preco' => fake()->randomNumber(3, true),
-                'created_at' => now(),
-                'updated_at' => now()
-            ],
-            [
-                'game_id' => $game->id,
-                'imagem' => "_____",
-                'nome' => "$game->nome default",
-                'descricao' => "Default " . fake()->words(20, true),
-                'preco' => fake()->randomNumber(3, true),
-                'created_at' => now(),
-                'updated_at' => now()
-            ]
-        ]);
+        // Oferta::query()->insert([
+        //     [
+        //         'game_id' => $game->id,
+        //         'imagem' => "_____",
+        //         'nome' => "$game->nome deluxe",
+        //         'descricao' => "Delux " . fake()->words(20, true),
+        //         'preco' => fake()->randomNumber(3, true),
+        //         'created_at' => now(),
+        //         'updated_at' => now()
+        //     ],
+        //     [
+        //         'game_id' => $game->id,
+        //         'imagem' => "_____",
+        //         'nome' => "$game->nome default",
+        //         'descricao' => "Default " . fake()->words(20, true),
+        //         'preco' => fake()->randomNumber(3, true),
+        //         'created_at' => now(),
+        //         'updated_at' => now()
+        //     ]
+        // ]);
 
-        CategoriaGame::query()->insert([
-            [
-                'game_id' => $game->id,
-                'categoria_id' => 3,
-                'created_at' => now(),
-                'updated_at' => now()
-            ],
-            [
-                'game_id' => $game->id,
-                'categoria_id' => 1,
-                'created_at' => now(),
-                'updated_at' => now()
-            ],
-            [
-                'game_id' => $game->id,
-                'categoria_id' => 7,
-                'created_at' => now(),
-                'updated_at' => now()
-            ],
-            [
-                'game_id' => $game->id,
-                'categoria_id' => 5,
-                'created_at' => now(),
-                'updated_at' => now()
-            ]
-        ]);
+        // CategoriaGame::query()->insert([
+        //     [
+        //         'game_id' => $game->id,
+        //         'categoria_id' => 3,
+        //         'created_at' => now(),
+        //         'updated_at' => now()
+        //     ],
+        //     [
+        //         'game_id' => $game->id,
+        //         'categoria_id' => 1,
+        //         'created_at' => now(),
+        //         'updated_at' => now()
+        //     ],
+        //     [
+        //         'game_id' => $game->id,
+        //         'categoria_id' => 7,
+        //         'created_at' => now(),
+        //         'updated_at' => now()
+        //     ],
+        //     [
+        //         'game_id' => $game->id,
+        //         'categoria_id' => 5,
+        //         'created_at' => now(),
+        //         'updated_at' => now()
+        //     ]
+        // ]);
 
         /** SuperHot */
         $game = Game::create([
@@ -1203,6 +1203,511 @@ class PopularGamesSeed extends Seeder
             [
                 'game_id' => $game->id,
                 'categoria_id' => 1,
+                'created_at' => now(),
+                'updated_at' => now()
+            ]
+        ]);
+
+        /** Team fortress 2 */
+        $game = Game::create([
+            'nome' => "Team fortress 2",
+            "restricao_id" => 4,
+            'preco' => 00.99,
+            'descricao' => "Team Fortress 2 (TF2) é um popular jogo de tiro em primeira pessoa (FPS) desenvolvido pela Valve Corporation e lançado em 2007 como parte da Orange Box, uma coletânea de jogos. Embora TF2 seja principalmente um jogo multijogador focado em partidas competitivas, ele possui uma história de fundo e um elenco de personagens distintos que são parte integrante de seu apelo.
+
+            A história de TF2 se passa num cenário alternativo da década de 1960, onde duas empresas, a Reliable Excavation & Demolition (RED) e a Builders League United (BLU), estão em constante conflito. Ambas as empresas contratam uma equipe de mercenários altamente especializados, cada um com suas habilidades e personalidades únicas, para proteger ou capturar recursos valiosos, dependendo da missão.
+            
+            Os principais personagens jogáveis em TF2 incluem:
+            
+            Scout - Um velocista ágil armado com uma espingarda e um taco de beisebol.
+            Soldier - Um soldado patriótico com um lança-foguetes.
+            Pyro - Um piromaníaco mascarado que usa um lança-chamas.
+            Demoman - Um escocês expert em explosivos com um lançador de granadas.
+            Heavy - Um gigante russo com uma metralhadora minigun.
+            Engineer - Um engenheiro texano que pode construir torres e dispensadores.
+            Medic - Um médico alemão com um dispositivo de cura chamado Übercharge.
+            Sniper - Um atirador de elite australiano com um rifle de precisão.
+            Spy - Um espião francês com a habilidade de se disfarçar e usar um punhal.
+            A narrativa do jogo se desenvolve principalmente através de vídeos promocionais, quadrinhos e atualizações de eventos especiais, mas o foco principal do TF2 é o combate multijogador em uma variedade de modos de jogo, incluindo captura de pontos, carga explosiva e rei da colina.
+            A Valve continuou a adicionar conteúdo e atualizações ao jogo ao longo dos anos, o que ajudou a manter a comunidade de jogadores ativa e engajada. A história do jogo se expandiu com o tempo e introduziu eventos especiais e histórias mais elaboradas para os personagens. A narrativa em TF2 é muitas vezes caracterizada por seu tom cômico, personagens excêntricos e situações absurdas.",
+            'video' => "N7ZafWA2jd8",
+            'imagem_esquerda' => "___",
+            'imagem_direita' => "___",
+            'background' => "https://i.imgur.com/URFb1ZC.png",
+            'standart1' => "https://i.imgur.com/PSB6tsP.png",
+            'standart2' => "https://i.imgur.com/Nc2As1f.png",
+            'standart3' => "https://i.imgur.com/4GzKm1m.png",
+            'standart4' => "https://i.imgur.com/ALuYOEd.png",
+            'imagem_principal' => "https://i.imgur.com/EYQDjsH.png",
+            'created_at' => now(),
+            'updated_at' => now()
+        ]);
+        Oferta::query()->insert([
+            [
+                'game_id' => $game->id,
+                'imagem' => "https://i.imgur.com/Xbe364G.png",
+                'nome' => "$game->nome deluxe",
+                'descricao' => "Delux " . fake()->words(20, true),
+                'preco' => fake()->randomNumber(3, true),
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'game_id' => $game->id,
+                'imagem' => "https://i.imgur.com/EYQDjsH.png",
+                'nome' => "$game->nome default",
+                'descricao' => "Default " . fake()->words(20, true),
+                'preco' => fake()->randomNumber(3, true),
+                'created_at' => now(),
+                'updated_at' => now()
+            ]
+        ]);
+        CategoriaGame::query()->insert([
+            [
+                'game_id' => $game->id,
+                'categoria_id' => 3,
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'game_id' => $game->id,
+                'categoria_id' => 1,
+                'created_at' => now(),
+                'updated_at' => now()
+            ]
+        ]);
+
+        /** Planet zoo */
+        $game = Game::create([
+            'nome' => "Planet zoo",
+            "restricao_id" => 4,
+            'preco' => 100.00,
+            'descricao' => "Planet Zoo é um jogo de simulação de gerenciamento de zoológico desenvolvido pela Frontier Developments e lançado em 2019. No jogo, os jogadores têm a oportunidade de criar e administrar seu próprio zoológico, projetando habitats, cuidando de animais, atendendo às necessidades dos visitantes e contribuindo para a conservação da vida selvagem. Embora Planet Zoo não tenha uma narrativa linear, ele oferece uma experiência de simulação envolvente centrada na gestão e na construção de um zoológico de sucesso.
+
+             Aqui estão os principais aspectos da experiência de jogo em Planet Zoo:
+             
+             Construção e Design de Habitats: Os jogadores podem projetar e construir habitats personalizados para uma variedade de espécies de animais. Eles devem levar em consideração as necessidades de cada animal, incluindo espaço, vegetação, abrigo e características do ambiente.
+             
+             Cuidado Animal: Os jogadores são responsáveis por garantir o bem-estar dos animais em seu zoológico. Isso inclui fornecer alimentos adequados, cuidados médicos, enriquecimento e manutenção dos habitats.
+             
+             Conservação: Planet Zoo incentiva os jogadores a participar na conservação da vida selvagem, criando programas de reprodução em cativeiro e contribuindo para a pesquisa e educação sobre as espécies.
+             
+             Interação com Visitantes: Gerenciar a experiência dos visitantes é fundamental. Os jogadores precisam criar áreas de visualização atraentes, fornecer informações sobre os animais e manter os visitantes felizes para garantir o sucesso financeiro do zoológico.
+             
+             Pesquisa e Educação: Os jogadores podem realizar pesquisas para desbloquear melhorias e aprender mais sobre suas espécies. Além disso, a educação dos visitantes sobre a importância da conservação da vida selvagem desempenha um papel significativo no jogo.
+             
+             Desafios e Campanhas: O jogo oferece desafios e campanhas que os jogadores podem completar, como construir um zoológico de sucesso em condições específicas ou resgatar animais em perigo.
+             Personalização e Comunidade: Planet Zoo permite que os jogadores personalizem seus zoológicos com decorações, paisagens e detalhes estéticos. Além disso, a comunidade do jogo cria mods e compartilha projetos de zoológicos.
+             
+             Embora Planet Zoo não tenha uma história convencional, o jogo se concentra em temas de conservação da vida selvagem, educação e gerenciamento de um zoológico de sucesso. Os jogadores podem desafiar suas habilidades de planejamento, construção e gerenciamento enquanto trabalham para criar zoológicos que são tanto lucrativos quanto dedicados à proteção da biodiversidade.",
+            'video' => "TAvzq-HrSoQ",
+            'imagem_esquerda' => "___",
+            'imagem_direita' => "___",
+            'background' => "https://i.imgur.com/qPZtPHv.jpg",
+            'standart1' => "https://i.imgur.com/knDq3rD.png",
+            'standart2' => "https://i.imgur.com/YLIrcF2.png",
+            'standart3' => "https://i.imgur.com/ggDlSNo.png",
+            'standart4' => "https://i.imgur.com/ll59Y5V.png",
+            'imagem_principal' => "https://i.imgur.com/DdQZVwQ.jpg",
+            'created_at' => now(),
+            'updated_at' => now()
+        ]);
+        Oferta::query()->insert([
+            [
+                'game_id' => $game->id,
+                'imagem' => "https://i.imgur.com/xm6aoY8.png",
+                'nome' => "$game->nome deluxe",
+                'descricao' => "Delux " . fake()->words(20, true),
+                'preco' => 154.00,
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'game_id' => $game->id,
+                'imagem' => "https://i.imgur.com/DdQZVwQ.jpg",
+                'nome' => "$game->nome default",
+                'descricao' => "Default " . fake()->words(20, true),
+                'preco' => 100.00,
+                'created_at' => now(),
+                'updated_at' => now()
+            ]
+        ]);
+        CategoriaGame::query()->insert([
+            [
+                'game_id' => $game->id,
+                'categoria_id' => 6,
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'game_id' => $game->id,
+                'categoria_id' => 4,
+                'created_at' => now(),
+                'updated_at' => now()
+            ]
+        ]);
+
+        /** Dayz */
+        $game = Game::create([
+            'nome' => "Dayz",
+            "restricao_id" => 2,
+            'preco' => 71.99,
+            'descricao' => "DayZ é um jogo de sobrevivência em mundo aberto desenvolvido pela Bohemia Interactive. O jogo começou como um mod para o jogo ARMA 2 e foi posteriormente lançado como um jogo independente em 2013. A história em DayZ é bastante aberta e emergente, sem uma narrativa linear definida. Em vez disso, o foco principal do jogo é a sobrevivência em um mundo pós-apocalíptico infestado de zumbis, onde os jogadores precisam lutar contra ameaças ambientais, zumbis e outros sobreviventes para permanecerem vivos.
+
+            Aqui estão os principais elementos da história e jogabilidade de DayZ:
+            
+            Ambiente Pós-Apocalíptico: DayZ se passa em uma região fictícia do mundo pós-apocalíptico, onde a maioria da população foi transformada em zumbis devido a um vírus desconhecido. O mundo do jogo é vasto e desolado, repleto de cidades abandonadas, vilas e paisagens rurais.
+            
+            Sobrevivência: Os jogadores começam o jogo apenas com roupas simples e uma lanterna. Eles precisam procurar alimentos, água, roupas e armas para sobreviver. A exposição ao frio, fome e sede são ameaças constantes.
+            
+            Zumbis e Outros Jogadores: Além das ameaças ambientais, os jogadores também devem lidar com zumbis que vagueiam pelo mundo do jogo. Além disso, outros jogadores também representam uma ameaça, já que podem interagir de maneira hostil ou cooperativa.
+            
+            Saúde e Doenças: Os jogadores podem sofrer ferimentos, ficar doentes e precisar de cuidados médicos. A gestão da saúde é vital para a sobrevivência.
+            
+            Exploração e Construção: Os jogadores podem explorar edifícios em busca de suprimentos e criar abrigos improvisados. Itens como mochilas, facas e roupas melhores são essenciais para a sobrevivência.
+            
+            Interação Social: A interação com outros jogadores é uma parte fundamental da experiência do jogo. Os jogadores podem formar grupos, negociar e trabalhar juntos para sobreviver, ou podem escolher um caminho mais hostil, saqueando e atacando outros sobreviventes.
+            Morte Permanente: Uma característica única de DayZ é a morte permanente. Quando um jogador morre, ele perde todos os itens e progresso e deve começar do zero com um novo personagem.
+            
+            A história em DayZ é, portanto, construída a partir das experiências e interações dos jogadores no mundo hostil do jogo. O objetivo principal é sobreviver e interagir com outros jogadores de maneira dinâmica e muitas vezes imprevisível. A narrativa em DayZ é, em grande parte, uma narrativa emergente baseada nas escolhas e ações dos jogadores em um ambiente de jogo impiedoso e cheio de desafios.",
+            'video' => "mC5F8ECQnFE",
+            'imagem_esquerda' => "___",
+            'imagem_direita' => "___",
+            'background' => "https://i.imgur.com/Mgs7woO.jpg",
+            'standart1' => "https://i.imgur.com/8Yjof7e.jpg",
+            'standart2' => "https://i.imgur.com/NMypwu3.png",
+            'standart3' => "https://i.imgur.com/AfvDng9.png",
+            'standart4' => "https://i.imgur.com/F1PRULp.png",
+            'imagem_principal' => "https://i.imgur.com/WTE0Mv7.jpg",
+            'created_at' => now(),
+            'updated_at' => now()
+        ]);
+        Oferta::query()->insert([
+            [
+                'game_id' => $game->id,
+                'imagem' => "https://i.imgur.com/AEuYLrx.png",
+                'nome' => "$game->nome deluxe",
+                'descricao' => "Delux " . fake()->words(20, true),
+                'preco' => 121.99,
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'game_id' => $game->id,
+                'imagem' => "https://i.imgur.com/WTE0Mv7.jpg",
+                'nome' => "$game->nome default",
+                'descricao' => "Default " . fake()->words(20, true),
+                'preco' => 71.99,
+                'created_at' => now(),
+                'updated_at' => now()
+            ]
+        ]);
+        CategoriaGame::query()->insert([
+            [
+                'game_id' => $game->id,
+                'categoria_id' => 3,
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'game_id' => $game->id,
+                'categoria_id' => 1,
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'game_id' => $game->id,
+                'categoria_id' => 2,
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'game_id' => $game->id,
+                'categoria_id' => 5,
+                'created_at' => now(),
+                'updated_at' => now()
+            ]
+        ]);
+
+        /** Resident Evil 4 */
+        $game = Game::create([
+            'nome' => "Resident Evil 4",
+            "restricao_id" => 1,
+            'preco' => 164.34,
+            'descricao' => "Resident Evil 4 é um jogo de survival horror desenvolvido pela Capcom e lançado em 2005. A história do jogo segue o agente especial Leon S. Kennedy, que é enviado em uma missão para resgatar a filha do presidente dos Estados Unidos, Ashley Graham, que foi sequestrada por um culto misterioso na Espanha rural. A narrativa é repleta de elementos de horror, conspirações sinistras e encontros com inimigos grotescos.
+
+            Aqui está um resumo da história de Resident Evil 4:
+            
+            O jogo se inicia com Leon S. Kennedy sendo enviado para a Espanha, onde ele tem informações de que Ashley Graham, a filha do presidente, foi sequestrada por um culto chamado Los Iluminados. Leon é acompanhado por Ingrid Hunnigan, sua controladora por rádio, que fornece informações e orientações ao longo do jogo.
+            
+            Leon chega a uma vila rural isolada e logo descobre que os moradores foram infectados por um misterioso parasita que os transformou em violentos e zumbis mutantes. Ele encontra um grupo de policiais locais, mas a maioria deles é morta ou infectada. A busca por Ashley o leva a enfrentar horrores sobrenaturais e cultistas fanáticos liderados por Osmund Saddler, o carismático líder de Los Iluminados.
+            
+            Durante sua jornada, Leon encontra Luis Sera, um cientista que anteriormente trabalhou para Los Iluminados, mas se arrependeu de suas ações. Luis ajuda Leon e compartilha informações sobre o parasita, conhecido como Las Plagas, que é o cerne do culto. A história se torna uma corrida para encontrar Ashley e impedir Los Iluminados de usar as Plagas para disseminar o terror pelo mundo.
+            
+            Ao longo do jogo, Leon encontra uma variedade de inimigos, incluindo Ganados, os habitantes infectados da vila, e chefes monstruosos. Ele também se depara com Ada Wong, uma espiã misteriosa que está em busca de uma amostra das Plagas para uma organização secreta.
+            A narrativa de Resident Evil 4 é marcada por reviravoltas, traições e revelações sobre a verdadeira natureza de Los Iluminados e o parasita. A história culmina em um confronto final com Saddler e uma luta intensa para salvar Ashley.
+            
+            Resident Evil 4 é amplamente considerado um dos melhores jogos da série Resident Evil e é elogiado por sua jogabilidade envolvente, atmosfera tensa e história intrigante. A narrativa é um equilíbrio bem-sucedido entre o horror e a ação, tornando-o um clássico no gênero de survival horror.",
+            'video' => "9iy6gHDKvzA",
+            'imagem_esquerda' => "___",
+            'imagem_direita' => "___",
+            'background' => "https://i.imgur.com/GMRNl7j.jpg",
+            'standart1' => "https://i.imgur.com/v5ekB9S.png",
+            'standart2' => "https://i.imgur.com/kyuMSEx.png",
+            'standart3' => "https://i.imgur.com/uIPpeTL.png",
+            'standart4' => "https://i.imgur.com/Fqkq2Pv.png",
+            'imagem_principal' => "https://i.imgur.com/WLEdM1s.png",
+            'created_at' => now(),
+            'updated_at' => now()
+        ]);
+        Oferta::query()->insert([
+            [
+                'game_id' => $game->id,
+                'imagem' => "https://i.imgur.com/2Q0tFEP.png",
+                'nome' => "$game->nome deluxe",
+                'descricao' => "Delux " . fake()->words(20, true),
+                'preco' => 204.34,
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'game_id' => $game->id,
+                'imagem' => "https://i.imgur.com/WLEdM1s.png",
+                'nome' => "$game->nome default",
+                'descricao' => "Default " . fake()->words(20, true),
+                'preco' => 164.34,
+                'created_at' => now(),
+                'updated_at' => now()
+            ]
+        ]);
+        CategoriaGame::query()->insert([
+            [
+                'game_id' => $game->id,
+                'categoria_id' => 1,
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'game_id' => $game->id,
+                'categoria_id' => 8,
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'game_id' => $game->id,
+                'categoria_id' => 5,
+                'created_at' => now(),
+                'updated_at' => now()
+            ]
+        ]);
+
+        /** Hogwarts Legacy */
+        $game = Game::create([
+            'nome' => "Hogwarts Legacy",
+            "restricao_id" => 4,
+            'preco' => 249.99,
+            'descricao' => "Hogwarts Legacy é um jogo de RPG de ação ambientado no mundo mágico de Harry Potter, mas não é uma adaptação direta dos livros ou filmes existentes da franquia. Em vez disso, o jogo se passa no século 19, mais de 100 anos antes dos eventos retratados nos livros e filmes originais. Aqui está um resumo da história que se passa no jogo:
+
+            O jogador assume o papel de um estudante de magia que acaba de receber uma carta de aceitação para a Escola de Magia e Bruxaria de Hogwarts. No entanto, ao contrário da narrativa de Harry Potter, você não assume o papel do Menino que Sobreviveu, mas sim cria seu próprio personagem personalizado.
+            
+            A história começa com a criação de seu personagem, onde você escolhe sua casa em Hogwarts, suas habilidades mágicas e até mesmo a história de fundo de seu personagem. Isso permite que você molde a experiência de jogo de acordo com suas escolhas.
+            
+            Conforme a trama se desenrola, você descobre que sua chegada a Hogwarts coincide com eventos misteriosos e ameaças obscuras que pairam sobre o mundo mágico. Os jogadores devem investigar uma série de mistérios, aprender magias, criar poções e interagir com outros estudantes e personagens icônicos do mundo mágico. A escolha de sua casa e suas ações ao longo do jogo afetarão o desenrolar da história.
+            
+            Enquanto explora o mundo aberto de Hogwarts e seus arredores, você encontrará criaturas mágicas, participará de duelos de magia e tomará decisões morais que influenciarão o resultado da trama. A história abrange temas como descoberta de segredos antigos, relações interpessoais e escolhas éticas.
+            
+            Hogwarts Legacy oferece aos jogadores a oportunidade de viver uma experiência autêntica no mundo mágico de Harry Potter, ao mesmo tempo em que explora uma narrativa inédita e personagens únicos que contribuem para a rica história do universo mágico de J.K. Rowling.",
+            'video' => "1O6Qstncpnc",
+            'imagem_esquerda' => "___",
+            'imagem_direita' => "___",
+            'background' => "https://i.imgur.com/TqbTw7Z.jpg",
+            'standart1' => "https://i.imgur.com/gnvVkdL.png",
+            'standart2' => "https://i.imgur.com/8DbXbwg.png",
+            'standart3' => "https://i.imgur.com/Dj3T6TL.jpg",
+            'standart4' => "https://i.imgur.com/SkgU6M5.png",
+            'imagem_principal' => "https://i.imgur.com/9NzGwt4.png",
+            'created_at' => now(),
+            'updated_at' => now()
+        ]);
+        Oferta::query()->insert([
+            [
+                'game_id' => $game->id,
+                'imagem' => "https://i.imgur.com/ncvxLcV.png",
+                'nome' => "$game->nome deluxe",
+                'descricao' => "Delux " . fake()->words(20, true),
+                'preco' => 349.99,
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'game_id' => $game->id,
+                'imagem' => "https://i.imgur.com/9NzGwt4.png",
+                'nome' => "$game->nome default",
+                'descricao' => "Default " . fake()->words(20, true),
+                'preco' => 249.99,
+                'created_at' => now(),
+                'updated_at' => now()
+            ]
+        ]);
+        CategoriaGame::query()->insert([
+            [
+                'game_id' => $game->id,
+                'categoria_id' => 2,
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'game_id' => $game->id,
+                'categoria_id' => 1,
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'game_id' => $game->id,
+                'categoria_id' => 8,
+                'created_at' => now(),
+                'updated_at' => now()
+            ]
+        ]);
+
+        /** F.E.A.R 3 */
+        $game = Game::create([
+            'nome' => "F.E.A.R 3",
+            "restricao_id" => 1,
+            'preco' =>  89.99,
+            'descricao' => "F.E.A.R. 3 (também conhecido como F.E.A.R. 3 ou F.3.A.R.) é um jogo de tiro em primeira pessoa de survival horror lançado em 2011. Ele faz parte da série F.E.A.R. (First Encounter Assault Recon) e continua a história dos jogos anteriores da série. Aqui está um resumo da história do jogo:
+
+            A história de F.E.A.R. 3 segue dois irmãos: Point Man, o protagonista jogável e o personagem jogável do primeiro jogo da série, e Paxton Fettel, seu irmão mais velho com habilidades paranormais. Ambos são filhos de Alma Wade, uma poderosa psíquica que se tornou uma ameaça paranormal nos jogos anteriores.
+            
+            O jogo se passa no mundo distópico de Fairport, que foi devastado por eventos sobrenaturais e está sob o controle de forças sinistras. Alma Wade está grávida novamente, e sua gravidez é uma ameaça iminente para o mundo devido ao poder sobrenatural que ela e seus filhos possuem.
+            
+            Point Man e Fettel têm motivações diferentes. Point Man é um soldado geneticamente modificado, membro da equipe F.E.A.R., que busca destruir Alma Wade e impedir a propagação de sua influência sobrenatural. Fettel, por outro lado, deseja ajudar Alma a dar à luz sua criança e, assim, liberar ainda mais poder paranormal no mundo.
+            
+            A jogabilidade permite aos jogadores alternar entre Point Man e Fettel, cada um com habilidades únicas. Point Man é um soldado com habilidades de combate mais tradicionais, enquanto Fettel possui habilidades paranormais, como a capacidade de possuir inimigos e lançar poderes telecinéticos.
+            
+            Ao longo do jogo, os irmãos enfrentam criaturas sobrenaturais e inimigos humanos em uma série de ambientes assustadores e perturbadores. A história se desenrola através de cutscenes e interações entre os personagens, enquanto os jogadores exploram a narrativa sombria e cheia de mistério.
+            A narrativa de F.E.A.R. 3 é uma continuação da trama dos jogos anteriores, explorando temas de paranormalidade, experimentação genética e os efeitos traumáticos da infância dos protagonistas. É uma história de horror psicológico que mantém a atmosfera sinistra e ação intensa da série F.E.A.R..",
+            'video' => "Vpr_6O5iyls",
+            'imagem_esquerda' => "___",
+            'imagem_direita' => "___",
+            'background' => "https://i.imgur.com/xHk9O8J.png",
+            'standart1' => "https://i.imgur.com/LVa2nfV.png",
+            'standart2' => "https://i.imgur.com/XZiCaEL.png",
+            'standart3' => "https://i.imgur.com/dAKq26o.png",
+            'standart4' => "https://i.imgur.com/PXPHAv1.png",
+            'imagem_principal' => "https://i.imgur.com/8hF9t14.png",
+            'created_at' => now(),
+            'updated_at' => now()
+        ]);
+        Oferta::query()->insert([
+            [
+                'game_id' => $game->id,
+                'imagem' => "https://i.imgur.com/ruJ8QnW.png",
+                'nome' => "$game->nome deluxe",
+                'descricao' => "Delux " . fake()->words(20, true),
+                'preco' => 129.99,
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'game_id' => $game->id,
+                'imagem' => "https://i.imgur.com/8hF9t14.png",
+                'nome' => "$game->nome default",
+                'descricao' => "Default " . fake()->words(20, true),
+                'preco' => 89.99,
+                'created_at' => now(),
+                'updated_at' => now()
+            ]
+        ]);
+        CategoriaGame::query()->insert([
+            [
+                'game_id' => $game->id,
+                'categoria_id' => 3,
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'game_id' => $game->id,
+                'categoria_id' => 1,
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'game_id' => $game->id,
+                'categoria_id' => 5,
+                'created_at' => now(),
+                'updated_at' => now()
+            ]
+        ]);
+
+        /** Aragami 2 */
+        $game = Game::create([
+            'nome' => "Aragami 2",
+            "restricao_id" => 2,
+            'preco' => 65.99,
+            'descricao' => "Aragami 2 é um jogo de ação furtiva desenvolvido pela Lince Works e lançado em setembro de 2021. O jogo é a sequência de Aragami, e se passa em um mundo de fantasia sombrio e oriental, onde os jogadores assumem o papel de um assassino sobrenatural conhecido como Aragami. O jogo é ambientado em um mundo ameaçado por uma misteriosa doença mágica chamada Radiance, que está transformando as pessoas em zumbis.
+
+            A história de Aragami 2 segue um grupo de Aragamis, seres que possuem habilidades sobrenaturais de sombra, que se unem para proteger seu povo e descobrir a origem da Radiance. Os Aragamis vivem nas sombras e têm a capacidade de se teleportar de sombra em sombra, controlar a escuridão e usar várias habilidades de furtividade para se mover pelo mundo e eliminar inimigos.
+            
+            Os Aragamis formam uma sociedade secreta conhecida como Shadow Clan e trabalham juntos para combater a Radiance e suas criaturas corruptas. Durante o jogo, os jogadores se aventuram por uma série de ambientes furtivos, enfrentam inimigos mágicos e humanos, resolvem quebra-cabeças e desvendam os segredos por trás da Radiance.
+            
+            A narrativa de Aragami 2 se desenrola à medida que os jogadores completam missões, interagem com personagens e descobrem documentos e diálogos que fornecem pistas sobre a história e a origem da Radiance. À medida que a trama se desenvolve, os jogadores também exploram temas de sacrifício, lealdade e a luta pelo bem-estar de seu povo.
+            
+            Em resumo, a história de Aragami 2 gira em torno de um grupo de assassinos sobrenaturais que se unem para combater a ameaça da Radiance e descobrir seus segredos, enquanto usam suas habilidades de sombra para se mover furtivamente e derrotar inimigos em um mundo de fantasia oriental.",
+            'video' => "HMvotSyvHKc",
+            'imagem_esquerda' => "___",
+            'imagem_direita' => "___",
+            'background' => "https://i.imgur.com/n72Ur89.jpg",
+            'standart1' => "https://i.imgur.com/nE7NqIM.png",
+            'standart2' => "https://i.imgur.com/AtO0YwJ.png",
+            'standart3' => "https://i.imgur.com/JISmIPW.png",
+            'standart4' => "https://i.imgur.com/HaDboq3.png",
+            'imagem_principal' => "https://i.imgur.com/seleVOu.png",
+            'created_at' => now(),
+            'updated_at' => now()
+        ]);
+        Oferta::query()->insert([
+            [
+                'game_id' => $game->id,
+                'imagem' => "https://i.imgur.com/qYCupth.jpg",
+                'nome' => "$game->nome deluxe",
+                'descricao' => "Delux " . fake()->words(20, true),
+                'preco' => 105.99,
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'game_id' => $game->id,
+                'imagem' => "https://i.imgur.com/seleVOu.png",
+                'nome' => "$game->nome default",
+                'descricao' => "Default " . fake()->words(20, true),
+                'preco' => 65.99,
+                'created_at' => now(),
+                'updated_at' => now()
+            ]
+        ]);
+        CategoriaGame::query()->insert([
+            [
+                'game_id' => $game->id,
+                'categoria_id' => 3,
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'game_id' => $game->id,
+                'categoria_id' => 1,
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'game_id' => $game->id,
+                'categoria_id' => 7,
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'game_id' => $game->id,
+                'categoria_id' => 5,
                 'created_at' => now(),
                 'updated_at' => now()
             ]
