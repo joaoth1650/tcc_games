@@ -7,7 +7,7 @@ import ScrollCarousel from 'scroll-carousel';
 import ArrowBackIosRoundedIcon from '@mui/icons-material/ArrowBackIosRounded';
 import ArrowForwardIosRoundedIcon from '@mui/icons-material/ArrowForwardIosRounded';
 
-export default function Dashboard({ auth, recomendados, promocoes, slides, moreViews, allGames, gamesOfTerror }: PageProps<{ allGames: Array<any>, recomendados: Array<any>, promocoes: any, slides: Array<any>, moreViews: Array<any>, gamesOfTerror: Array<any> }>) {
+export default function Dashboard({ auth, recomendados, promocoes, slides, moreViews, allGames, gamesOfTerror, gamesOfIndie }: PageProps<{ allGames: Array<any>, recomendados: Array<any>, promocoes: any, slides: Array<any>, moreViews: Array<any>, gamesOfTerror: Array<any>, gamesOfIndie: Array<any> }>) {
     const [imagemIndex, setImagemIndex] = useState(0);
     const [imagemMouseHover, setImagemMouseHover] = useState<string | null>(null);
 
@@ -161,21 +161,24 @@ export default function Dashboard({ auth, recomendados, promocoes, slides, moreV
                                 ))}
                             </div>
                         </div>
-                        
+
                         <div className="flex justify-between">
-                            <h1 className='text-2xl  float-left uppercase th-espace-default underline underline-offset-8 '>Terror</h1>
+                            <h1 className='text-2xl  float-left uppercase th-espace-default underline underline-offset-8 '>Indie</h1>
                             <a href="/" className='text-xl float-left mt-28 hover:text-sky-400'> ——  veja mais</a>
                         </div>
                         <div className="grid grid-cols-2 gap-4 mt-4">
+                            <div className="col-span-2 md:col-span-1 th-card_dashboard">
+                                <img src={promocoes.imagem} alt="promoção especial" className='cursor-pointer object-cover rounded-lg shadow-md  hover:duration-300 hover:-translate-y-4' />
+                            </div>
                             <div className="grid grid-cols-2 grid-rows-2 gap-4">
-                                {gamesOfTerror.map((gameOfTerror: any, index: number) => (
-                                    <div key={gameOfTerror.id} className="col-span-1 row-span-1 th-card_dashboard hover:scale-110">
+                                {gamesOfIndie.map((gamesOfIndie: any, index: number) => (
+                                    <div key={gamesOfIndie.id} className="col-span-1 row-span-1 th-card_dashboard hover:scale-110">
                                         <Link
-                                            href={route('games.show', { 'id': gameOfTerror.id })}
+                                            href={route('games.show', { 'id': gamesOfIndie.id })}
                                             className="font-semibold text-gray-600 hover:text-gray-900 focus:rounded-sm"
                                         >
                                             <img
-                                                src={gameOfTerror.imagem_principal}
+                                                src={gamesOfIndie.imagem_principal}
                                                 alt=""
                                                 className=" object-cover bg-cover rounded-lg shadow-md max-h-96 w-[100%]"
                                             />
@@ -183,11 +186,8 @@ export default function Dashboard({ auth, recomendados, promocoes, slides, moreV
                                     </div>
                                 ))}
                             </div>
-                            <div className="col-span-2 md:col-span-1 th-card_dashboard">
-                                <img src={promocoes.imagem} alt="promoção especial" className='cursor-pointer object-cover rounded-lg shadow-md  hover:duration-300 hover:-translate-y-4' />
-                            </div>
                         </div>
-                        
+
                     </div>
                 </div>
             </div>
