@@ -144,6 +144,50 @@ export default function Dashboard({ auth, recomendados, promocoes, slides, moreV
                             </div>
                         </div>
 
+                        <div className="grid grid-rows-2">
+                            <div className="flex justify-between">
+                                <h1 className='text-2xl  float-left uppercase th-espace-default underline underline-offset-8 '>Jogos</h1>
+                                <a href="/" className='text-xl float-left mt-28 hover:text-sky-400'>——  veja mais</a>
+                            </div>
+                            <div className="grid grid-cols-4 gap-5">
+                                {allGames.map((allGame: any) => (
+                                    <div key={allGame.id} className='th-card_dashboard ' >
+                                        <Link
+                                            href={route('games.show', { 'id': allGame.id })}
+                                            className="font-semibold text-gray-600 hover:text-gray-900  focus:rounded-sm ">
+                                            <img src={allGame.imagem_principal} alt="" className={"object-cover rounded-lg shadow-md max-h-36 w-[100%]"} />
+                                        </Link>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                        
+                        <div className="flex justify-between">
+                            <h1 className='text-2xl  float-left uppercase th-espace-default underline underline-offset-8 '>Terror</h1>
+                            <a href="/" className='text-xl float-left mt-28 hover:text-sky-400'> ——  veja mais</a>
+                        </div>
+                        <div className="grid grid-cols-2 gap-4 mt-4">
+                            <div className="grid grid-cols-2 grid-rows-2 gap-4">
+                                {gamesOfTerror.map((gameOfTerror: any, index: number) => (
+                                    <div key={gameOfTerror.id} className="col-span-1 row-span-1 th-card_dashboard hover:scale-110">
+                                        <Link
+                                            href={route('games.show', { 'id': gameOfTerror.id })}
+                                            className="font-semibold text-gray-600 hover:text-gray-900 focus:rounded-sm"
+                                        >
+                                            <img
+                                                src={gameOfTerror.imagem_principal}
+                                                alt=""
+                                                className=" object-cover bg-cover rounded-lg shadow-md max-h-96 w-[100%]"
+                                            />
+                                        </Link>
+                                    </div>
+                                ))}
+                            </div>
+                            <div className="col-span-2 md:col-span-1 th-card_dashboard">
+                                <img src={promocoes.imagem} alt="promoção especial" className='cursor-pointer object-cover rounded-lg shadow-md  hover:duration-300 hover:-translate-y-4' />
+                            </div>
+                        </div>
+                        
                     </div>
                 </div>
             </div>

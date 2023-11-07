@@ -32,9 +32,32 @@ class DashboardService
 
     public static function getOfTerror(): Collection
     {
-        // Use a função "whereHas" para buscar os jogos que tenham a categoria "terror"
         return Game::whereHas('categorias', function (Builder $query) {
             $query->where('nome', 'Terror');
+        })->inRandomOrder()
+        ->take(4)
+        ->get();
+    }
+    public static function getOfMultiplayer(): Collection
+    {
+        return Game::whereHas('categorias', function (Builder $query) {
+            $query->where('nome', 'Multiplayer');
+        })->inRandomOrder()
+        ->take(4)
+        ->get();
+    }
+    public static function getOfIndie(): Collection
+    {
+        return Game::whereHas('categorias', function (Builder $query) {
+            $query->where('nome', 'Indie');
+        })->inRandomOrder()
+        ->take(4)
+        ->get();
+    }
+    public static function getOfAcao(): Collection
+    {
+        return Game::whereHas('categorias', function (Builder $query) {
+            $query->where('nome', 'Ação');
         })->inRandomOrder()
         ->take(4)
         ->get();
