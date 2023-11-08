@@ -14,15 +14,15 @@ class GameController extends Controller
 {
     public function index(Request $request)
     {
-        $smallPrice = $request->input('smallPrice');
-        $highPrice = $request->input('highPrice');
+        $minPrice = $request->input('minPrice');
+        $maxPrice = $request->input('maxPrice');
 
-        if (!empty($smallPrice) && !empty($highPrice)) {
-            $games = FiltroService::getFilterForPreco($smallPrice, $highPrice);
+        if (!empty($minPrice) && !empty($maxPrice)) {
+            $games = FiltroService::getFilterForPreco($minPrice, $maxPrice);
         }else{
             $games = Game::all();
         }
-        
+
 
         if (empty(auth()->user())) {
             return Inertia::render('Games/IndexGames', ['games' => $games]);

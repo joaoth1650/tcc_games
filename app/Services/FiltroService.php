@@ -14,10 +14,9 @@ class FiltroService
             ->join('games', 'categoria_games.game_id', '=', 'games.id')
             ->get();
     }
-    public static function getFilterForPreco($smallPrice, $highPrice)
+    public static function getFilterForPreco($minPrice, $maxPrice)
     {
-        return Game::whereBetween('preco', [$smallPrice, $highPrice])
-        ->get();
+        return Game::whereBetween('preco', [$minPrice, $maxPrice])->get();
     }
     public static function getFilterForNome($name)
     {
