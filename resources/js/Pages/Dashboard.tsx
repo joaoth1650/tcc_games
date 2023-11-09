@@ -6,6 +6,7 @@ import { Carousel } from '@trendyol-js/react-carousel';
 import ScrollCarousel from 'scroll-carousel';
 import ArrowBackIosRoundedIcon from '@mui/icons-material/ArrowBackIosRounded';
 import ArrowForwardIosRoundedIcon from '@mui/icons-material/ArrowForwardIosRounded';
+import FooterBox from '@/Components/FooterBox';
 
 export default function Dashboard({ auth, recomendados, promocoes, slides, moreViews, allGames, gamesOfTerror, gamesOfIndie }: PageProps<{ allGames: Array<any>, recomendados: Array<any>, promocoes: any, slides: Array<any>, moreViews: Array<any>, gamesOfTerror: Array<any>, gamesOfIndie: Array<any> }>) {
     const [imagemIndex, setImagemIndex] = useState(0);
@@ -189,8 +190,9 @@ export default function Dashboard({ auth, recomendados, promocoes, slides, moreV
                         </div>
 
                     </div>
-                </div>
+                </div>                
             </div>
+            <FooterBox />
         </VisitanteLayout >
     );
 }
