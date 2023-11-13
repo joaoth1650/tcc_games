@@ -190,9 +190,9 @@ export default function Dashboard({ auth, recomendados, promocoes, slides, moreV
                         </div>
 
                     </div>
-                </div>                
+                </div>
             </div>
-            <FooterBox />
+            
         </VisitanteLayout >
     );
 }

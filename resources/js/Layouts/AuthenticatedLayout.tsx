@@ -5,6 +5,7 @@ import NavLink from '@/Components/NavLink';
 import ResponsiveNavLink from '@/Components/ResponsiveNavLink';
 import { Link } from '@inertiajs/react';
 import { User } from '@/types';
+import FooterBox from '@/Components/FooterBox';
 
 export default function Authenticated({ user, header, children }: PropsWithChildren<{ user: User, header?: ReactNode }>) {
     const [showingNavigationDropdown, setShowingNavigationDropdown] = useState(false);
@@ -132,6 +133,7 @@ export default function Authenticated({ user, header, children }: PropsWithChild
             )}
 
             <main className='bg-stone-900'>{children}</main>
+            <FooterBox />
         </div>
     );
 }

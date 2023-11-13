@@ -81,6 +81,6 @@ class FavoriteController extends Controller
             ->where('game_id', $id)
             ->delete();
             return response ()->json(['Esse jogo foi removido da sua wishlist com sucesso!'], 200);
-           
+
     }
 }
