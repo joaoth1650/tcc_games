@@ -9,9 +9,12 @@ use Illuminate\Database\Eloquent\Builder;
 
 class DashboardService
 {
-    public static function getOferta(): Oferta | null
+    public static function getOferta(): Game | Collection
     {
-        return Oferta::query()->where('id', 2)->first();
+        return Game::query()
+        ->where('id', 1)
+        ->with('ofertas')
+        ->get();
     }
 
     public static function getSlide(): Collection

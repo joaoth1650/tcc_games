@@ -41,7 +41,7 @@ export default function Dashboard({ auth, recomendados, promocoes, slides, moreV
                         <div className="grid grid-cols-3 mb-3 ">
                             <h1 className='text-2xl  float-left uppercase underline underline-offset-8  '>Recomendados</h1>
                             <span></span>
-                            <h1 className='text-2xl text-right uppercase underline underline-offset-8 '>Promoção Especial</h1>
+                            <h1 className='text-2xl text-right uppercase underline underline-offset-8 '>Promoção semanal</h1>
                         </div>
                         <div className="grid grid-cols-3 gap-7">
                             <div className="grid grid-rows-3 gap-6 col-span-2 ">
@@ -58,7 +58,13 @@ export default function Dashboard({ auth, recomendados, promocoes, slides, moreV
                             </div>
                             <div className="relative overflow-hidden group">
                                 <div className="absolute inset-0 transform scale-100 group-hover:scale-110 transition-transform duration-300 ease-in-out cursor-pointer">
-                                    <img src={promocoes.imagem} className="object-cover rounded-lg shadow-md h-[100%]" alt="" />
+                                    <Link
+                                        href={route('games.show', { 'id': promocoes.id })}
+                                        className="font-semibold text-gray-600 hover:text-gray-900  focus:rounded-sm ">
+                                        <img src={promocoes.imagem_principal} alt={promocoes.nome}
+                                            title={promocoes.nome} className={"object-cover rounded-lg shadow-md h-[100%]"} />
+                                    </Link>
+
                                 </div>
                             </div>
                         </div>
@@ -86,7 +92,7 @@ export default function Dashboard({ auth, recomendados, promocoes, slides, moreV
                         <div className="grid grid-rows-2">
                             <div className="flex justify-between">
                                 <h1 className='text-2xl  float-left uppercase th-espace-default underline underline-offset-8 '>Jogos</h1>
-                                <a href="/" className='text-xl float-left mt-28 hover:text-sky-400'>——  veja mais</a>
+                                <a href="/navegar" className='text-xl float-left mt-28 hover:text-sky-400'>——  veja mais</a>
                             </div>
                             <div className="grid grid-cols-4 gap-5">
                                 {allGames.map((allGame: any) => (
@@ -121,7 +127,7 @@ export default function Dashboard({ auth, recomendados, promocoes, slides, moreV
 
                         <div className="flex justify-between">
                             <h1 className='text-2xl  float-left uppercase th-espace-default underline underline-offset-8 '>Terror</h1>
-                            <a href="/" className='text-xl float-left mt-28 hover:text-sky-400'> ——  veja mais</a>
+                            <a href="/navegar" className='text-xl float-left mt-28 hover:text-sky-400'> ——  veja mais</a>
                         </div>
                         <div className="grid grid-cols-2 gap-4 mt-4">
                             <div className="grid grid-cols-2 grid-rows-2 gap-4">
@@ -165,7 +171,7 @@ export default function Dashboard({ auth, recomendados, promocoes, slides, moreV
 
                         <div className="flex justify-between">
                             <h1 className='text-2xl  float-left uppercase th-espace-default underline underline-offset-8 '>Indie</h1>
-                            <a href="/" className='text-xl float-left mt-28 hover:text-sky-400'> ——  veja mais</a>
+                            <a href="/navegar" className='text-xl float-left mt-28 hover:text-sky-400'> ——  veja mais</a>
                         </div>
                         <div className="grid grid-cols-2 gap-4 mt-4">
                             <div className="col-span-2 md:col-span-1 th-card_dashboard">
@@ -192,7 +198,7 @@ export default function Dashboard({ auth, recomendados, promocoes, slides, moreV
                     </div>
                 </div>
             </div>
-            
+
         </VisitanteLayout >
     );
 }

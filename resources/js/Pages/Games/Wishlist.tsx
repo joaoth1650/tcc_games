@@ -67,6 +67,7 @@ export default function Wishlist({ auth }: PageProps<{ favoritos: any }>) {
                                         <p className="leading-4 text-white px-8 mt-2">{favorito.games.descricao.substring(0, 50) + '...'}</p>
                                         <span></span>
                                         <div className="flex justify-end text-center mt-8">
+                                            
                                             <ShoppingCartIcon className="text-white hover:text-sky-400 cursor-crosshair" sx={{ fontSize: 30 }} />
                                             <h1 className='text-2xl px-5 text-white'>R${favorito.games.preco}</h1>
                                         </div>

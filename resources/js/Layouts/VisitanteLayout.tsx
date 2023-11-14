@@ -1,5 +1,6 @@
 import ApplicationLogo from '@/Components/ApplicationLogo';
 import Dropdown from '@/Components/Dropdown';
+import FooterBox from '@/Components/FooterBox';
 import NavLink from '@/Components/NavLink';
 import ResponsiveNavLink from '@/Components/ResponsiveNavLink';
 import { PageProps } from '@/types';
@@ -161,7 +162,7 @@ export default function VisitanteLayout({ auth, children, title, header }: PageP
                 )}
 
                 <main className='bg-stone-900'>{children}</main>
-
+                <FooterBox />
             </div>
         </>
     );
