@@ -9,17 +9,14 @@ use Illuminate\Database\Eloquent\Builder;
 
 class DashboardService
 {
-    public static function getOferta(): Game | Collection
+    public static function getOferta():Collection
     {
-        return Game::query()
-        ->where('id', 1)
-        ->with('ofertas')
-        ->get();
+        return Oferta::query()->where('id', 2)->get();
     }
 
     public static function getSlide(): Collection
     {
-        return Game::query()->whereIn('id', [17, 5, 8, 4])->get();
+        return Game::query()->whereIn('id', [17, 5, 8, 14])->get();
     }
 
     public static function getMaisAcessados(): Collection

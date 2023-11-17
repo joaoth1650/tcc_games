@@ -11,7 +11,7 @@ class RecomendadoService
 {
   public static function getRecomendados (): Collection
   {
-    return Game::query()->whereIn('id', [10, 2, 3])->get();
+    return Game::query()->whereIn('id', [22, 8, 3])->get();
   }
 }
 

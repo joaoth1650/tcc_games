@@ -9,6 +9,7 @@ import ArrowForwardIosRoundedIcon from '@mui/icons-material/ArrowForwardIosRound
 import FooterBox from '@/Components/FooterBox';
 
 export default function Dashboard({ auth, recomendados, promocoes, slides, moreViews, allGames, gamesOfTerror, gamesOfIndie }: PageProps<{ allGames: Array<any>, recomendados: Array<any>, promocoes: any, slides: Array<any>, moreViews: Array<any>, gamesOfTerror: Array<any>, gamesOfIndie: Array<any> }>) {
+    console.log(promocoes);
     const [imagemIndex, setImagemIndex] = useState(0);
     const [imagemMouseHover, setImagemMouseHover] = useState<string | null>(null);
 
@@ -59,12 +60,11 @@ export default function Dashboard({ auth, recomendados, promocoes, slides, moreV
                             <div className="relative overflow-hidden group">
                                 <div className="absolute inset-0 transform scale-100 group-hover:scale-110 transition-transform duration-300 ease-in-out cursor-pointer">
                                     <Link
-                                        href={route('games.show', { 'id': promocoes.id })}
+                                        href={route('games.show', { 'id': 1 })}
                                         className="font-semibold text-gray-600 hover:text-gray-900  focus:rounded-sm ">
-                                        <img src={promocoes.imagem_principal} alt={promocoes.nome}
-                                            title={promocoes.nome} className={"object-cover rounded-lg shadow-md h-[100%]"} />
+                                        <img src={promocoes[0].imagem} alt={promocoes[0].nome}
+                                            title={promocoes[0].nome} className={"object-cover rounded-lg shadow-md h-[100%]"} />
                                     </Link>
-
                                 </div>
                             </div>
                         </div>
@@ -91,7 +91,7 @@ export default function Dashboard({ auth, recomendados, promocoes, slides, moreV
 
                         <div className="grid grid-rows-2">
                             <div className="flex justify-between">
-                                <h1 className='text-2xl  float-left uppercase th-espace-default underline underline-offset-8 '>Jogos</h1>
+                                <Link href={route('games.index')}><h1 className='text-2xl  float-left uppercase th-espace-default underline underline-offset-8 '>Jogos</h1></Link>
                                 <a href="/navegar" className='text-xl float-left mt-28 hover:text-sky-400'>——  veja mais</a>
                             </div>
                             <div className="grid grid-cols-4 gap-5">
@@ -107,7 +107,7 @@ export default function Dashboard({ auth, recomendados, promocoes, slides, moreV
                             </div>
                         </div>
 
-                        <h1 className='text-2xl  float-left uppercase th-espace-default underline underline-offset-8 mb-5'>Mais acessados</h1>
+                        <h1 className='text-2xl  float-left uppercase th-espace-default underline underline-offset-8 mb-5 cursor-default'>Mais acessados</h1>
                         <Carousel show={3} slide={2} transition={0.5} useArrowKeys={true} leftArrow={<ArrowBackIosRoundedIcon className='mt-16 cursor-pointer' />} rightArrow={<ArrowForwardIosRoundedIcon className='mt-16 cursor-pointer' />}>
                             {moreViews.map((moreView: any) => (
                                 <div key={moreView.id} className='px-2 th-card_dashboard relative'>
@@ -154,7 +154,7 @@ export default function Dashboard({ auth, recomendados, promocoes, slides, moreV
                         <div className="grid grid-rows-2">
                             <div className="flex justify-between">
                                 <h1 className='text-2xl  float-left uppercase th-espace-default underline underline-offset-8 '>Jogos</h1>
-                                <a href="/" className='text-xl float-left mt-28 hover:text-sky-400'>——  veja mais</a>
+                                <a href="/navegar" className='text-xl float-left mt-28 hover:text-sky-400'>——  veja mais</a>
                             </div>
                             <div className="grid grid-cols-4 gap-5">
                                 {allGames.map((allGame: any) => (
@@ -195,6 +195,11 @@ export default function Dashboard({ auth, recomendados, promocoes, slides, moreV
                             </div>
                         </div>
 
+                    </div>
+                    <div className="mx-auto th-espace-default w-fit p-5 ">
+                        <Link href={route('games.index')} className="font-semibold text-2xl text-stone-500 hover:text-stone-300 focus:rounded-sm">
+                            <div className="flex justify-center uppercase">—— Veja mais Jogos ——</div>
+                        </Link>
                     </div>
                 </div>
             </div>
