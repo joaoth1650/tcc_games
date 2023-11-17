@@ -147,7 +147,12 @@ export default function Dashboard({ auth, recomendados, promocoes, slides, moreV
                                 ))}
                             </div>
                             <div className="col-span-2 md:col-span-1 th-card_dashboard">
-                                <img src={promocoes.imagem} alt="promoção especial" className='cursor-pointer object-cover rounded-lg shadow-md  hover:duration-300 hover:-translate-y-4' />
+                                <Link
+                                    href={route('games.show', { 'id': 1 })}
+                                    className="font-semibold text-gray-600 hover:text-gray-900  focus:rounded-sm ">
+                                    <img src={promocoes[0].imagem} alt={promocoes[0].nome}
+                                        title={promocoes[0].nome} className={"object-cover rounded-lg shadow-md h-[100%]"} />
+                                </Link>
                             </div>
                         </div>
 
@@ -175,7 +180,12 @@ export default function Dashboard({ auth, recomendados, promocoes, slides, moreV
                         </div>
                         <div className="grid grid-cols-2 gap-4 mt-4">
                             <div className="col-span-2 md:col-span-1 th-card_dashboard">
-                                <img src={promocoes.imagem} alt="promoção especial" className='cursor-pointer object-cover rounded-lg shadow-md  hover:duration-300 hover:-translate-y-4' />
+                                <Link
+                                    href={route('games.show', { 'id': 1 })}
+                                    className="font-semibold text-gray-600 hover:text-gray-900  focus:rounded-sm ">
+                                    <img src={promocoes[0].imagem} alt={promocoes[0].nome}
+                                        title={promocoes[0].nome} className={"object-cover rounded-lg shadow-md h-[100%]"} />
+                                </Link>
                             </div>
                             <div className="grid grid-cols-2 grid-rows-2 gap-4">
                                 {gamesOfIndie.map((gamesOfIndie: any, index: number) => (

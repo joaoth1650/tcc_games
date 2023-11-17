@@ -9,7 +9,7 @@ const PriceFilter = ({ onFilterChange }: any) => {
         if (onFilterChange) {
             axios.get(`/navegar?minPrice=${minPrice}&maxPrice=${maxPrice}`)
                 .then((response) => {
-                    onFilterChange(response.data);
+                    onFilterChange(response);
                 })
                 .catch((error) => {
                     console.error(error);
