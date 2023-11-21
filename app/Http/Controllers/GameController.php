@@ -19,7 +19,7 @@ class GameController extends Controller
 
         if (!empty($minPrice) && !empty($maxPrice)) {
             $games = FiltroService::getFilterForPreco($minPrice, $maxPrice);
-        }else{
+        } else {
             $games = Game::all();
         }
 
@@ -77,6 +77,7 @@ class GameController extends Controller
 
     public function showFavorite(Request $request)
     {
+        $id = $request->input('id');
         if (empty(auth()->user())) {
             return redirect()->route('games.index');
         }
@@ -86,8 +87,13 @@ class GameController extends Controller
             ->with('games')
             ->get();
 
+        $games = Game::query()
+            ->with('ofertas', 'restricao')
+            ->find($id);
+
         $data = [
             'favoritos' => $favoritos,
+            'games' => $games,
         ];
 
         return inertia('Games/Wishlist', $data);
@@ -102,10 +108,6 @@ class GameController extends Controller
             ->where('user_id', auth()->user()->id)
             ->where('game_id', $id)
             ->delete();
-            return response ()->json(['Esse jogo foi removido da sua wishlist com sucesso!'], 204);
-
+        return response()->json(['Esse jogo foi removido da sua wishlist com sucesso!'], 204);
     }
-
-
-
 }
