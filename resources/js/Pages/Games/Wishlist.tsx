@@ -103,12 +103,7 @@ export default function Wishlist({ auth, games }: PageProps<{ favoritos: any, ga
                                             <span></span>
                                         </Link>
                                         <div className="flex justify-end text-center mt-8">
-<<<<<<< HEAD
-
-                                            <ShoppingCartIcon className="text-white hover:text-sky-400 cursor-crosshair" sx={{ fontSize: 30 }} />
-=======
                                             <ShoppingCartIcon className="text-white hover:text-sky-400 cursor-crosshair" sx={{ fontSize: 30 }} onClick={() => handleClick(auth, games.ofertas.id)} />
->>>>>>> e232e748625b1bd4c9741e79e3139557a7ae972b
                                             <h1 className='text-2xl px-5 text-white'>R${favorito.games.preco}</h1>
                                         </div>
                                     </div>
