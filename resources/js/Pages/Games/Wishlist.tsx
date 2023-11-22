@@ -5,10 +5,12 @@ import axios from 'axios';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import { useEffect, useState } from 'react';
+import Swal from 'sweetalert2';
 
-export default function Wishlist({ auth }: PageProps<{ favoritos: any }>) {
+export default function Wishlist({ auth, games }: PageProps<{ favoritos: any, games: any }>) {
     const [favoritos, setFavoritos] = useState([]);
     const [efeito, setEfeito] = useState('');
+    const [addAoCarrinho, setAddAoCarrinho] = useState<any>([]);
 
     useEffect(() => {
         axios.get(route('favorite.index')).then((response) => {
@@ -23,6 +25,38 @@ export default function Wishlist({ auth }: PageProps<{ favoritos: any }>) {
             setEfeito('overflow-hidden shadow-sm rounded-lg grid grid-cols-2 gap-6');
         }
     }, [favoritos])
+
+    const handleClick = (auth: any, ofertaId: number) => {
+
+        if (auth.user === null) {
+            Swal.fire({
+                title: 'Você precisa estar logado para adicionar um jogo ao seu carrinho!',
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 3000,
+                timerProgressBar: true,
+                html: `<a href="/register" >Criar conta agora!</a>`,
+            });
+            return;
+        } else if (addAoCarrinho.includes(ofertaId)) {
+            Swal.fire({
+                title: 'Jogo ja adicionado ao carrinho!',
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 3000,
+                timerProgressBar: true,
+            });
+            return;
+        }
+
+        axios.post(route('cart.create'), { oferta_id: ofertaId }).then((response) => {
+
+            setAddAoCarrinho([...addAoCarrinho, ofertaId]);
+        })
+
+    };
 
     console.log(favoritos)
     return (
@@ -61,17 +95,23 @@ export default function Wishlist({ auth }: PageProps<{ favoritos: any }>) {
                                         <img src={favorito.games.imagem_principal} alt={favorito.games.nome}
                                             title={favorito.games.nome} className={"object-cover bg-center rounded-2xl shadow-md max-h-96 h-80 w-[100%] transform scale-100 group-hover:scale-110 transition-transform duration-300 ease-in-out "} />
                                     </Link>
-                                    <Link className='grid grid-rows-4'
-                                        href={route('games.show', { 'id': favorito.game_id })}>
-                                        <h1 className='text-3xl uppercase px-5 text-white'>{favorito.games.nome}</h1>
-                                        <p className="leading-4 text-white px-8 mt-2">{favorito.games.descricao.substring(0, 50) + '...'}</p>
-                                        <span></span>
+                                    <div className='grid grid-rows-4'>
+                                        <Link className='row-span-3'
+                                            href={route('games.show', { 'id': favorito.game_id })}>
+                                            <h1 className='text-3xl uppercase px-5 text-white'>{favorito.games.nome}</h1>
+                                            <p className="leading-4 text-white px-8 mt-2">{favorito.games.descricao.substring(0, 50) + '...'}</p>
+                                            <span></span>
+                                        </Link>
                                         <div className="flex justify-end text-center mt-8">
+<<<<<<< HEAD
 
                                             <ShoppingCartIcon className="text-white hover:text-sky-400 cursor-crosshair" sx={{ fontSize: 30 }} />
+=======
+                                            <ShoppingCartIcon className="text-white hover:text-sky-400 cursor-crosshair" sx={{ fontSize: 30 }} onClick={() => handleClick(auth, games.ofertas.id)} />
+>>>>>>> e232e748625b1bd4c9741e79e3139557a7ae972b
                                             <h1 className='text-2xl px-5 text-white'>R${favorito.games.preco}</h1>
                                         </div>
-                                    </Link>
+                                    </div>
                                 </div>
                             ))
                         )}
