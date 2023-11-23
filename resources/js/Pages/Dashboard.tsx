@@ -1,7 +1,7 @@
 import VisitanteLayout from '@/Layouts/VisitanteLayout';
 import { Head, Link } from '@inertiajs/react';
 import { PageProps } from '@/types';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Carousel } from '@trendyol-js/react-carousel';
 import ScrollCarousel from 'scroll-carousel';
 import ArrowBackIosRoundedIcon from '@mui/icons-material/ArrowBackIosRounded';
@@ -9,22 +9,21 @@ import ArrowForwardIosRoundedIcon from '@mui/icons-material/ArrowForwardIosRound
 import FooterBox from '@/Components/FooterBox';
 
 export default function Dashboard({ auth, recomendados, promocoes, slides, moreViews, allGames, gamesOfTerror, gamesOfIndie }: PageProps<{ allGames: Array<any>, recomendados: Array<any>, promocoes: any, slides: Array<any>, moreViews: Array<any>, gamesOfTerror: Array<any>, gamesOfIndie: Array<any> }>) {
-    console.log(promocoes);
+    console.log(slides)
     const [imagemIndex, setImagemIndex] = useState(0);
-    const [imagemMouseHover, setImagemMouseHover] = useState<string | null>(null);
+    const divRef = useRef(null);
 
     useEffect(() => {
+        const divElement = divRef.current;
         const interval = setInterval(() => {
             setImagemIndex((prevIndex) => (prevIndex + 1) % slides.length);
+            divElement!.classList.remove('animate-slide');
+            void divElement!.offsetWidth;
+            divElement!.classList.add('animate-slide');
         }, 5000);
-
         return () => clearInterval(interval);
     }, []);
 
-    const handleClickItem = (index: any) => {
-        setImagemMouseHover(slides[index].imagem_principal);
-        setImagemIndex(index);
-    };
 
     // new ScrollCarousel(".my-carousel") //carousel com scroll muito show de bola
 
@@ -68,24 +67,34 @@ export default function Dashboard({ auth, recomendados, promocoes, slides, moreV
                                 </div>
                             </div>
                         </div>
-                        <div className="rounded-xl th-espace-default bg-no-repeat bg-center bg-cover shadow-2xl shadow-stone-600" style={{ backgroundImage: `url(${imagemMouseHover || slides[imagemIndex]?.imagem_principal || ''})` }}>
-                            <div className="flex justify-end">
-                                <div className="grid grid-rows-4 gap-4 cursor-pointer p-6">
-                                    {slides.map((slide: any, index: number) => (
-                                        <div
-                                            key={slide.id}
-                                            onClick={() => handleClickItem(index)}
-                                            className={index === imagemIndex ? 'th-card_full_opacity' : 'th-card_dashboard'}
-                                        >
-                                            <img
-                                                src={slide.imagem_principal}
-                                                alt={slide.nome}
-                                                title={slide.nome}
-                                                className="object-cover rounded-lg shadow-md max-h-36 w-[100%]"
-                                            />
-                                        </div>
-                                    ))}
+                        <div className="relative rounded-xl th-espace-default bg-no-repeat bg-center bg-cover shadow-2xl shadow-stone-600" style={{ backgroundImage: `url(${slides[imagemIndex]!.imagem_principal})` }}>
+                            <div className="flex justify-between">
+                                <div className="px-14 flex flex-col justify-end mb-14">
+                                    <Link
+                                        href={route('games.show', { 'id': 8 })}
+                                    >
+                                    <div className="lh-btn-primary w-56 ">Comprar agora!</div>
+                                    </Link>
                                 </div>
+                                <div>
+                                    <div className="grid grid-rows-4 gap-4 cursor-pointer p-6 relative">
+                                        {slides.map((slide: any, index: number) => (
+                                            <div
+                                                key={slide.id}
+                                                onClick={() => setImagemIndex(index)}
+                                                className={index === imagemIndex ? 'th-card_full_opacity' : 'th-card_dashboard'}
+                                            >
+                                                <img
+                                                    src={slide.imagem_principal}
+                                                    alt={slide.nome}
+                                                    title={slide.nome}
+                                                    className="object-cover rounded-lg shadow-md max-h-36 w-[100%]"
+                                                />
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+                                <div ref={divRef} className="absolute bottom-0 left-0 w-full h-1 bg-blue-500 animate-slide" />
                             </div>
                         </div>
 

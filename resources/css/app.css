@@ -137,3 +137,16 @@
 .lh-text-tertiary{
     @apply text-indigo-600
 }
+
+@keyframes slide {
+    from {
+      width: 0%;
+    }
+    to {
+      width: 100%;
+    }
+  }
+
+  .animate-slide {
+    animation: slide 5s ease-in;
+  }

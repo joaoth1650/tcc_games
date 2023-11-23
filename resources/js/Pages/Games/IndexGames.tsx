@@ -8,12 +8,12 @@ import { IconButton } from "@mui/material";
 import Swal from "sweetalert2";
 import { useEffect, useState } from "react";
 import PriceFilter from "@/Components/FilterGamesByPrice";
+import Dropdown from "@/Components/Dropdown";
 
 export default function IndexGames({ auth, games }: PageProps<{ games: Array<any>, auth: object }>) {
     const [minPrice, setMinPrice] = useState<any>(0);
     const [maxPrice, setMaxPrice] = useState<any>(0);
     const [favoritos, setFavoritos] = useState<any>([]);
-    const [filteredGames, setFilteredGames] = useState([]);
 
     useEffect(() => {
         axios.get(route('favorite.index')).then((response) => {
@@ -68,19 +68,6 @@ export default function IndexGames({ auth, games }: PageProps<{ games: Array<any
         // console.log('Clicado!', `User ID: ${userId}, Game ID: ${gameId}`);
     };
 
-
-    const handleFilterChange = () => {
-        axios.get(`/navegar?minPrice=${minPrice}&maxPrice=${maxPrice}`)
-            .then((response) => {
-                setFilteredGames(response.data.games);
-                console.log(response)
-                location.href = '/navegar';
-            })
-            .catch((error) => {
-                console.error(error);
-            });
-    };
-
     return (
         <VisitanteLayout auth={auth} title="Teste" header={<h2 className="font-semibold text-xl text-gray-800 leading-tight">Carrinho de compras</h2>}>
             <div className="py-12">
@@ -113,9 +100,12 @@ export default function IndexGames({ auth, games }: PageProps<{ games: Array<any
                                 </div>
                             ))}
                         </div>
-                        <div className="bg-white rounded-lg shadow p-4">
+                        <div className="h-64 w-full bg-gray-600 rounded-md bg-clip-padding backdrop-filter backdrop-blur-md bg-opacity-50 border-2 border-gray-100">
+                            <div className="mx-auto">
+                                <h1 className="text-lg text-white font-bold uppercase p-2 ">Filtrar por valor</h1>
+                            </div>
                             <div className="mb-4">
-                                <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="minPrice">
+                                <label className="block text-white text-sm font-bold mb-2" htmlFor="minPrice">
                                     Valor mínimo:
                                 </label>
                                 <input
@@ -128,7 +118,7 @@ export default function IndexGames({ auth, games }: PageProps<{ games: Array<any
                             </div>
 
                             <div className="mb-4">
-                                <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="maxPrice">
+                                <label className="block text-white text-sm font-bold mb-2" htmlFor="maxPrice">
                                     Valor máximo:
                                 </label>
                                 <input
@@ -139,14 +129,18 @@ export default function IndexGames({ auth, games }: PageProps<{ games: Array<any
                                     onChange={(e) => setMaxPrice(e.target.value)}
                                 />
                             </div>
-
-
-                            <button
-                                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-                                onClick={handleFilterChange}
-                            >
-                                Filtrar
-                            </button>
+                            <div className="flex justify-between gap-3">
+                                <Link
+                                    href={route('games.index', { 'minPrice': minPrice, 'maxPrice': maxPrice })}
+                                    className="lh-btn-default w-[50%]">
+                                    Filtrar
+                                </Link>
+                                <Link
+                                    href={route('games.index')}
+                                    className="lh-btn-default  w-[50%]">
+                                    Limpar
+                                </Link>
+                            </div>
                         </div>
                     </div>
                 </div>
