@@ -16,13 +16,20 @@ class GameController extends Controller
     {
         $minPrice = $request->input('minPrice');
         $maxPrice = $request->input('maxPrice');
+        $categoryId = $request->input('categoryId');
 
-        if (!empty($minPrice) && !empty($maxPrice)) {
+
+        if (!empty($minPrice) && !empty($maxPrice) && $minPrice < $maxPrice && $minPrice > 0 && $maxPrice > 0 && $minPrice !== $maxPrice) {
             $games = FiltroService::getFilterForPreco($minPrice, $maxPrice);
         } else {
             $games = Game::all();
         }
 
+        if ($categoryId !== null) {
+            $games->whereHas('categorias', function ($query) use ($categoryId) {
+                $query->where('categorias.id', $categoryId);
+            });
+        }
 
         if (empty(auth()->user())) {
             return Inertia::render('Games/IndexGames', ['games' => $games]);

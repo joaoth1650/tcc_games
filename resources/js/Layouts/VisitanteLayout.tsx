@@ -64,14 +64,14 @@ export default function VisitanteLayout({ auth, children, title, header }: PageP
                                             <>
                                                 <Link
                                                     href={route('login')}
-                                                    className="font-semibold text-gray-500 hover:text-gray-900 focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500"
+                                                    className="font-semibold text-gray-500 hover:text-gray-300 focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500"
                                                 >
                                                     Log in
                                                 </Link>
 
                                                 <Link
                                                     href={route('register')}
-                                                    className="ml-4 font-semibold text-gray-500 hover:text-gray-900 focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500"
+                                                    className="ml-4 font-semibold text-gray-500 hover:text-gray-300 focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500"
                                                 >
                                                     Register
                                                 </Link>

@@ -29,6 +29,7 @@ const GameIndividual = ({ auth, games }: PageProps<{ games: any }>) => {
             Swal.fire({
                 title: 'Jogo ja adicionado ao carrinho!',
                 toast: true,
+                icon: 'warning',
                 position: 'top-end',
                 showConfirmButton: false,
                 timer: 3000,
@@ -40,6 +41,15 @@ const GameIndividual = ({ auth, games }: PageProps<{ games: any }>) => {
         axios.post(route('cart.create'), { oferta_id: ofertaId }).then((response) => {
 
             setAddAoCarrinho([...addAoCarrinho, ofertaId]);
+            Swal.fire({
+                title: 'Jogo adicionado ao carrinho!',
+                toast: true,
+                icon: 'success',
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 3000,
+                timerProgressBar: true,
+            })
         })
 
     };
@@ -88,9 +98,9 @@ const GameIndividual = ({ auth, games }: PageProps<{ games: any }>) => {
                                 return (
                                     <div className="w-96 flex flex-col gap-5 hover:bg-stone-800 rounded-xl" key={oferta.id}>
                                         <img src={oferta.imagem} alt="" className='rounded-lg object-cover bg-center w-96 h-52 shadow-xl shadow-slate-700' />
-                                        <p className='text-2xl text-white uppercase  rounded-xl'>{oferta.nome}</p>
-                                        <p className='text-2xl text-white px-3'>R$ {oferta.preco}</p>
-                                        <div className="lh-btn-default" onClick={() => handleClick(auth, oferta.id)}>Comprar agora</div>
+                                        <p className='text-2xl text-white uppercase  rounded-xl px-2'>{oferta.nome}</p>
+                                        <p className='text-2xl text-white px-4'>R$ {oferta.preco}</p>
+                                        <div className="lh-btn-default" onClick={() => handleClick(auth, oferta.id)}>Adicionar ao carrinho</div>
                                     </div>
                                 )
                             })}

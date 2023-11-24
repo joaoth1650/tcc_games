@@ -95,6 +95,7 @@ class CartController extends Controller
         return response()->json(['Esse item foi removido do carrinho com sucesso!'], 204);
     }
 
+
     public function statusCart(Request $request)
     {
         $carrinho = ValidaCarrinhoService::hasCartOpen(auth()->user()->id);
@@ -106,7 +107,5 @@ class CartController extends Controller
         ValidaCarrinhoService::updateStatus($carrinho, SituacaoEnum::Aguardando_pagamento);
 
         ValidaCarrinhoService::createCart(auth()->user()->id);
-
-
     }
 }

@@ -54,6 +54,20 @@ export default function ShoppingCart({ auth, cart }: PageProps<{ cart: any }>) {
         })
     }
 
+    const handleClickForFinalized = () => {
+        axios.delete(route('cartShop.destroy')).then((response) => {
+            window.location.reload();
+        })
+        Swal.fire({
+            title: "Compra finalizada com sucesso!",
+            text: "Agradecemos a sua compra!",
+            imageUrl: "https://i.pinimg.com/564x/d4/28/91/d42891fe428976f4b3eac6fbfaaeccdb.jpg",
+            imageWidth: 400,
+            imageHeight: 200,
+            imageAlt: "Custom image"
+          });
+    }
+
     return (
         <AuthenticatedLayout
             user={auth.user}
@@ -65,7 +79,7 @@ export default function ShoppingCart({ auth, cart }: PageProps<{ cart: any }>) {
                 <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
                     <div className={efeito}>
                         <div className="col-span-5 mx-auto mb-6">
-                            <h1 className='text-3xl float-left uppercase  text-white '>Lista de desejos</h1>
+                            <h1 className='text-3xl float-left uppercase  text-white '>Meu carrinho</h1>
                         </div>
                         {cart.item_carrinhos.length === 0 ? (
                             <>
@@ -84,42 +98,57 @@ export default function ShoppingCart({ auth, cart }: PageProps<{ cart: any }>) {
                         ) : (
                             cart.item_carrinhos.map((item_carrinho: any) => (
                                 <div className="col-span-4" key={item_carrinho.id}>
-                                    <div className="grid grid-cols-4 grid-rows-3 gap-2 bg-stone-800 text-white rounded-xl">
+                                    <div className="grid grid-cols-4 grid-rows-3 gap-2 bg-stone-800 hover:bg-stone-700 text-white rounded-xl">
                                         <div className="px-2 row-span-3">
+                                            <Link
+                                                href={route('games.show', item_carrinho.ofertas.id)}
+                                            >
                                             <img src={item_carrinho.ofertas.imagem} className="rounded-xl object-cover h-60 w-48 mt-3 mb-3" />
+                                            </Link>
                                         </div>
                                         <div className="px-2 row-span-3 col-span-2 ">
                                             <h1 className='text-3xl mt-10'>{item_carrinho.ofertas.nome}</h1>
-                                            <div className="flex justify-start gap-6 bg-stone-700 mt-6 w-[75%] p-4">
+                                            <div className="flex justify-start gap-6 bg-gray-700 mt-6 w-[75%] p-4">
                                                 <p className='text-2xl text-stone-700 px-4 rounded-xl p-3' style={{ backgroundColor: item_carrinho.ofertas.games.restricao.background }}>{item_carrinho.ofertas.games.restricao.idade}</p>
                                                 <p className='text-lg'>{item_carrinho.ofertas.games.restricao.descricao}</p>
                                             </div>
                                             <div className="flex justify-start gap-2 mt-5">
                                                 <div onClick={(e) => handleClickForRemove(auth, item_carrinho.id, e)}>
-                                                    <RemoveOutlinedIcon className="text-white border border-gray-700 hover:bg-red-700 rounded" />
+                                                    <RemoveOutlinedIcon className="text-white border border-gray-900 hover:bg-red-700 rounded" />
                                                 </div>
                                                 <p className='text-lg'>{item_carrinho.quantidade}</p>
                                                 <div onClick={(e) => handleClickForAdd(auth, item_carrinho.ofertas.id, e)}>
-                                                    <AddOutlinedIcon className="text-white border border-gray-700 hover:bg-green-700 rounded"/>
+                                                    <AddOutlinedIcon className="text-white border border-gray-900 hover:bg-green-700 rounded" />
                                                 </div>
                                             </div>
+                                        </div>
+                                        <div className="row-span-3 flex justify-end">
+                                            <h1 className='text-lg mt-3 px-5'>R$: {item_carrinho.ofertas.preco}</h1>
                                         </div>
                                     </div>
                                 </div>
                             )
                             )
                         )}
-                        <div className="col-span-1 text-white rounded-xl">
+                        <div className="col-span-1 text-white rounded-xl" style={{ position: 'fixed', top: '50%', transform: 'translateY(-50%)', right: '17%' }}>
                             <h1 className="text-center text-2xl uppercase">Resumo do pedido</h1>
                             <div className="flex justify-between mt-3 text-lg">
                                 <p>Desconto:</p>
+                                <p className='text-gray-400'>Desabilitado</p>
+                            </div>
+                            <div className="flex justify-between mt-3 text-lg">
+                                <p>imposto:</p>
+                                <p className='text-gray-400'>Desabilitado</p>
+                            </div>
+                            <div className="flex justify-between mt-3 text-lg">
+                                <p>taxa entrega:</p>
                                 <p className='text-gray-400'>Desabilitado</p>
                             </div>
                             <div className="flex justify-between mt-3 border-t-2 border-gray-200 text-lg">
                                 <p>Total:</p>
                                 <p>R$ {total}</p>
                             </div>
-                            <div className="lh-btn-primary">
+                            <div className="lh-btn-primary" onClick={handleClickForFinalized}>
                                 Finalizar pedido
                             </div>
                         </div>

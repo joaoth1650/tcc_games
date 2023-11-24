@@ -11,8 +11,8 @@ import PriceFilter from "@/Components/FilterGamesByPrice";
 import Dropdown from "@/Components/Dropdown";
 
 export default function IndexGames({ auth, games }: PageProps<{ games: Array<any>, auth: object }>) {
-    const [minPrice, setMinPrice] = useState<any>(0);
-    const [maxPrice, setMaxPrice] = useState<any>(0);
+    const [minPrice, setMinPrice] = useState('');
+    const [maxPrice, setMaxPrice] = useState('');
     const [favoritos, setFavoritos] = useState<any>([]);
 
     useEffect(() => {
@@ -68,6 +68,45 @@ export default function IndexGames({ auth, games }: PageProps<{ games: Array<any
         // console.log('Clicado!', `User ID: ${userId}, Game ID: ${gameId}`);
     };
 
+    const handleWithNumberInvalide = () => {
+        if (minPrice > maxPrice) {
+            Swal.fire({
+                title: 'O preço inicial não pode ser maior que o preço final!',
+                toast: true,
+                icon: 'error',
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 4000,
+                timerProgressBar: true,
+            });
+            return;
+        }
+        if(minPrice ==='' || maxPrice ===''){
+            Swal.fire({
+                title: 'Preencha todos os campos do filtro!',
+                toast: true,
+                icon: 'error',
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 3000,
+                timerProgressBar: true,
+            });
+            return;
+        }
+        if(minPrice === maxPrice){
+            Swal.fire({
+                title: 'O preço inicial não pode ser igual ao preço final!',
+                toast: true,
+                icon: 'error',
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 4000,
+                timerProgressBar: true,
+            });
+            return;
+        }
+    }
+
     return (
         <VisitanteLayout auth={auth} title="Teste" header={<h2 className="font-semibold text-xl text-gray-800 leading-tight">Carrinho de compras</h2>}>
             <div className="py-12">
@@ -100,7 +139,7 @@ export default function IndexGames({ auth, games }: PageProps<{ games: Array<any
                                 </div>
                             ))}
                         </div>
-                        <div className="h-64 w-full bg-gray-600 rounded-md bg-clip-padding backdrop-filter backdrop-blur-md bg-opacity-50 border-2 border-gray-100">
+                        <div className="h-64 w-full bg-gray-600 rounded-md bg-clip-padding backdrop-filter backdrop-blur-md bg-opacity-50 px-4">
                             <div className="mx-auto">
                                 <h1 className="text-lg text-white font-bold uppercase p-2 ">Filtrar por valor</h1>
                             </div>
@@ -110,10 +149,10 @@ export default function IndexGames({ auth, games }: PageProps<{ games: Array<any
                                 </label>
                                 <input
                                     className="border rounded-lg py-2 px-3 text-gray-700 w-full"
-                                    type="number"
+                                    type="text"
                                     id="minPrice"
                                     value={minPrice}
-                                    onChange={(e) => setMinPrice(e.target.value)}
+                                    onChange={(e) => setMinPrice(e.target.value.replace(/[^0-9]/g, '').slice(0, 3))}
                                 />
                             </div>
 
@@ -123,18 +162,23 @@ export default function IndexGames({ auth, games }: PageProps<{ games: Array<any
                                 </label>
                                 <input
                                     className="border rounded-lg py-2 px-3 text-gray-700 w-full"
-                                    type="number"
+                                    type="text"
                                     id="maxPrice"
                                     value={maxPrice}
-                                    onChange={(e) => setMaxPrice(e.target.value)}
+                                    onChange={(e) => setMaxPrice(e.target.value.replace(/[^0-9]/g, '').slice(0, 3))}
                                 />
                             </div>
                             <div className="flex justify-between gap-3">
-                                <Link
+                                {minPrice !== '' && maxPrice !== '' && minPrice <= maxPrice && minPrice !== maxPrice ? (<Link
                                     href={route('games.index', { 'minPrice': minPrice, 'maxPrice': maxPrice })}
-                                    className="lh-btn-default w-[50%]">
+                                    className="lh-btn-primary w-[50%]">
                                     Filtrar
                                 </Link>
+                                ) : (
+                                    <div className="lh-btn-default w-[50%]" onClick={handleWithNumberInvalide}>
+                                        Filtrar
+                                    </div>
+                                )}
                                 <Link
                                     href={route('games.index')}
                                     className="lh-btn-default  w-[50%]">
@@ -142,6 +186,7 @@ export default function IndexGames({ auth, games }: PageProps<{ games: Array<any
                                 </Link>
                             </div>
                         </div>
+
                     </div>
                 </div>
             </div>

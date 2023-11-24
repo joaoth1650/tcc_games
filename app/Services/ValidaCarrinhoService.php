@@ -30,6 +30,7 @@ class ValidaCarrinhoService
     return $Carrinho;
 
   }
+
   public static function refreshTotal(Carrinho $carrinho, Oferta $oferta)
   {
 

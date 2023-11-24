@@ -18,7 +18,7 @@ class RestricaoSeeder extends Seeder
             [
                 'id' => 1,
                 'idade' => 18,
-                'descricao' => "Contém violência intensa, sangue e material adulto",
+                'descricao' => "Contém violência intensa ou material adulto",
                 'background' => "rgb(255, 0, 0)",
                 'created_at' => now(),
                 'updated_at' => now()
@@ -26,7 +26,7 @@ class RestricaoSeeder extends Seeder
             [
                 'id' => 2,
                 'idade' => 16,
-                'descricao' => "Pode conter violência intensa, sangue e temas sugestivos",
+                'descricao' => "Pode conter violência intensa e temas sugestivos",
                 'background' => "rgb(255, 128, 0)",
                 'created_at' => now(),
                 'updated_at' => now()
@@ -34,11 +34,11 @@ class RestricaoSeeder extends Seeder
             [
                 'id' => 3,
                 'idade' => 13,
-                'descricao' => "Pode conter violência moderada ou temas levemente sugestivos",
+                'descricao' => "temas levemente sugestivos",
                 'background' => "rgb(255, 255, 0)",
                 'created_at' => now(),
                 'updated_at' => now()
-                
+
             ],
             [
                 'id' => 4,
@@ -47,16 +47,16 @@ class RestricaoSeeder extends Seeder
                 'background' => "rgb(0, 255, 0)",
                 'created_at' => now(),
                 'updated_at' => now()
-                
+
             ],
             [
                 'id' => 5,
                 'idade' => "L",
                 'descricao' => "Adequado para todas as idades",
-                'background' => "rgb(238, 173, 45)",
+                'background' => "rgb(0, 255, 0)",
                 'created_at' => now(),
                 'updated_at' => now()
-                
+
             ],
         ];
 

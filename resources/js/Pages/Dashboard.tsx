@@ -11,7 +11,8 @@ import FooterBox from '@/Components/FooterBox';
 export default function Dashboard({ auth, recomendados, promocoes, slides, moreViews, allGames, gamesOfTerror, gamesOfIndie }: PageProps<{ allGames: Array<any>, recomendados: Array<any>, promocoes: any, slides: Array<any>, moreViews: Array<any>, gamesOfTerror: Array<any>, gamesOfIndie: Array<any> }>) {
     console.log(slides)
     const [imagemIndex, setImagemIndex] = useState(0);
-    const divRef = useRef(null);
+    const divRef = useRef<HTMLDivElement>(null);
+
 
     useEffect(() => {
         const divElement = divRef.current;
@@ -20,7 +21,7 @@ export default function Dashboard({ auth, recomendados, promocoes, slides, moreV
             divElement!.classList.remove('animate-slide');
             void divElement!.offsetWidth;
             divElement!.classList.add('animate-slide');
-        }, 5000);
+        }, 10000);
         return () => clearInterval(interval);
     }, []);
 
@@ -73,7 +74,7 @@ export default function Dashboard({ auth, recomendados, promocoes, slides, moreV
                                     <Link
                                         href={route('games.show', { 'id': 8 })}
                                     >
-                                    <div className="lh-btn-primary w-56 ">Comprar agora!</div>
+                                        <div className="lh-btn-primary w-56 ">Comprar agora!</div>
                                     </Link>
                                 </div>
                                 <div>
@@ -135,7 +136,7 @@ export default function Dashboard({ auth, recomendados, promocoes, slides, moreV
                         </Carousel>
 
                         <div className="flex justify-between">
-                            <h1 className='text-2xl  float-left uppercase th-espace-default underline underline-offset-8 '>Terror</h1>
+                            <h1 className='text-2xl  float-left uppercase th-espace-default underline underline-offset-8 cursor-default'>Terror</h1>
                             <a href="/navegar" className='text-xl float-left mt-28 hover:text-sky-400'> ——  veja mais</a>
                         </div>
                         <div className="grid grid-cols-2 gap-4 mt-4">
@@ -167,15 +168,15 @@ export default function Dashboard({ auth, recomendados, promocoes, slides, moreV
 
                         <div className="grid grid-rows-2">
                             <div className="flex justify-between">
-                                <h1 className='text-2xl  float-left uppercase th-espace-default underline underline-offset-8 '>Jogos</h1>
+                                <Link href={route('games.index')}><h1 className='text-2xl  float-left uppercase th-espace-default underline underline-offset-8 '>Jogos</h1></Link>
                                 <a href="/navegar" className='text-xl float-left mt-28 hover:text-sky-400'>——  veja mais</a>
                             </div>
                             <div className="grid grid-cols-4 gap-5">
                                 {allGames.map((allGame: any) => (
-                                    <div key={allGame.id} className='th-card_dashboard ' >
+                                    <div key={allGame.id} className='th-card_dashboard' >
                                         <Link
                                             href={route('games.show', { 'id': allGame.id })}
-                                            className="font-semibold text-gray-600 hover:text-gray-900  focus:rounded-sm ">
+                                            className="font-semibold text-gray-600 hover:text-gray-900  focus:rounded-sm">
                                             <img src={allGame.imagem_principal} alt="" className={"object-cover rounded-lg shadow-md max-h-36 w-[100%]"} />
                                         </Link>
                                     </div>
@@ -184,7 +185,7 @@ export default function Dashboard({ auth, recomendados, promocoes, slides, moreV
                         </div>
 
                         <div className="flex justify-between">
-                            <h1 className='text-2xl  float-left uppercase th-espace-default underline underline-offset-8 '>Indie</h1>
+                            <h1 className='text-2xl  float-left uppercase th-espace-default underline underline-offset-8 cursor-default'>Indie</h1>
                             <a href="/navegar" className='text-xl float-left mt-28 hover:text-sky-400'> ——  veja mais</a>
                         </div>
                         <div className="grid grid-cols-2 gap-4 mt-4">
