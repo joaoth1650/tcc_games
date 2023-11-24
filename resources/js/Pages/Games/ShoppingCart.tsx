@@ -55,7 +55,7 @@ export default function ShoppingCart({ auth, cart }: PageProps<{ cart: any }>) {
     }
 
     const handleClickForFinalized = () => {
-        axios.delete(route('cartShop.destroy')).then((response) => {
+        axios.put(route('cart.finish')).then((response) => {
             window.location.reload();
         })
         Swal.fire({

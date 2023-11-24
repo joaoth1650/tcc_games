@@ -21,6 +21,7 @@ class ValidaCarrinhoService
   public static function createCart($userId): Carrinho
   {
 
+
     $Carrinho = new Carrinho();
     $Carrinho->user_id = $userId;
     // $Carrinho->situacao = SituacaoEnum::Aberta;
@@ -28,6 +29,13 @@ class ValidaCarrinhoService
     $Carrinho->save();
 
     return $Carrinho;
+
+  }
+
+  public static function destroyCart(Carrinho $carrinho)
+  {
+    
+    $carrinho->situacao = SituacaoEnum:: Pago;
 
   }
 

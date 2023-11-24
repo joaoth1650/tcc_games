@@ -51,6 +51,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/shopping-cart', [CartController::class, 'showCart'])->name('cart.show');
     Route::post('/add-ao-cart', [CartController::class, 'addToCart'])->name('cart.create');
     Route::delete('/remove-fromCart', [CartController::class, 'removeFromCart'])->name('cart.destroy');
+    Route::put('/update-status-cart', [CartController::class, 'finishCart'])->name('cart.finish');
     Route::post('/status-cart', [CartController::class, 'statusCart'])->name('cart.status');
 
 });

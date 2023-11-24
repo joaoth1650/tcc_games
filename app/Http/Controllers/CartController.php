@@ -32,6 +32,13 @@ class CartController extends Controller
         // dd($cart->toArray());
         return inertia('Games/ShoppingCart', ['cart' => $cart]);
     }
+
+    public function destroyCart()
+    {
+
+        $cart = ValidaCarrinhoService::hasCartOpen(auth()->user()->id);
+
+    }
     public function addToCart(Request $request)
     {
 
@@ -96,7 +103,7 @@ class CartController extends Controller
     }
 
 
-    public function statusCart(Request $request)
+    public function finishCart(Request $request)
     {
         $carrinho = ValidaCarrinhoService::hasCartOpen(auth()->user()->id);
 
