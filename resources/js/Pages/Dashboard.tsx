@@ -21,7 +21,7 @@ export default function Dashboard({ auth, recomendados, promocoes, slides, moreV
             divElement!.classList.remove('animate-slide');
             void divElement!.offsetWidth;
             divElement!.classList.add('animate-slide');
-        }, 10000);
+        }, 6000);
         return () => clearInterval(interval);
     }, []);
 
@@ -72,7 +72,7 @@ export default function Dashboard({ auth, recomendados, promocoes, slides, moreV
                             <div className="flex justify-between">
                                 <div className="px-14 flex flex-col justify-end mb-14">
                                     <Link
-                                        href={route('games.show', { 'id': 8 })}
+                                        href={route('games.show', { 'id': slides[imagemIndex]!.id })}
                                     >
                                         <div className="lh-btn-primary w-56 ">Comprar agora!</div>
                                     </Link>

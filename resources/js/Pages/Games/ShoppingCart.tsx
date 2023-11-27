@@ -56,17 +56,22 @@ export default function ShoppingCart({ auth, cart }: PageProps<{ cart: any }>) {
 
     const handleClickForFinalized = () => {
         axios.put(route('cart.finish')).then((response) => {
-            window.location.reload();
-        })
-        Swal.fire({
-            title: "Compra finalizada com sucesso!",
-            text: "Agradecemos a sua compra!",
-            imageUrl: "https://i.pinimg.com/564x/d4/28/91/d42891fe428976f4b3eac6fbfaaeccdb.jpg",
-            imageWidth: 400,
-            imageHeight: 200,
-            imageAlt: "Custom image"
-          });
-    }
+            Swal.fire({
+                title: "Compra finalizada com sucesso!",
+                text: "Agradecemos a sua compra!",
+                imageUrl: "https://i.pinimg.com/564x/d4/28/91/d42891fe428976f4b3eac6fbfaaeccdb.jpg",
+                imageWidth: 400,
+                imageHeight: 200,
+                imageAlt: "Custom image",
+                showConfirmButton: false,
+            });
+
+            // Atraso de 3 segundos (3000 milissegundos) antes de recarregar a página
+            setTimeout(() => {
+                window.location.reload();
+            }, 3000);
+        });
+    };
 
     return (
         <AuthenticatedLayout
@@ -91,7 +96,9 @@ export default function ShoppingCart({ auth, cart }: PageProps<{ cart: any }>) {
                                             <p className='text-2xl'>Não conseguimos encontrar nenhum jogo no seu carrinho de compras</p>
                                         </div>
                                         <span></span>
+                                        <Link href={route('games.index')}>
                                         <h1 className='text-xl text-sky-500 mt-20 cursor-pointer'>veja alguns jogos que talvez você goste!</h1>
+                                        </Link>
                                     </div>
                                 </div>
                             </>
@@ -103,7 +110,7 @@ export default function ShoppingCart({ auth, cart }: PageProps<{ cart: any }>) {
                                             <Link
                                                 href={route('games.show', item_carrinho.ofertas.id)}
                                             >
-                                            <img src={item_carrinho.ofertas.imagem} className="rounded-xl object-cover h-60 w-48 mt-3 mb-3" />
+                                                <img src={item_carrinho.ofertas.imagem} className="rounded-xl object-cover h-60 w-48 mt-3 mb-3" />
                                             </Link>
                                         </div>
                                         <div className="px-2 row-span-3 col-span-2 ">

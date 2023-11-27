@@ -35,7 +35,7 @@ class GameController extends Controller
             return Inertia::render('Games/IndexGames', ['games' => $games]);
         }
 
-        $favoritoslist = Favorito::query()->where('user_id', auth()->user()->id)->get();
+        $favoritoslist = Favorito::query()->where('user_id', auth()->user()->id)->with('games')->get();
         $favoritoslist = $favoritoslist->pluck('game_id')->toArray();
         // dd($favoritoslist);
 

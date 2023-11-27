@@ -4,6 +4,7 @@ import { PageProps } from '@/types';
 import axios from 'axios';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import FavoriteRoundedIcon from '@mui/icons-material/FavoriteRounded';
 import { useEffect, useState } from 'react';
 import Swal from 'sweetalert2';
 
@@ -58,6 +59,11 @@ export default function Wishlist({ auth, games }: PageProps<{ favoritos: any, ga
 
     };
 
+    const handleClickForDelete = (auth: any, gameId: number) => {
+        axios.delete(route('favorite.destroy', { 'id': gameId })).then(() => {
+            window.location.reload();
+        });
+    };
     console.log(favoritos)
     return (
         <AuthenticatedLayout
@@ -83,25 +89,34 @@ export default function Wishlist({ auth, games }: PageProps<{ favoritos: any, ga
                                             <p className='text-2xl'>Não conseguimos encontrar nenhum jogo na sua lista de desejos</p>
                                         </div>
                                         <span></span>
-                                        <h1 className='text-xl text-sky-500 mt-20 cursor-pointer'>veja alguns jogos que talvez voce goste!</h1>
+                                        <Link href={route('games.index')}>
+                                            <h1 className='text-xl text-sky-500 mt-20 cursor-pointer'>veja alguns jogos que talvez você goste!</h1>
+                                        </Link>
                                     </div>
                                 </div>
                             </>
                         ) : (
                             favoritos.map((favorito: any) => (
-                                <div className="bg-stone-900 hover:bg-stone-800  grid grid-cols-2 rounded-xl" key={favorito.id}>
-                                    <Link className='relative overflow-hidden group rounded-xl'
-                                        href={route('games.show', { 'id': favorito.game_id })}>
-                                        <img src={favorito.games.imagem_principal} alt={favorito.games.nome}
-                                            title={favorito.games.nome} className={"object-cover bg-center rounded-2xl shadow-md max-h-96 h-80 w-[100%] transform scale-100 group-hover:scale-110 transition-transform duration-300 ease-in-out "} />
+                                <div className="bg-stone-900 hover:bg-stone-800 grid grid-cols-2 rounded-xl group" key={favorito.id}>
+                                    <Link className='relative overflow-hidden group rounded-xl' href={route('games.show', { 'id': favorito.game_id })}>
+                                        <img
+                                            src={favorito.games.imagem_principal}
+                                            alt={favorito.games.nome}
+                                            title={favorito.games.nome}
+                                            className={"object-cover bg-center rounded-2xl shadow-md max-h-96 h-80 w-[100%] transform scale-100 group-hover:scale-110 transition-transform duration-300 ease-in-out "}
+                                        />
                                     </Link>
+
                                     <div className='grid grid-rows-4'>
-                                        <Link className='row-span-3'
-                                            href={route('games.show', { 'id': favorito.game_id })}>
-                                            <h1 className='text-3xl uppercase px-5 text-white'>{favorito.games.nome}</h1>
-                                            <p className="leading-4 text-white px-8 mt-2">{favorito.games.descricao.substring(0, 50) + '...'}</p>
-                                            <span></span>
+                                        <div className="hidden group-hover:flex group-hover:justify-end hover:scale-105 transform transition-transform cursor-pointer float-right px-4 mt-4">
+                                            <FavoriteRoundedIcon className="text-red-500 text-4xl" onClick={() => handleClickForDelete(auth, favorito.game_id)} />
+                                        </div>
+
+                                        <Link className='row-span-3' href={route('games.show', { 'id': favorito.game_id })}>
+                                            <h1 className='text-3xl uppercase px-5 text-white mt-3'>{favorito.games.nome}</h1>
+                                            <p className="leading-4 text-white px-8 mt-5">{favorito.games.descricao.substring(0, 50) + '...'}</p>
                                         </Link>
+
                                         <div className="flex justify-end text-center mt-8">
                                             <ShoppingCartIcon className="text-white hover:text-sky-400 cursor-crosshair" sx={{ fontSize: 30 }} onClick={() => handleClick(auth, games.ofertas.id)} />
                                             <h1 className='text-2xl px-5 text-white'>R${favorito.games.preco}</h1>
@@ -109,6 +124,7 @@ export default function Wishlist({ auth, games }: PageProps<{ favoritos: any, ga
                                     </div>
                                 </div>
                             ))
+
                         )}
                     </div>
                 </div>
