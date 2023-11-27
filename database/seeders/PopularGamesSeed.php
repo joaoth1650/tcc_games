@@ -44,7 +44,7 @@ class PopularGamesSeed extends Seeder
                 'imagem' => "https://i.imgur.com/NtH7JxX.jpg",
                 'nome' => "god of war deluxe",
                 'descricao' => "Delux " . fake()->words(20, true),
-                'preco' => fake()->randomNumber(3, true),
+                'preco' => 199.48,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -53,7 +53,7 @@ class PopularGamesSeed extends Seeder
                 'imagem' => "https://i.imgur.com/T1oeJJB.jpeg",
                 'nome' => "god of war default",
                 'descricao' => "Default " . fake()->words(20, true),
-                'preco' => fake()->randomNumber(3, true),
+                'preco' => 85.99,
                 'created_at' => now(),
                 'updated_at' => now()
             ]
@@ -105,7 +105,7 @@ class PopularGamesSeed extends Seeder
                 'imagem' => "https://i.imgur.com/r70jIX3.jpeg",
                 'nome' => "$game->nome deluxe",
                 'descricao' => "Delux " . fake()->words(20, true),
-                'preco' => fake()->randomNumber(3, true),
+                'preco' => 55.58,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -114,7 +114,7 @@ class PopularGamesSeed extends Seeder
                 'imagem' => "https://i.imgur.com/hxnK8bo.jpeg",
                 'nome' => "$game->nome default",
                 'descricao' => "Default " . fake()->words(20, true),
-                'preco' => fake()->randomNumber(3, true),
+                'preco' => 36.99,
                 'created_at' => now(),
                 'updated_at' => now()
             ]
@@ -160,7 +160,7 @@ class PopularGamesSeed extends Seeder
                 'imagem' => "https://i.imgur.com/HQ3vM7k.png",
                 'nome' => "$game->nome deluxe",
                 'descricao' => "Delux " . fake()->words(20, true),
-                'preco' => fake()->randomNumber(3, true),
+                'preco' => 52.67,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -169,7 +169,7 @@ class PopularGamesSeed extends Seeder
                 'imagem' => "https://i.imgur.com/oH4vJhU.jpg",
                 'nome' => "$game->nome default",
                 'descricao' => "Default " . fake()->words(20, true),
-                'preco' => fake()->randomNumber(3, true),
+                'preco' => 24.99,
                 'created_at' => now(),
                 'updated_at' => now()
             ]
@@ -219,7 +219,7 @@ class PopularGamesSeed extends Seeder
                 'imagem' => "https://i.imgur.com/ObcteyT.jpg",
                 'nome' => "$game->nome deluxe",
                 'descricao' => "Delux " . fake()->words(20, true),
-                'preco' => fake()->randomNumber(3, true),
+                'preco' => 120.87,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -228,7 +228,7 @@ class PopularGamesSeed extends Seeder
                 'imagem' => "https://i.imgur.com/tzO90ud.jpg",
                 'nome' => "$game->nome default",
                 'descricao' => "Default " . fake()->words(20, true),
-                'preco' => fake()->randomNumber(3, true),
+                'preco' => 45.99,
                 'created_at' => now(),
                 'updated_at' => now()
             ]
@@ -278,7 +278,7 @@ class PopularGamesSeed extends Seeder
                 'imagem' => "https://i.imgur.com/XzwWHEZ.jpg",
                 'nome' => "$game->nome deluxe",
                 'descricao' => "Delux " . fake()->words(20, true),
-                'preco' => fake()->randomNumber(3, true),
+                'preco' => 120.87,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -287,7 +287,7 @@ class PopularGamesSeed extends Seeder
                 'imagem' => "https://i.imgur.com/PBxMO6O.jpeg",
                 'nome' => "$game->nome default",
                 'descricao' => "Default " . fake()->words(20, true),
-                'preco' => fake()->randomNumber(3, true),
+                'preco' => 46.99,
                 'created_at' => now(),
                 'updated_at' => now()
             ]
@@ -459,7 +459,7 @@ class PopularGamesSeed extends Seeder
                 'imagem' => "https://i.imgur.com/xOHRmrm.png",
                 'nome' => "$game->nome deluxe",
                 'descricao' => "Delux " . fake()->words(20, true),
-                'preco' => fake()->randomNumber(3, true),
+                'preco' => 200.99,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -468,7 +468,7 @@ class PopularGamesSeed extends Seeder
                 'imagem' => "https://i.imgur.com/TxWxaMl.png",
                 'nome' => "$game->nome default",
                 'descricao' => "Default " . fake()->words(20, true),
-                'preco' => fake()->randomNumber(3, true),
+                'preco' => 162.00,
                 'created_at' => now(),
                 'updated_at' => now()
             ]
@@ -597,7 +597,7 @@ class PopularGamesSeed extends Seeder
                 'imagem' => "https://i.imgur.com/rJbeXYS.jpg",
                 'nome' => "$game->nome deluxe",
                 'descricao' => "Delux " . fake()->words(20, true),
-                'preco' => fake()->randomNumber(3, true),
+                'preco' => 93.38,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -659,7 +659,7 @@ class PopularGamesSeed extends Seeder
                 'imagem' => "https://i.imgur.com/FJmF2bg.jpg",
                 'nome' => "$game->nome deluxe",
                 'descricao' => "Delux " . fake()->words(20, true),
-                'preco' => fake()->randomNumber(3, true),
+                'preco' => 77.33,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -705,7 +705,7 @@ class PopularGamesSeed extends Seeder
         $game = Game::create([
             'nome' => "Chants of Sennaar",
             "restricao_id" => 5,
-            'preco' => 69,
+            'preco' => 69.00,
             'descricao' => "Chants of Sennaar no Steam. Reza a lenda que, um dia, uma pessoa viajante voltará a unir os Povos da Torre, que não mais são capazes de comunicar-se uns com os outros. Observe, escute e decifre os idiomas ancestrais em um universo fascinante, inspirado pelo mito de Babel.",
             'video' => "__hzPH3tcvA",
             'imagem_esquerda' => "___",
@@ -735,7 +735,7 @@ class PopularGamesSeed extends Seeder
                 'imagem' => "https://i.imgur.com/JeFwl2s.jpg",
                 'nome' => "$game->nome default",
                 'descricao' => "Default " . fake()->words(20, true),
-                'preco' => 69,
+                'preco' => 69.00,
                 'created_at' => now(),
                 'updated_at' => now()
             ]
@@ -830,7 +830,7 @@ class PopularGamesSeed extends Seeder
         $game = Game::create([
             'nome' => "Destiny 2",
             "restricao_id" => 3,
-            'preco' => 1.99,
+            'preco' => 00.00,
             'descricao' => "Destiny 2 é um jogo de tiro em primeira pessoa online desenvolvido pela Bungie e publicado pela Activision. O jogo foi lançado em 2017 como uma sequência direta do jogo original, Destiny. A história do jogo se passa em um universo de ficção científica e é rica em elementos de narrativa e lore complexos.
 
             A narrativa de Destiny 2 gira em torno da luta da humanidade para sobreviver em um sistema solar devastado por uma ameaça conhecida como Os Sem Face (The Faceless). Os Sem Face são liderados por um ser poderoso chamado Dominus Ghaul, que lidera a Cabal, uma raça alienígena militarista, em uma invasão à Terra e a Torre, a última cidade segura da humanidade.
@@ -871,7 +871,7 @@ class PopularGamesSeed extends Seeder
                 'imagem' => "https://i.imgur.com/Bl0QYD6.jpg",
                 'nome' => "$game->nome default",
                 'descricao' => "Default " . fake()->words(20, true),
-                'preco' => fake()->randomNumber(3, true),
+                'preco' => 00.00,
                 'created_at' => now(),
                 'updated_at' => now()
             ]
@@ -896,7 +896,7 @@ class PopularGamesSeed extends Seeder
         $game = Game::create([
             'nome' => "Warframe",
             "restricao_id" => 2,
-            'preco' => 1.99,
+            'preco' => 00.00,
             'descricao' => "A história de Warframe é um enredo complexo e em constante expansão dentro do jogo de tiro em terceira pessoa desenvolvido pela Digital Extremes. O jogo foi lançado em 2013 e desde então tem evoluído consideravelmente em termos de narrativa e jogabilidade.
 
             A narrativa de Warframe se passa em um futuro distante, onde a humanidade está à beira da extinção devido a uma série de ameaças intergalácticas. A história começa com os jogadores assumindo o papel de Tenno, guerreiros misteriosos equipados com armaduras biomecânicas chamadas Warframes. Essas armaduras concedem habilidades especiais aos Tenno e são a chave para enfrentar as ameaças que assolam o universo.
@@ -926,7 +926,7 @@ class PopularGamesSeed extends Seeder
                 'imagem' => "https://i.imgur.com/1QU9WYw.jpg",
                 'nome' => "$game->nome deluxe",
                 'descricao' => "Delux " . fake()->words(20, true),
-                'preco' => fake()->randomNumber(3, true),
+                'preco' => 57.00,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -935,7 +935,7 @@ class PopularGamesSeed extends Seeder
                 'imagem' => "https://i.imgur.com/IpB1M7j.png",
                 'nome' => "$game->nome default",
                 'descricao' => "Default " . fake()->words(20, true),
-                'preco' => fake()->randomNumber(3, true),
+                'preco' => 00.00,
                 'created_at' => now(),
                 'updated_at' => now()
             ]
@@ -1059,7 +1059,7 @@ class PopularGamesSeed extends Seeder
                 'imagem' => "https://i.imgur.com/WxI934A.png",
                 'nome' => "$game->nome deluxe",
                 'descricao' => "Delux " . fake()->words(20, true),
-                'preco' => fake()->randomNumber(3, true),
+                'preco' => 98.99,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -1068,7 +1068,7 @@ class PopularGamesSeed extends Seeder
                 'imagem' => "https://i.imgur.com/nE9NoBt.png",
                 'nome' => "$game->nome default",
                 'descricao' => "Default " . fake()->words(20, true),
-                'preco' => 69.99,
+                'preco' => 69.49,
                 'created_at' => now(),
                 'updated_at' => now()
             ]
@@ -1129,7 +1129,7 @@ class PopularGamesSeed extends Seeder
                 'imagem' => "https://i.imgur.com/zqtTmVs.jpg",
                 'nome' => "$game->nome deluxe",
                 'descricao' => "Delux " . fake()->words(20, true),
-                'preco' => fake()->randomNumber(3, true),
+                'preco' => 87.47,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -1138,7 +1138,7 @@ class PopularGamesSeed extends Seeder
                 'imagem' => "https://i.imgur.com/bDIQl0X.jpg",
                 'nome' => "$game->nome default",
                 'descricao' => "Default " . fake()->words(20, true),
-                'preco' => fake()->randomNumber(3, true),
+                'preco' => 55.99,
                 'created_at' => now(),
                 'updated_at' => now()
             ]
@@ -1178,7 +1178,7 @@ class PopularGamesSeed extends Seeder
                 'imagem' => "https://i.imgur.com/AfGBeFO.png",
                 'nome' => "$game->nome deluxe",
                 'descricao' => "Delux " . fake()->words(20, true),
-                'preco' => 76.49,
+                'preco' => 98.49,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -1212,13 +1212,13 @@ class PopularGamesSeed extends Seeder
         $game = Game::create([
             'nome' => "Team fortress 2",
             "restricao_id" => 4,
-            'preco' => 00.99,
+            'preco' => 00.00,
             'descricao' => "Team Fortress 2 (TF2) é um popular jogo de tiro em primeira pessoa (FPS) desenvolvido pela Valve Corporation e lançado em 2007 como parte da Orange Box, uma coletânea de jogos. Embora TF2 seja principalmente um jogo multijogador focado em partidas competitivas, ele possui uma história de fundo e um elenco de personagens distintos que são parte integrante de seu apelo.
 
             A história de TF2 se passa num cenário alternativo da década de 1960, onde duas empresas, a Reliable Excavation & Demolition (RED) e a Builders League United (BLU), estão em constante conflito. Ambas as empresas contratam uma equipe de mercenários altamente especializados, cada um com suas habilidades e personalidades únicas, para proteger ou capturar recursos valiosos, dependendo da missão.
-            
+
             Os principais personagens jogáveis em TF2 incluem:
-            
+
             Scout - Um velocista ágil armado com uma espingarda e um taco de beisebol.
             Soldier - Um soldado patriótico com um lança-foguetes.
             Pyro - Um piromaníaco mascarado que usa um lança-chamas.
@@ -1248,7 +1248,7 @@ class PopularGamesSeed extends Seeder
                 'imagem' => "https://i.imgur.com/Xbe364G.png",
                 'nome' => "$game->nome deluxe",
                 'descricao' => "Delux " . fake()->words(20, true),
-                'preco' => fake()->randomNumber(3, true),
+                'preco' => 86.00,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -1257,7 +1257,7 @@ class PopularGamesSeed extends Seeder
                 'imagem' => "https://i.imgur.com/EYQDjsH.png",
                 'nome' => "$game->nome default",
                 'descricao' => "Default " . fake()->words(20, true),
-                'preco' => fake()->randomNumber(3, true),
+                'preco' => 00.00,
                 'created_at' => now(),
                 'updated_at' => now()
             ]
@@ -1285,20 +1285,20 @@ class PopularGamesSeed extends Seeder
             'descricao' => "Planet Zoo é um jogo de simulação de gerenciamento de zoológico desenvolvido pela Frontier Developments e lançado em 2019. No jogo, os jogadores têm a oportunidade de criar e administrar seu próprio zoológico, projetando habitats, cuidando de animais, atendendo às necessidades dos visitantes e contribuindo para a conservação da vida selvagem. Embora Planet Zoo não tenha uma narrativa linear, ele oferece uma experiência de simulação envolvente centrada na gestão e na construção de um zoológico de sucesso.
 
              Aqui estão os principais aspectos da experiência de jogo em Planet Zoo:
-             
+
              Construção e Design de Habitats: Os jogadores podem projetar e construir habitats personalizados para uma variedade de espécies de animais. Eles devem levar em consideração as necessidades de cada animal, incluindo espaço, vegetação, abrigo e características do ambiente.
-             
+
              Cuidado Animal: Os jogadores são responsáveis por garantir o bem-estar dos animais em seu zoológico. Isso inclui fornecer alimentos adequados, cuidados médicos, enriquecimento e manutenção dos habitats.
-             
+
              Conservação: Planet Zoo incentiva os jogadores a participar na conservação da vida selvagem, criando programas de reprodução em cativeiro e contribuindo para a pesquisa e educação sobre as espécies.
-             
+
              Interação com Visitantes: Gerenciar a experiência dos visitantes é fundamental. Os jogadores precisam criar áreas de visualização atraentes, fornecer informações sobre os animais e manter os visitantes felizes para garantir o sucesso financeiro do zoológico.
-             
+
              Pesquisa e Educação: Os jogadores podem realizar pesquisas para desbloquear melhorias e aprender mais sobre suas espécies. Além disso, a educação dos visitantes sobre a importância da conservação da vida selvagem desempenha um papel significativo no jogo.
-             
+
              Desafios e Campanhas: O jogo oferece desafios e campanhas que os jogadores podem completar, como construir um zoológico de sucesso em condições específicas ou resgatar animais em perigo.
              Personalização e Comunidade: Planet Zoo permite que os jogadores personalizem seus zoológicos com decorações, paisagens e detalhes estéticos. Além disso, a comunidade do jogo cria mods e compartilha projetos de zoológicos.
-             
+
              Embora Planet Zoo não tenha uma história convencional, o jogo se concentra em temas de conservação da vida selvagem, educação e gerenciamento de um zoológico de sucesso. Os jogadores podem desafiar suas habilidades de planejamento, construção e gerenciamento enquanto trabalham para criar zoológicos que são tanto lucrativos quanto dedicados à proteção da biodiversidade.",
             'video' => "TAvzq-HrSoQ",
             'imagem_esquerda' => "___",
@@ -1355,20 +1355,20 @@ class PopularGamesSeed extends Seeder
             'descricao' => "DayZ é um jogo de sobrevivência em mundo aberto desenvolvido pela Bohemia Interactive. O jogo começou como um mod para o jogo ARMA 2 e foi posteriormente lançado como um jogo independente em 2013. A história em DayZ é bastante aberta e emergente, sem uma narrativa linear definida. Em vez disso, o foco principal do jogo é a sobrevivência em um mundo pós-apocalíptico infestado de zumbis, onde os jogadores precisam lutar contra ameaças ambientais, zumbis e outros sobreviventes para permanecerem vivos.
 
             Aqui estão os principais elementos da história e jogabilidade de DayZ:
-            
+
             Ambiente Pós-Apocalíptico: DayZ se passa em uma região fictícia do mundo pós-apocalíptico, onde a maioria da população foi transformada em zumbis devido a um vírus desconhecido. O mundo do jogo é vasto e desolado, repleto de cidades abandonadas, vilas e paisagens rurais.
-            
+
             Sobrevivência: Os jogadores começam o jogo apenas com roupas simples e uma lanterna. Eles precisam procurar alimentos, água, roupas e armas para sobreviver. A exposição ao frio, fome e sede são ameaças constantes.
-            
+
             Zumbis e Outros Jogadores: Além das ameaças ambientais, os jogadores também devem lidar com zumbis que vagueiam pelo mundo do jogo. Além disso, outros jogadores também representam uma ameaça, já que podem interagir de maneira hostil ou cooperativa.
-            
+
             Saúde e Doenças: Os jogadores podem sofrer ferimentos, ficar doentes e precisar de cuidados médicos. A gestão da saúde é vital para a sobrevivência.
-            
+
             Exploração e Construção: Os jogadores podem explorar edifícios em busca de suprimentos e criar abrigos improvisados. Itens como mochilas, facas e roupas melhores são essenciais para a sobrevivência.
-            
+
             Interação Social: A interação com outros jogadores é uma parte fundamental da experiência do jogo. Os jogadores podem formar grupos, negociar e trabalhar juntos para sobreviver, ou podem escolher um caminho mais hostil, saqueando e atacando outros sobreviventes.
             Morte Permanente: Uma característica única de DayZ é a morte permanente. Quando um jogador morre, ele perde todos os itens e progresso e deve começar do zero com um novo personagem.
-            
+
             A história em DayZ é, portanto, construída a partir das experiências e interações dos jogadores no mundo hostil do jogo. O objetivo principal é sobreviver e interagir com outros jogadores de maneira dinâmica e muitas vezes imprevisível. A narrativa em DayZ é, em grande parte, uma narrativa emergente baseada nas escolhas e ações dos jogadores em um ambiente de jogo impiedoso e cheio de desafios.",
             'video' => "mC5F8ECQnFE",
             'imagem_esquerda' => "___",
@@ -1437,16 +1437,16 @@ class PopularGamesSeed extends Seeder
             'descricao' => "Resident Evil 4 é um jogo de survival horror desenvolvido pela Capcom e lançado em 2005. A história do jogo segue o agente especial Leon S. Kennedy, que é enviado em uma missão para resgatar a filha do presidente dos Estados Unidos, Ashley Graham, que foi sequestrada por um culto misterioso na Espanha rural. A narrativa é repleta de elementos de horror, conspirações sinistras e encontros com inimigos grotescos.
 
             Aqui está um resumo da história de Resident Evil 4:
-            
+
             O jogo se inicia com Leon S. Kennedy sendo enviado para a Espanha, onde ele tem informações de que Ashley Graham, a filha do presidente, foi sequestrada por um culto chamado Los Iluminados. Leon é acompanhado por Ingrid Hunnigan, sua controladora por rádio, que fornece informações e orientações ao longo do jogo.
-            
+
             Leon chega a uma vila rural isolada e logo descobre que os moradores foram infectados por um misterioso parasita que os transformou em violentos e zumbis mutantes. Ele encontra um grupo de policiais locais, mas a maioria deles é morta ou infectada. A busca por Ashley o leva a enfrentar horrores sobrenaturais e cultistas fanáticos liderados por Osmund Saddler, o carismático líder de Los Iluminados.
-            
+
             Durante sua jornada, Leon encontra Luis Sera, um cientista que anteriormente trabalhou para Los Iluminados, mas se arrependeu de suas ações. Luis ajuda Leon e compartilha informações sobre o parasita, conhecido como Las Plagas, que é o cerne do culto. A história se torna uma corrida para encontrar Ashley e impedir Los Iluminados de usar as Plagas para disseminar o terror pelo mundo.
-            
+
             Ao longo do jogo, Leon encontra uma variedade de inimigos, incluindo Ganados, os habitantes infectados da vila, e chefes monstruosos. Ele também se depara com Ada Wong, uma espiã misteriosa que está em busca de uma amostra das Plagas para uma organização secreta.
             A narrativa de Resident Evil 4 é marcada por reviravoltas, traições e revelações sobre a verdadeira natureza de Los Iluminados e o parasita. A história culmina em um confronto final com Saddler e uma luta intensa para salvar Ashley.
-            
+
             Resident Evil 4 é amplamente considerado um dos melhores jogos da série Resident Evil e é elogiado por sua jogabilidade envolvente, atmosfera tensa e história intrigante. A narrativa é um equilíbrio bem-sucedido entre o horror e a ação, tornando-o um clássico no gênero de survival horror.",
             'video' => "9iy6gHDKvzA",
             'imagem_esquerda' => "___",
@@ -1509,13 +1509,13 @@ class PopularGamesSeed extends Seeder
             'descricao' => "Hogwarts Legacy é um jogo de RPG de ação ambientado no mundo mágico de Harry Potter, mas não é uma adaptação direta dos livros ou filmes existentes da franquia. Em vez disso, o jogo se passa no século 19, mais de 100 anos antes dos eventos retratados nos livros e filmes originais. Aqui está um resumo da história que se passa no jogo:
 
             O jogador assume o papel de um estudante de magia que acaba de receber uma carta de aceitação para a Escola de Magia e Bruxaria de Hogwarts. No entanto, ao contrário da narrativa de Harry Potter, você não assume o papel do Menino que Sobreviveu, mas sim cria seu próprio personagem personalizado.
-            
+
             A história começa com a criação de seu personagem, onde você escolhe sua casa em Hogwarts, suas habilidades mágicas e até mesmo a história de fundo de seu personagem. Isso permite que você molde a experiência de jogo de acordo com suas escolhas.
-            
+
             Conforme a trama se desenrola, você descobre que sua chegada a Hogwarts coincide com eventos misteriosos e ameaças obscuras que pairam sobre o mundo mágico. Os jogadores devem investigar uma série de mistérios, aprender magias, criar poções e interagir com outros estudantes e personagens icônicos do mundo mágico. A escolha de sua casa e suas ações ao longo do jogo afetarão o desenrolar da história.
-            
+
             Enquanto explora o mundo aberto de Hogwarts e seus arredores, você encontrará criaturas mágicas, participará de duelos de magia e tomará decisões morais que influenciarão o resultado da trama. A história abrange temas como descoberta de segredos antigos, relações interpessoais e escolhas éticas.
-            
+
             Hogwarts Legacy oferece aos jogadores a oportunidade de viver uma experiência autêntica no mundo mágico de Harry Potter, ao mesmo tempo em que explora uma narrativa inédita e personagens únicos que contribuem para a rica história do universo mágico de J.K. Rowling.",
             'video' => "1O6Qstncpnc",
             'imagem_esquerda' => "___",
@@ -1578,13 +1578,13 @@ class PopularGamesSeed extends Seeder
             'descricao' => "F.E.A.R. 3 (também conhecido como F.E.A.R. 3 ou F.3.A.R.) é um jogo de tiro em primeira pessoa de survival horror lançado em 2011. Ele faz parte da série F.E.A.R. (First Encounter Assault Recon) e continua a história dos jogos anteriores da série. Aqui está um resumo da história do jogo:
 
             A história de F.E.A.R. 3 segue dois irmãos: Point Man, o protagonista jogável e o personagem jogável do primeiro jogo da série, e Paxton Fettel, seu irmão mais velho com habilidades paranormais. Ambos são filhos de Alma Wade, uma poderosa psíquica que se tornou uma ameaça paranormal nos jogos anteriores.
-            
+
             O jogo se passa no mundo distópico de Fairport, que foi devastado por eventos sobrenaturais e está sob o controle de forças sinistras. Alma Wade está grávida novamente, e sua gravidez é uma ameaça iminente para o mundo devido ao poder sobrenatural que ela e seus filhos possuem.
-            
+
             Point Man e Fettel têm motivações diferentes. Point Man é um soldado geneticamente modificado, membro da equipe F.E.A.R., que busca destruir Alma Wade e impedir a propagação de sua influência sobrenatural. Fettel, por outro lado, deseja ajudar Alma a dar à luz sua criança e, assim, liberar ainda mais poder paranormal no mundo.
-            
+
             A jogabilidade permite aos jogadores alternar entre Point Man e Fettel, cada um com habilidades únicas. Point Man é um soldado com habilidades de combate mais tradicionais, enquanto Fettel possui habilidades paranormais, como a capacidade de possuir inimigos e lançar poderes telecinéticos.
-            
+
             Ao longo do jogo, os irmãos enfrentam criaturas sobrenaturais e inimigos humanos em uma série de ambientes assustadores e perturbadores. A história se desenrola através de cutscenes e interações entre os personagens, enquanto os jogadores exploram a narrativa sombria e cheia de mistério.
             A narrativa de F.E.A.R. 3 é uma continuação da trama dos jogos anteriores, explorando temas de paranormalidade, experimentação genética e os efeitos traumáticos da infância dos protagonistas. É uma história de horror psicológico que mantém a atmosfera sinistra e ação intensa da série F.E.A.R..",
             'video' => "Vpr_6O5iyls",
@@ -1648,11 +1648,11 @@ class PopularGamesSeed extends Seeder
             'descricao' => "Aragami 2 é um jogo de ação furtiva desenvolvido pela Lince Works e lançado em setembro de 2021. O jogo é a sequência de Aragami, e se passa em um mundo de fantasia sombrio e oriental, onde os jogadores assumem o papel de um assassino sobrenatural conhecido como Aragami. O jogo é ambientado em um mundo ameaçado por uma misteriosa doença mágica chamada Radiance, que está transformando as pessoas em zumbis.
 
             A história de Aragami 2 segue um grupo de Aragamis, seres que possuem habilidades sobrenaturais de sombra, que se unem para proteger seu povo e descobrir a origem da Radiance. Os Aragamis vivem nas sombras e têm a capacidade de se teleportar de sombra em sombra, controlar a escuridão e usar várias habilidades de furtividade para se mover pelo mundo e eliminar inimigos.
-            
+
             Os Aragamis formam uma sociedade secreta conhecida como Shadow Clan e trabalham juntos para combater a Radiance e suas criaturas corruptas. Durante o jogo, os jogadores se aventuram por uma série de ambientes furtivos, enfrentam inimigos mágicos e humanos, resolvem quebra-cabeças e desvendam os segredos por trás da Radiance.
-            
+
             A narrativa de Aragami 2 se desenrola à medida que os jogadores completam missões, interagem com personagens e descobrem documentos e diálogos que fornecem pistas sobre a história e a origem da Radiance. À medida que a trama se desenvolve, os jogadores também exploram temas de sacrifício, lealdade e a luta pelo bem-estar de seu povo.
-            
+
             Em resumo, a história de Aragami 2 gira em torno de um grupo de assassinos sobrenaturais que se unem para combater a ameaça da Radiance e descobrir seus segredos, enquanto usam suas habilidades de sombra para se mover furtivamente e derrotar inimigos em um mundo de fantasia oriental.",
             'video' => "HMvotSyvHKc",
             'imagem_esquerda' => "___",
