@@ -39,10 +39,10 @@ export default function Dashboard({ auth, recomendados, promocoes, slides, moreV
                 <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
                     {/* <div className="bg-white overflow-hidden shadow-sm sm:rounded-lg p-6"> */}
                     <div>
-                        <div className="grid grid-cols-3 mb-3 ">
-                            <h1 className='text-2xl  float-left uppercase underline underline-offset-8  '>Recomendados</h1>
+                        <div className="grid grid-cols-3 mb-3">
+                            <h1 className='text-2xl float-left uppercase underline underline-offset-8'>Recomendados</h1>
                             <span></span>
-                            <h1 className='text-2xl text-right uppercase underline underline-offset-8 '>Promoção semanal</h1>
+                            <h1 className='text-2xl text-right uppercase underline underline-offset-8'>Promoção semanal</h1>
                         </div>
                         <div className="grid grid-cols-3 gap-7">
                             <div className="grid grid-rows-3 gap-6 col-span-2 ">
@@ -61,7 +61,7 @@ export default function Dashboard({ auth, recomendados, promocoes, slides, moreV
                                 <div className="absolute inset-0 transform scale-100 group-hover:scale-110 transition-transform duration-300 ease-in-out cursor-pointer">
                                     <Link
                                         href={route('games.show', { 'id': 1 })}
-                                        className="font-semibold text-gray-600 hover:text-gray-900  focus:rounded-sm ">
+                                        className="font-semibold text-gray-600 hover:text-gray-900  focus:rounded-sm">
                                         <img src={promocoes[0].imagem} alt={promocoes[0].nome}
                                             title={promocoes[0].nome} className={"object-cover rounded-lg shadow-md h-[100%]"} />
                                     </Link>

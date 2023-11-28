@@ -14,6 +14,14 @@ class GameController extends Controller
 {
     public function index(Request $request)
     {
+
+        $game2 = Game::query()
+            ->when($request->input('minPrice'), fn ($q) => $q->where('preco', '>=', $request->input('minPrice')))
+            ->when($request->input('maxPrice'), fn ($q) => $q->where('preco', '<=', $request->input('maxPrice')))
+            ->get();
+
+        ######
+
         $minPrice = $request->input('minPrice');
         $maxPrice = $request->input('maxPrice');
         $categoryId = $request->input('categoryId');
@@ -39,7 +47,7 @@ class GameController extends Controller
         $favoritoslist = $favoritoslist->pluck('game_id')->toArray();
         // dd($favoritoslist);
 
-        return Inertia::render('Games/IndexGames', ['games' => $games, 'favoritoslist' => $favoritoslist]);
+        return Inertia::render('Games/IndexGames', ['games' => $game2, 'favoritoslist' => $favoritoslist]);
     }
 
     public function show(Request $request)

@@ -97,7 +97,7 @@ export default function ShoppingCart({ auth, cart }: PageProps<{ cart: any }>) {
                                         </div>
                                         <span></span>
                                         <Link href={route('games.index')}>
-                                        <h1 className='text-xl text-sky-500 mt-20 cursor-pointer'>veja alguns jogos que talvez você goste!</h1>
+                                            <h1 className='text-[17px] text-sky-500 mt-20 cursor-pointer float-left'>veja alguns jogos que talvez você goste!</h1>
                                         </Link>
                                     </div>
                                 </div>
@@ -160,6 +160,7 @@ export default function ShoppingCart({ auth, cart }: PageProps<{ cart: any }>) {
                             </div>
                         </div>
                     </div>
+
                 </div>
             </div>
 
