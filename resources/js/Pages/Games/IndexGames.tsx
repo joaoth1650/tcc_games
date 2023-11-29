@@ -177,7 +177,7 @@ export default function IndexGames({ auth, games }: PageProps<{ games: Array<any
                             </div>
                         </div>) : (
                             <div className="mb-4 flex justify-end">
-                                <FilterAltRoundedIcon className="text-white bg-stone-700 rounded-xl p-1" sx={{ fontSize: 40 }} 	onClick={() => setShowFilterBar(!showFilterBar)} />
+                                <FilterAltRoundedIcon className="text-white bg-stone-700 rounded-xl cursor-pointer p-1" sx={{ fontSize: 40 }} 	onClick={() => setShowFilterBar(!showFilterBar)} />
                             </div>
                         )}
                         <div className="col-span-4 grid grid-cols-3 gap-3">
