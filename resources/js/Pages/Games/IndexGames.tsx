@@ -109,6 +109,17 @@ export default function IndexGames({ auth, games }: PageProps<{ games: Array<any
         }
     }
 
+    const handleClickForEffectFilter = () => {
+        Swal.fire({
+            title: 'Filtrando os jogos...',
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+        });
+    }
+
 
 
     return (
@@ -146,9 +157,11 @@ export default function IndexGames({ auth, games }: PageProps<{ games: Array<any
                                 </div>
                             </div>
                             <div className="flex items-center gap-2">
-                                {minPrice !== '' && maxPrice !== '' && minPrice <= maxPrice && minPrice !== maxPrice ? (<Link
+                                {minPrice !== '' && maxPrice !== '' && minPrice <= maxPrice && minPrice !== maxPrice ? (
+                                <Link
                                     href={route('games.index', { 'minPrice': minPrice, 'maxPrice': maxPrice })}
-                                    className="lh-btn-primary w-[50%]">
+                                    className="lh-btn-primary w-[50%]"
+                                    onClick={handleClickForEffectFilter}>
                                     Filtrar
                                 </Link>
                                 ) : (
@@ -163,7 +176,7 @@ export default function IndexGames({ auth, games }: PageProps<{ games: Array<any
                                 </Link>
                             </div>
                         </div>) : (
-                            <div className="mb-3 flex justify-end ">
+                            <div className="mb-4 flex justify-end">
                                 <FilterAltRoundedIcon className="text-white bg-stone-700 rounded-xl p-1" sx={{ fontSize: 40 }} 	onClick={() => setShowFilterBar(!showFilterBar)} />
                             </div>
                         )}

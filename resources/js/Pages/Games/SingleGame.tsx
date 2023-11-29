@@ -1,7 +1,7 @@
 import VisitanteLayout from '@/Layouts/VisitanteLayout'
 import { PageProps } from '@/types'
-import AddShoppingCartRoundedIcon from '@mui/icons-material/AddShoppingCartRounded';
-import ShoppingCartRoundedIcon from '@mui/icons-material/ShoppingCartRounded';
+import ArrowBackIosRoundedIcon from '@mui/icons-material/ArrowBackIosRounded';
+import ArrowForwardIosRoundedIcon from '@mui/icons-material/ArrowForwardIosRounded';
 import { CardActionArea } from '@mui/material';
 import axios from 'axios';
 import React, { useState } from 'react'
@@ -11,6 +11,8 @@ const GameIndividual = ({ auth, games }: PageProps<{ games: any }>) => {
     console.log(games);
 
     const [addAoCarrinho, setAddAoCarrinho] = useState<any>([]);
+    const [imagemPrincipal, setImagemPrincipal] = useState(games.standart1);
+    const [posicaoAtual, setPosicaoAtual] = useState(0);
 
     const handleClick = (auth: any, ofertaId: number) => {
 
@@ -25,7 +27,7 @@ const GameIndividual = ({ auth, games }: PageProps<{ games: any }>) => {
                 html: `<a href="/register" >Criar conta agora!</a>`,
             });
             return;
-        }else if(addAoCarrinho.includes(ofertaId)){
+        } else if (addAoCarrinho.includes(ofertaId)) {
             Swal.fire({
                 title: 'Jogo ja adicionado ao carrinho!',
                 toast: true,
@@ -53,6 +55,23 @@ const GameIndividual = ({ auth, games }: PageProps<{ games: any }>) => {
         })
 
     };
+
+    const handleMouseEnter = (numero: number) => {
+        setImagemPrincipal(games[`standart${numero}`]);
+    };
+
+    const handleNextImage = () => {
+        const novaPosicao = (posicaoAtual + 1) % 4;
+        setImagemPrincipal(games[`standart${novaPosicao + 1}`]);
+        setPosicaoAtual(novaPosicao);
+    };
+
+    const handlePrevImage = () => {
+        const novaPosicao = (posicaoAtual - 1 + 4) % 4;
+        setImagemPrincipal(games[`standart${novaPosicao + 1}`]);
+        setPosicaoAtual(novaPosicao);
+    };
+
     return (
         <VisitanteLayout auth={auth} title="Teste" header={<h2 className="font-semibold text-xl text-gray-800 leading-tight"></h2>}>
             <div className="bg-fixed bg-no-repeat p-5 bg-cover" style={{ backgroundImage: "url('" + games.background + "')" }}>
@@ -63,23 +82,29 @@ const GameIndividual = ({ auth, games }: PageProps<{ games: any }>) => {
                             <span></span>
                             <span></span>
                             <div className="flex col-span-2">
-                                <h1 className='text-3xl bg-blue-600 pl-2 p-1 text-white w-11 rounded-lg ' style={{ backgroundColor: games.restricao.background }}>{games.restricao.idade}</h1>
+                                <h1 className='text-3xl bg-blue-600 pl-2 p-1 text-stone-900 w-11 rounded-lg ' style={{ backgroundColor: games.restricao.background }}>{games.restricao.idade}</h1>
                                 <p className="mt-auto p-2 text-white">{games.restricao.descricao}</p>
                             </div>
                         </div>
+                        <div className="justify-center px-16 mt-9 flex">
+                            <CardActionArea>
+                                <div onClick={handlePrevImage} className="flex justify-center items-center">
+                                    <ArrowBackIosRoundedIcon className='text-white cursor-pointer' sx={{ fontSize: 50 }} />
+                                </div>
+                            </CardActionArea>
+                            <img className="rounded-lg w-full" src={imagemPrincipal} alt="" />
+                            <CardActionArea>
+                                <div onClick={handleNextImage} className="flex justify-center items-center ">
+                                    <ArrowForwardIosRoundedIcon className='text-white cursor-pointer' sx={{ fontSize: 50 }} />
+                                </div>
+                            </CardActionArea>
+                        </div>
                         <div className="grid grid-cols-4 gap-4 mt-10">
-                            <div className="">
-                                <img className='rounded-lg w-72' src={games.standart1} alt="" />
-                            </div>
-                            <div className="">
-                                <img className='rounded-lg w-72' src={games.standart2} alt="" />
-                            </div>
-                            <div className="">
-                                <img className='rounded-lg w-72' src={games.standart3} alt="" />
-                            </div>
-                            <div className="">
-                                <img className='rounded-lg w-72' src={games.standart4} alt="" />
-                            </div>
+                            {[1, 2, 3, 4].map((numero) => (
+                                <div key={numero} onMouseEnter={() => handleMouseEnter(numero)} className={imagemPrincipal === games[`standart${numero}`] ? 'shadow-lg shadow-stone-700 opacity-100' : 'opacity-60'}>
+                                    <img className="rounded-lg w-72" src={games[`standart${numero}`]} alt="" />
+                                </div>
+                            ))}
                         </div>
                         <h1 className="text-2xl text-white font-bold uppercase mt-10 mb-7">Visão Geral do Jogo</h1>
                         <p className="leading-6 px-28 text-white text-justify">{games.descricao}</p>
@@ -108,7 +133,7 @@ const GameIndividual = ({ auth, games }: PageProps<{ games: any }>) => {
                     </div>
                 </div>
             </div>
-        </VisitanteLayout>
+        </VisitanteLayout >
     )
 }
 

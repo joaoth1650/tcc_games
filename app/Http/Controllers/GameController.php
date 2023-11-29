@@ -125,4 +125,5 @@ class GameController extends Controller
             ->delete();
         return response()->json(['Esse jogo foi removido da sua wishlist com sucesso!'], 204);
     }
+
 }
