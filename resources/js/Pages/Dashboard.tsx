@@ -26,7 +26,7 @@ export default function Dashboard({ auth, recomendados, promocoes, slides, moreV
     }, []);
 
 
-    // new ScrollCarousel(".my-carousel") //carousel com scroll muito show de bola
+    // new ScrollCarousel(".my-carousel") //carousel com scroll muito dhr
 
     return (
         <VisitanteLayout
