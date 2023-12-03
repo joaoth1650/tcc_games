@@ -41,7 +41,7 @@ const FooterBox = () => {
                     </div>
                 </div>
                 <div className="bg-gray-700 border-t border-stone-800 mt-8">
-                    <p className="text-center cursor-default">© 2023, Blanch Games, Inc. Todos os direitos reservados. Outras marcas e nomes de produtos são marcas registradas de seus respectivos donos.</p>
+                    <p className="text-center cursor-default">© 2023, Branch Games, Inc. Todos os direitos reservados. Outras marcas e nomes de produtos são marcas registradas de seus respectivos donos.</p>
                 </div>
             </footer>
         </>
