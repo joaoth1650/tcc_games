@@ -87,14 +87,14 @@ const GameIndividual = ({ auth, games }: PageProps<{ games: any }>) => {
                             </div>
                         </div>
                         <div className="justify-center px-16 mt-9 flex">
-                            <CardActionArea className='hover:bg-stone-800 hover:opacity-80'>
-                                <div onClick={handlePrevImage} className="flex justify-center items-center">
+                            <CardActionArea className='hover:bg-stone-800 hover:opacity-80' onClick={handlePrevImage}>
+                                <div  className="flex justify-center items-center">
                                     <ArrowBackIosRoundedIcon className='text-white cursor-pointer' sx={{ fontSize: 50 }} />
                                 </div>
                             </CardActionArea>
                             <img className="rounded-lg w-full" src={imagemPrincipal} alt="" />
-                            <CardActionArea className='hover:bg-stone-800 hover:opacity-80'>
-                                <div onClick={handleNextImage} className="flex justify-center items-center ">
+                            <CardActionArea className='hover:bg-stone-800 hover:opacity-80' onClick={handleNextImage}>
+                                <div  className="flex justify-center items-center ">
                                     <ArrowForwardIosRoundedIcon className='text-white cursor-pointer' sx={{ fontSize: 50 }} />
                                 </div>
                             </CardActionArea>
