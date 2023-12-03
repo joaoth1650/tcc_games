@@ -61,9 +61,9 @@ const GameIndividual = ({ auth, games }: PageProps<{ games: any }>) => {
     };
 
     const handleNextImage = () => {
-        const novaPosicao = (posicaoAtual + 1) % 4;
-        setImagemPrincipal(games[`standart${novaPosicao + 1}`]);
-        setPosicaoAtual(novaPosicao);
+        const newposition = (posicaoAtual + 1) % 4;
+        setImagemPrincipal(games[`standart${newposition + 1}`]);
+        setPosicaoAtual(newposition);
     };
 
     const handlePrevImage = () => {
