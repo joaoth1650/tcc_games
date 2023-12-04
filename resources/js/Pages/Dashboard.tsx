@@ -8,7 +8,7 @@ import ArrowBackIosRoundedIcon from '@mui/icons-material/ArrowBackIosRounded';
 import ArrowForwardIosRoundedIcon from '@mui/icons-material/ArrowForwardIosRounded';
 import FooterBox from '@/Components/FooterBox';
 
-export default function Dashboard({ auth, recomendados, promocoes, slides, moreViews, allGames, gamesOfTerror, gamesOfIndie }: PageProps<{ allGames: Array<any>, recomendados: Array<any>, promocoes: any, slides: Array<any>, moreViews: Array<any>, gamesOfTerror: Array<any>, gamesOfIndie: Array<any> }>) {
+export default function Dashboard({ auth, promocaoGris, promocaoTerror, recomendados, promocoes, slides, moreViews, allGames, gamesOfTerror, gamesOfIndie }: PageProps<{ allGames: Array<any>, recomendados: Array<any>, promocoes: any, promocaoTerror: any, promocaoGris: any , slides: Array<any>, moreViews: Array<any>, gamesOfTerror: Array<any>, gamesOfIndie: Array<any> }>) {
     console.log(slides)
     const [imagemIndex, setImagemIndex] = useState(0);
     const divRef = useRef<HTMLDivElement>(null);
@@ -26,7 +26,7 @@ export default function Dashboard({ auth, recomendados, promocoes, slides, moreV
     }, []);
 
 
-    // new ScrollCarousel(".my-carousel") //carousel com scroll muito dhr
+    // new ScrollCarousel(".my-carousel") //carousel com scroll muito show de bola
 
     return (
         <VisitanteLayout
@@ -158,10 +158,10 @@ export default function Dashboard({ auth, recomendados, promocoes, slides, moreV
                             </div>
                             <div className="col-span-2 md:col-span-1 th-card_dashboard">
                                 <Link
-                                    href={route('games.show', { 'id': 1 })}
+                                    href={route('games.show', { 'id': 23 })}
                                     className="font-semibold text-gray-600 hover:text-gray-900  focus:rounded-sm ">
-                                    <img src={promocoes[0].imagem} alt={promocoes[0].nome}
-                                        title={promocoes[0].nome} className={"object-cover rounded-lg shadow-md h-[100%]"} />
+                                    <img src={promocaoTerror[0].imagem} alt={promocaoTerror[0].nome}
+                                        title={promocaoTerror[0].nome} className={"object-cover rounded-lg shadow-md h-full"} />
                                 </Link>
                             </div>
                         </div>
@@ -191,10 +191,10 @@ export default function Dashboard({ auth, recomendados, promocoes, slides, moreV
                         <div className="grid grid-cols-2 gap-4 mt-4">
                             <div className="col-span-2 md:col-span-1 th-card_dashboard">
                                 <Link
-                                    href={route('games.show', { 'id': 1 })}
+                                    href={route('games.show', { 'id': 4 })}
                                     className="font-semibold text-gray-600 hover:text-gray-900  focus:rounded-sm ">
-                                    <img src={promocoes[0].imagem} alt={promocoes[0].nome}
-                                        title={promocoes[0].nome} className={"object-cover rounded-lg shadow-md h-[100%]"} />
+                                    <img src={promocaoGris[0].imagem} alt={promocaoGris[0].nome}
+                                        title={promocaoGris[0].nome} className={"object-cover rounded-lg shadow-md h-[100%]"} />
                                 </Link>
                             </div>
                             <div className="grid grid-cols-2 grid-rows-2 gap-4">

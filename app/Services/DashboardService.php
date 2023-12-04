@@ -13,6 +13,14 @@ class DashboardService
     {
         return Oferta::query()->where('id', 2)->get();
     }
+    public static function getOfertaGris():Collection
+    {
+        return Oferta::query()->where('id', 7)->get();
+    }
+    public static function getTerrorOferta():Collection
+    {
+        return Oferta::query()->where('id', 45)->get();
+    }
 
     public static function getSlide(): Collection
     {
